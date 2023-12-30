@@ -51,7 +51,7 @@
 
   <body>
     <!-- ===============================================--><!--    Main Content--><!-- ===============================================-->
-    <main class="main" id="top">
+    <main class="main" id="companyInfo">
       <div class="container-fluid">
         <div class="row min-vh-100 flex-center g-0">
           <div class="col-lg-8 col-xxl-5 py-3 position-relative"><img class="bg-auth-circle-shape" src="assets/img/bg-shape.png" alt="" width="250"><img class="bg-auth-circle-shape-2" src="assets/img/shape-1.png" alt="" width="150">
@@ -62,7 +62,7 @@
                     <div class="position-relative p-1 pt-md-5 pb-md-7" data-bs-theme="light">
                       <div class="bg-holder bg-auth-card-shape" style="background-image:url(assets/img/half-circle.png);"></div><!--/.bg-holder-->
                       <div class="z-1 position-relative"><p class="link-light mb-1 font-sans-serif fs-5 d-inline-block fw-bolder">QSE EXPERT</a>
-                        <p class="opacity-75 text-white">Pour tirer le meilleur parti de nos services personnalisés, nous vous invitons à enregistrer les informations essentielles de votre entreprise. Commencez dès maintenant pour définir le parcours de l'excellence QHSE avec nous.
+                        <p class="opacity-75 text-white">Pour tirer le meilleur parti de nos services personnalisés, nous vous invitons à enregistrer les informations essentielles de votre entreprise. Commencez dès maintenant pour définir le parcours de l'excellence QHSE avec nous. Après avoir configuré les détails de votre entreprise, vous serez guidé pour fournir les informations concernant l'administrateur principal qui gérera votre compte.
                         </p>
                       </div>
                     </div>
@@ -118,6 +118,9 @@
                           <input type="email" name="email" class="form-control" id="emailEntreprise" required>
                         </div>
                       </form>
+                      <div class="d-flex justify-content-end mt-2">
+                        <button class="btn btn-primary" type="button" onclick="showNextForm()">Suivant > </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -127,7 +130,7 @@
         </div>
       </div>
     </main><!-- ===============================================--><!--    End of Main Content--><!-- ===============================================-->
-    <main >
+    <main class="main" id="adminInfo" style="display:none;">
       <div class="container-fluid">
         <div class="row min-vh-100 flex-center g-0">
           <div class="col-lg-8 col-xxl-5 py-1 position-relative"><img class="bg-auth-circle-shape" src="assets/img/bg-shape.png" alt="" width="250"><img class="bg-auth-circle-shape-2" src="assets/img/shape-1.png" alt="" width="150">
@@ -193,8 +196,9 @@
                         <!-- entrepriseID sera ajouté dynamiquement par le script JS lors de la soumission du formulaire -->
                         <!-- ... Reste du formulaire ... -->
                       </form>
-                      <div class="col-12 d-flex justify-content-center mt-4">
-                        <button class="btn btn-primary w-100" type="submit" id="submitButton">Créer le compte Entreprise et administrateur</button>
+                      <div class="d-flex justify-content-between mt-2">
+                        <button class="btn btn-secondary" type="button" onclick="showPreviousForm()"> Précédent</button>
+                        <button class="btn btn-primary" type="submit" id="submitButton">Créer le compte</button>
                       </div>
                     </div>
                   </div>
@@ -380,8 +384,20 @@
     
     // Attachez la fonction handleFormSubmit au bouton de soumission
     document.getElementById('submitButton').addEventListener('click', handleFormSubmit);
-    </script>
-  </body>
+
+    // JavaScript pour contrôler l'affichage des formulaires
+function showNextForm() {
+  document.getElementById('companyInfo').style.display = 'none';
+  document.getElementById('adminInfo').style.display = 'block';
+}
+
+function showPreviousForm() {
+  document.getElementById('companyInfo').style.display = 'block';
+  document.getElementById('adminInfo').style.display = 'none';
+}
+
+</script>
+</body>
 
 
 <!-- Mirrored from prium.github.io/QSE EXPERT/v3.19.0/pages/authentication/card/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Dec 2023 08:58:54 GMT -->
