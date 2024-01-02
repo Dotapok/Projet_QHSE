@@ -461,7 +461,7 @@ h6 {
   list-style: none;
 }
 
-.header-nav>ul {
+.header-nav > ul {
   margin: 0;
   padding: 0;
 }
@@ -630,7 +630,6 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
   #main,
   #footer {
     margin-left: 300px;
@@ -644,7 +643,6 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
   .toggle-sidebar #main,
   .toggle-sidebar #footer {
     margin-left: 0;
@@ -883,7 +881,7 @@ h6 {
 }
 
 /* News & Updates */
-.dashboard .news .post-item+.post-item {
+.dashboard .news .post-item + .post-item {
   margin-top: 15px;
 }
 
@@ -1149,7 +1147,7 @@ h6 {
   padding: 12px 15px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .php-email-form button[type="submit"] {
   background: #4154f1;
   border: 0;
   padding: 10px 30px;
@@ -1158,7 +1156,7 @@ h6 {
   border-radius: 4px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .php-email-form button[type="submit"]:hover {
   background: #5969f3;
 }
 
@@ -1252,7 +1250,6 @@ h6 {
     margin-right: 20px;
   }
 }
-
 
 /* Ajustements pour les champs de formulaire */
 .form-control {
@@ -1350,11 +1347,45 @@ h6 {
   cursor: pointer; /* Curseur en forme de pointeur */
 }
 
-.btn-add-user:hover, .btn-add-user:focus {
+.btn-add-user:hover,
+.btn-add-user:focus {
   background-color: #218838; /* Couleur de fond plus foncée au survol */
   color: white; /* Texte en blanc */
 }
 
 .btn-add-user i {
   margin-left: 0.5rem; /* Espacement à gauche de l'icône */
+}
+
+.step-indicator {
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.active-step {
+  font-weight: bold;
+}
+
+.form-step {
+  display: none;
+}
+
+.modal .form-control {
+  margin-bottom: 1rem;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.page-link {
+  color: #007bff;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
