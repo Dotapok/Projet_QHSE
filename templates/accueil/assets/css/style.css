@@ -1223,6 +1223,29 @@ h6 {
   color: #012970;
 }
 
+.table thead th {
+  background-color: #007bff; /* Couleur bleue de Bootstrap */
+  color: white; /* Texte blanc pour un meilleur contraste */
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.table-responsive {
+  height: 450px; /* Ajustez la hauteur selon vos besoins */
+  overflow: scroll;
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: #007bff;
+  color: white;
+  z-index: 1020; /* Z-index de Bootstrap pour les en-têtes fixes */
+}
+
 .footer .credits {
   padding-top: 5px;
   text-align: center;
@@ -1389,3 +1412,4 @@ h6 {
   background-color: #007bff;
   border-color: #007bff;
 }
+

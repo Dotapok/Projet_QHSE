@@ -1,1239 +1,748 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.ico" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+  <title>DIGI QHSE</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
+  <!-- Favicons -->
+  <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet" />
-    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet" />
-  </head>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-  <body>
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/logo.png" alt="" />
-          <span class="d-none d-lg-block">QSE EXPERT</span>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style_landingpage.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto">
+        <a href="index.html">
+            <img src="assets/img/logo.png" alt="Logo" style="height:50px;"> Digi QHSE
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div>
-      <!-- End Logo -->
+    </h1>
+    
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle" href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li>
-          <!-- End Search Icon-->
-
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span> </a
-            ><!-- End Notification Icon -->
-
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
-            >
-              <li class="dropdown-header">
-                You have 4 new notifications
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-exclamation-circle text-warning"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>30 min. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-x-circle text-danger"></i>
-                <div>
-                  <h4>Atque rerum nesciunt</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>1 hr. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-check-circle text-success"></i>
-                <div>
-                  <h4>Sit rerum fuga</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>2 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="notification-item">
-                <i class="bi bi-info-circle text-primary"></i>
-                <div>
-                  <h4>Dicta reprehenderit</h4>
-                  <p>Quae dolorem earum veritatis oditseno</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </li>
-
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li class="dropdown-footer">
-                <a href="#">Show all notifications</a>
-              </li>
-            </ul>
-            <!-- End Notification Dropdown Items -->
-          </li>
-          <!-- End Notification Nav -->
-
-          <li class="nav-item dropdown">
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span> </a
-            ><!-- End Messages Icon -->
-
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
-            >
-              <li class="dropdown-header">
-                You have 3 new messages
-                <a href="#"
-                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
-                    >View all</span
-                  ></a
-                >
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img
-                    src="assets/img/messages-1.jpg"
-                    alt=""
-                    class="rounded-circle"
-                  />
-                  <div>
-                    <h4>Maria Hudson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>4 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img
-                    src="assets/img/messages-2.jpg"
-                    alt=""
-                    class="rounded-circle"
-                  />
-                  <div>
-                    <h4>Anna Nelson</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>6 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="message-item">
-                <a href="#">
-                  <img
-                    src="assets/img/messages-3.jpg"
-                    alt=""
-                    class="rounded-circle"
-                  />
-                  <div>
-                    <h4>David Muldon</h4>
-                    <p>
-                      Velit asperiores et ducimus soluta repudiandae labore
-                      officia est ut...
-                    </p>
-                    <p>8 hrs. ago</p>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li class="dropdown-footer">
-                <a href="#">Show all messages</a>
-              </li>
-            </ul>
-            <!-- End Messages Dropdown Items -->
-          </li>
-          <!-- End Messages Nav -->
-
-          <li class="nav-item dropdown pe-3">
-            <a
-              class="nav-link nav-profile d-flex align-items-center pe-0"
-              href="#"
-              data-bs-toggle="dropdown"
-            >
-              <img
-                src="assets/img/profile-img.jpg"
-                alt="Profile"
-                class="rounded-circle"
-              />
-              <span class="d-none d-md-block dropdown-toggle ps-2"
-                >K. Anderson</span
-              > </a
-            ><!-- End Profile Iamge Icon -->
-
-            <ul
-              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
-            >
-              <li class="dropdown-header">
-                <h6>Kevin Anderson</h6>
-                <span>Web Designer</span>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
-                >
-                  <i class="bi bi-person"></i>
-                  <span>Profil</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="pages-contact.html"
-                >
-                  <i class="bi bi-question-circle"></i>
-                  <span>Besoin d'aide ?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span>Se deconnecter</span>
-                </a>
-              </li>
-            </ul>
-            <!-- End Profile Dropdown Items -->
-          </li>
-          <!-- End Profile Nav -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto" href="#about">A Propos</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#team">Notre Equipe</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="pages-login.html">Se connecter</a></li>
         </ul>
-      </nav>
-      <!-- End Icons Navigation -->
-    </header>
-    <!-- End Header -->
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
-      <ul class="sidebar-nav" id="sidebar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <!-- End Dashboard Nav -->
+    </div>
+  </header><!-- End Header -->
 
-        <li class="nav-heading">Pages</li>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
 
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="users-profile.html">
-            <i class="bi bi-person"></i>
-            <span>Profile</span>
-          </a>
-        </li>
-        <!-- End Profile Page Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="pages-contact.html">
-            <i class="bi bi-envelope"></i>
-            <span>Contact</span>
-          </a>
-        </li>
-        <!-- End Contact Page Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="register.html">
-            <i class="bi bi-card-list"></i>
-            <span>Register</span>
-          </a>
-        </li>
-        <!-- End Register Page Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="pages-login.html">
-            <i class="bi bi-box-arrow-in-right"></i>
-            <span>Login</span>
-          </a>
-        </li>
-        <!-- End Login Page Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="reset-password.html">
-            <i class="bi bi-key-fill"></i>
-            <span>Reset-password</span>
-          </a>
-        </li>
-        <!-- End reset password Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="forgot-password.html">
-            <i class="bi bi-key-fill"></i>
-            <span>Forgot-password</span>
-          </a>
-        </li>
-        <!-- End forgot password Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="pages-error-404.html">
-            <i class="bi bi-dash-circle"></i>
-            <span>Error 404</span>
-          </a>
-        </li>
-        <!-- End Error 404 Page Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="formulaire.html">
-            <i class="bi bi-file-earmark"></i>
-            <span>Formulaire</span>
-          </a>
-        </li>
-        <!-- End Blank Page Nav -->
-      </ul>
-    </aside>
-    <!-- End Sidebar-->
-
-    <main id="main" class="main">
-      <div class="pagetitle">
-        <h1>Dashboard</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-          </ol>
-        </nav>
-      </div>
-      <!-- End Page Title -->
-
-      <section class="section dashboard">
-        <div class="row">
-          <!-- Left side columns -->
-          <div class="col-lg-8">
-            <div class="row">
-              <!-- Sales Card -->
-              <div class="col-xxl-4 col-md-6">
-                <div class="card info-card sales-card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="card-body">
-                    <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-cart"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span>
-                        <span class="text-muted small pt-2 ps-1">increase</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End Sales Card -->
-
-              <!-- Revenue Card -->
-              <div class="col-xxl-4 col-md-6">
-                <div class="card info-card revenue-card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      Revenue <span>| This Month</span>
-                    </h5>
-
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-currency-dollar"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6>$3,264</h6>
-                        <span class="text-success small pt-1 fw-bold">8%</span>
-                        <span class="text-muted small pt-2 ps-1">increase</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End Revenue Card -->
-
-              <!-- Customers Card -->
-              <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      Customers <span>| This Year</span>
-                    </h5>
-
-                    <div class="d-flex align-items-center">
-                      <div
-                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
-                      >
-                        <i class="bi bi-people"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6>1244</h6>
-                        <span class="text-danger small pt-1 fw-bold">12%</span>
-                        <span class="text-muted small pt-2 ps-1">decrease</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- End Customers Card -->
-
-              <!-- Reports -->
-              <div class="col-12">
-                <div class="card">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="card-body">
-                    <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                    <!-- Line Chart -->
-                    <div id="reportsChart"></div>
-
-                    <script>
-                      document.addEventListener("DOMContentLoaded", () => {
-                        new ApexCharts(
-                          document.querySelector("#reportsChart"),
-                          {
-                            series: [
-                              {
-                                name: "Sales",
-                                data: [31, 40, 28, 51, 42, 82, 56],
-                              },
-                              {
-                                name: "Revenue",
-                                data: [11, 32, 45, 32, 34, 52, 41],
-                              },
-                              {
-                                name: "Customers",
-                                data: [15, 11, 32, 18, 9, 24, 11],
-                              },
-                            ],
-                            chart: {
-                              height: 350,
-                              type: "area",
-                              toolbar: {
-                                show: false,
-                              },
-                            },
-                            markers: {
-                              size: 4,
-                            },
-                            colors: ["#4154f1", "#2eca6a", "#ff771d"],
-                            fill: {
-                              type: "gradient",
-                              gradient: {
-                                shadeIntensity: 1,
-                                opacityFrom: 0.3,
-                                opacityTo: 0.4,
-                                stops: [0, 90, 100],
-                              },
-                            },
-                            dataLabels: {
-                              enabled: false,
-                            },
-                            stroke: {
-                              curve: "smooth",
-                              width: 2,
-                            },
-                            xaxis: {
-                              type: "datetime",
-                              categories: [
-                                "2018-09-19T00:00:00.000Z",
-                                "2018-09-19T01:30:00.000Z",
-                                "2018-09-19T02:30:00.000Z",
-                                "2018-09-19T03:30:00.000Z",
-                                "2018-09-19T04:30:00.000Z",
-                                "2018-09-19T05:30:00.000Z",
-                                "2018-09-19T06:30:00.000Z",
-                              ],
-                            },
-                            tooltip: {
-                              x: {
-                                format: "dd/MM/yy HH:mm",
-                              },
-                            },
-                          }
-                        ).render();
-                      });
-                    </script>
-                    <!-- End Line Chart -->
-                  </div>
-                </div>
-              </div>
-              <!-- End Reports -->
-
-              <!-- Recent Sales -->
-              <div class="col-12">
-                <div class="card recent-sales overflow-auto">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      Recent Sales <span>| Today</span>
-                    </h5>
-
-                    <table class="table table-borderless datatable">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Customer</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row"><a href="#">#2457</a></th>
-                          <td>Brandon Jacob</td>
-                          <td>
-                            <a href="#" class="text-primary"
-                              >At praesentium minu</a
-                            >
-                          </td>
-                          <td>$64</td>
-                          <td>
-                            <span class="badge bg-success">Approved</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2147</a></th>
-                          <td>Bridie Kessler</td>
-                          <td>
-                            <a href="#" class="text-primary"
-                              >Blanditiis dolor omnis similique</a
-                            >
-                          </td>
-                          <td>$47</td>
-                          <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2049</a></th>
-                          <td>Ashleigh Langosh</td>
-                          <td>
-                            <a href="#" class="text-primary"
-                              >At recusandae consectetur</a
-                            >
-                          </td>
-                          <td>$147</td>
-                          <td>
-                            <span class="badge bg-success">Approved</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2644</a></th>
-                          <td>Angus Grady</td>
-                          <td>
-                            <a href="#" class="text-primar"
-                              >Ut voluptatem id earum et</a
-                            >
-                          </td>
-                          <td>$67</td>
-                          <td><span class="badge bg-danger">Rejected</span></td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2644</a></th>
-                          <td>Raheem Lehner</td>
-                          <td>
-                            <a href="#" class="text-primary"
-                              >Sunt similique distinctio</a
-                            >
-                          </td>
-                          <td>$165</td>
-                          <td>
-                            <span class="badge bg-success">Approved</span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- End Recent Sales -->
-
-              <!-- Top Selling -->
-              <div class="col-12">
-                <div class="card top-selling overflow-auto">
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"
-                      ><i class="bi bi-three-dots"></i
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
-                    >
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="card-body pb-0">
-                    <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                    <table class="table table-borderless">
-                      <thead>
-                        <tr>
-                          <th scope="col">Preview</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Sold</th>
-                          <th scope="col">Revenue</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img src="assets/img/product-1.jpg" alt=""
-                            /></a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Ut inventore ipsa voluptas nulla</a
-                            >
-                          </td>
-                          <td>$64</td>
-                          <td class="fw-bold">124</td>
-                          <td>$5,828</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img src="assets/img/product-2.jpg" alt=""
-                            /></a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Exercitationem similique doloremque</a
-                            >
-                          </td>
-                          <td>$46</td>
-                          <td class="fw-bold">98</td>
-                          <td>$4,508</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img src="assets/img/product-3.jpg" alt=""
-                            /></a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Doloribus nisi exercitationem</a
-                            >
-                          </td>
-                          <td>$59</td>
-                          <td class="fw-bold">74</td>
-                          <td>$4,366</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img src="assets/img/product-4.jpg" alt=""
-                            /></a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Officiis quaerat sint rerum error</a
-                            >
-                          </td>
-                          <td>$32</td>
-                          <td class="fw-bold">63</td>
-                          <td>$2,016</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">
-                            <a href="#"
-                              ><img src="assets/img/product-5.jpg" alt=""
-                            /></a>
-                          </th>
-                          <td>
-                            <a href="#" class="text-primary fw-bold"
-                              >Sit unde debitis delectus repellendus</a
-                            >
-                          </td>
-                          <td>$79</td>
-                          <td class="fw-bold">41</td>
-                          <td>$3,239</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-              <!-- End Top Selling -->
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>Des Solutions Optimales pour Votre Gestion QHSE</h1>
+          <h2>QSE EXPERT vous propose des solutions pour la digitalisation de vos systémes QHSE </h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="http://qse-expert.com/" class="btn-get-started scrollto">Nous connaitre</a>
+            <a href="https://www.youtube.com/watch?v=ODHbPtz2R3g&t=174s" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Regardez la vidéo </span></a>
           </div>
-          <!-- End Left side columns -->
-
-          <!-- Right side columns -->
-          <div class="col-lg-4">
-            <!-- Recent Activity -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"
-                  ><i class="bi bi-three-dots"></i
-                ></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-
-                <div class="activity">
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">32 min</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-success align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Quia quae rerum
-                      <a href="#" class="fw-bold text-dark"
-                        >explicabo officiis</a
-                      >
-                      beatae
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">56 min</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-danger align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Voluptatem blanditiis blanditiis eveniet
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 hrs</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-primary align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Voluptates corrupti molestias voluptatem
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">1 day</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-info align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Tempore autem saepe
-                      <a href="#" class="fw-bold text-dark"
-                        >occaecati voluptatem</a
-                      >
-                      tempore
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 days</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-warning align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Est sit eum reiciendis exercitationem
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">4 weeks</div>
-                    <i
-                      class="bi bi-circle-fill activity-badge text-muted align-self-start"
-                    ></i>
-                    <div class="activity-content">
-                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                    </div>
-                  </div>
-                  <!-- End activity item-->
-                </div>
-              </div>
-            </div>
-            <!-- End Recent Activity -->
-
-            <!-- Budget Report -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"
-                  ><i class="bi bi-three-dots"></i
-                ></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
-              <div class="card-body pb-0">
-                <h5 class="card-title">
-                  Budget Report <span>| This Month</span>
-                </h5>
-
-                <div
-                  id="budgetChart"
-                  style="min-height: 400px"
-                  class="echart"
-                ></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    var budgetChart = echarts
-                      .init(document.querySelector("#budgetChart"))
-                      .setOption({
-                        legend: {
-                          data: ["Allocated Budget", "Actual Spending"],
-                        },
-                        radar: {
-                          // shape: 'circle',
-                          indicator: [
-                            {
-                              name: "Sales",
-                              max: 6500,
-                            },
-                            {
-                              name: "Administration",
-                              max: 16000,
-                            },
-                            {
-                              name: "Information Technology",
-                              max: 30000,
-                            },
-                            {
-                              name: "Customer Support",
-                              max: 38000,
-                            },
-                            {
-                              name: "Development",
-                              max: 52000,
-                            },
-                            {
-                              name: "Marketing",
-                              max: 25000,
-                            },
-                          ],
-                        },
-                        series: [
-                          {
-                            name: "Budget vs spending",
-                            type: "radar",
-                            data: [
-                              {
-                                value: [4200, 3000, 20000, 35000, 50000, 18000],
-                                name: "Allocated Budget",
-                              },
-                              {
-                                value: [
-                                  5000, 14000, 28000, 26000, 42000, 21000,
-                                ],
-                                name: "Actual Spending",
-                              },
-                            ],
-                          },
-                        ],
-                      });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- End Budget Report -->
-
-            <!-- Website Traffic -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"
-                  ><i class="bi bi-three-dots"></i
-                ></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
-              <div class="card-body pb-0">
-                <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-
-                <div
-                  id="trafficChart"
-                  style="min-height: 400px"
-                  class="echart"
-                ></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    echarts
-                      .init(document.querySelector("#trafficChart"))
-                      .setOption({
-                        tooltip: {
-                          trigger: "item",
-                        },
-                        legend: {
-                          top: "5%",
-                          left: "center",
-                        },
-                        series: [
-                          {
-                            name: "Access From",
-                            type: "pie",
-                            radius: ["40%", "70%"],
-                            avoidLabelOverlap: false,
-                            label: {
-                              show: false,
-                              position: "center",
-                            },
-                            emphasis: {
-                              label: {
-                                show: true,
-                                fontSize: "18",
-                                fontWeight: "bold",
-                              },
-                            },
-                            labelLine: {
-                              show: false,
-                            },
-                            data: [
-                              {
-                                value: 1048,
-                                name: "Search Engine",
-                              },
-                              {
-                                value: 735,
-                                name: "Direct",
-                              },
-                              {
-                                value: 580,
-                                name: "Email",
-                              },
-                              {
-                                value: 484,
-                                name: "Union Ads",
-                              },
-                              {
-                                value: 300,
-                                name: "Video Ads",
-                              },
-                            ],
-                          },
-                        ],
-                      });
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- End Website Traffic -->
-
-            <!-- News & Updates Traffic -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"
-                  ><i class="bi bi-three-dots"></i
-                ></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-
-              <div class="card-body pb-0">
-                <h5 class="card-title">
-                  News &amp; Updates <span>| Today</span>
-                </h5>
-
-                <div class="news">
-                  <div class="post-item clearfix">
-                    <img src="assets/img/news-1.jpg" alt="" />
-                    <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                    <p>
-                      Sit recusandae non aspernatur laboriosam. Quia enim
-                      eligendi sed ut harum...
-                    </p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="assets/img/news-2.jpg" alt="" />
-                    <h4><a href="#">Quidem autem et impedit</a></h4>
-                    <p>
-                      Illo nemo neque maiores vitae officiis cum eum turos elan
-                      dries werona nande...
-                    </p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="assets/img/news-3.jpg" alt="" />
-                    <h4>
-                      <a href="#"
-                        >Id quia et et ut maxime similique occaecati ut</a
-                      >
-                    </h4>
-                    <p>
-                      Fugiat voluptas vero eaque accusantium eos. Consequuntur
-                      sed ipsam et totam...
-                    </p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="assets/img/news-4.jpg" alt="" />
-                    <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                    <p>
-                      Qui enim quia optio. Eligendi aut asperiores enim
-                      repellendusvel rerum cuder...
-                    </p>
-                  </div>
-
-                  <div class="post-item clearfix">
-                    <img src="assets/img/news-5.jpg" alt="" />
-                    <h4>
-                      <a href="#">Et dolores corrupti quae illo quod dolor</a>
-                    </h4>
-                    <p>
-                      Odit ut eveniet modi reiciendis. Atque cupiditate libero
-                      beatae dignissimos eius...
-                    </p>
-                  </div>
-                </div>
-                <!-- End sidebar recent posts-->
-              </div>
-            </div>
-            <!-- End News & Updates -->
-          </div>
-          <!-- End Right side columns -->
         </div>
-      </section>
-    </main>
-    <!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>QSE EXPERT</span></strong
-        >. All Rights Reserved
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+        </div>
       </div>
-    </footer>
-    <!-- End Footer -->
+    </div>
 
-    <a
-      href="#"
-      class="back-to-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+  </section><!-- End Hero -->
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+  <main id="main">
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-  </body>
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container">
+
+        <div class="row" data-aos="zoom-in">
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Cliens Section -->
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>A PROPOS DE NOUS</h2>
+      </div>
+      
+      <div class="row content">
+          <div class="col-lg-6">
+              <p>
+                  Chez QSE EXPERT, nous nous engageons à fournir des solutions de digitalisation QHSE innovantes et sur mesure. Notre équipe est spécialisée dans la création d'outils intuitifs et efficaces pour faciliter la gestion de la qualité, de l'hygiène, de la sécurité et de l'environnement.
+              </p>
+              <ul>
+                  <li><i class="ri-check-double-line"></i> Expertise approfondie en solutions QHSE digitales</li>
+                  <li><i class="ri-check-double-line"></i> Approche personnalisée pour chaque client</li>
+                  <li><i class="ri-check-double-line"></i> Engagement pour l'innovation et la qualité</li>
+              </ul>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+              <p>
+                  Nos solutions sont conçues pour s'adapter à divers secteurs d'activité, en mettant toujours en avant la facilité d'utilisation et l'efficacité. Nous utilisons des technologies de pointe telles que Bootstrap pour créer des plateformes robustes et évolutives. Notre objectif est d'aider votre entreprise à atteindre ses objectifs QHSE tout en simplifiant les processus.
+              </p>
+              <a href="https://api.whatsapp.com/send?phone=24177845369" class="btn-learn-more" target="_blank">
+                Contactez-nous
+                <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+      </div>
+      
+
+      </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch order-2 order-lg-1">
+
+            <div class="content">
+                <h3>Découvrez nos <strong>Modules de Solution Digitale QHSE</strong></h3>
+                <p>
+                    Notre solution digitale QHSE est conçue pour simplifier et optimiser la gestion de la qualité, de l'hygiène, de la sécurité et de l'environnement au sein de votre organisation.
+                </p>
+            </div>
+        
+            <div class="accordion-list">
+                <ul>
+                    <li>
+                        <a data-bs-toggle="collapse" class="collapse" data-bs-target="#accordion-list-1"><span>01</span> Module Accident <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="accordion-list-1" class="collapse show" data-bs-parent=".accordion-list">
+                            <p>
+                                Notre module accident permet une gestion efficace des incidents, facilitant le reporting, l'analyse et le suivi pour une prévention et une réactivité accrues.
+                            </p>
+                        </div>
+                    </li>
+        
+                    <li>
+                        <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> Module Formation et Habilitation <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="accordion-list-2" class="collapse" data-bs-parent=".accordion-list">
+                            <p>
+                                Centralisez et gérez les formations et les habilitations de votre personnel, assurez le suivi des compétences et des exigences réglementaires pour une conformité optimale.
+                            </p>
+                        </div>
+                    </li>
+        
+                    <li>
+                        <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> Module VGP <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
+                            <p>
+                                Gérez et suivez efficacement les vérifications générales périodiques de votre équipement pour garantir la sécurité et la conformité réglementaire en continu.
+                            </p>
+                        </div>
+                    </li>
+        
+                    <li>
+                        <a data-bs-toggle="collapse" data-bs-target="#accordion-list-4" class="collapsed"><span>04</span> Module DUER et Analyse Environnementale <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="accordion-list-4" class="collapse" data-bs-parent=".accordion-list">
+                            <p>
+                                Simplifiez la création et la mise à jour de votre Document Unique d'Évaluation des Risques et réalisez des analyses environnementales détaillées pour une gestion des risques proactive.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                      <a data-bs-toggle="collapse" data-bs-target="#accordion-list-5" class="collapsed"><span>05</span> Module Veille Réglementaire <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                      <div id="accordion-list-5" class="collapse" data-bs-parent=".accordion-list">
+                          <p>
+                              Restez informé et conforme avec notre module de veille réglementaire. Il vous permet de suivre les dernières évolutions législatives et normatives spécifiques à votre secteur, assurant ainsi une conformité continue.
+                          </p>
+                      </div>
+                  </li>
+        
+                </ul>
+            </div>
+        
+        </div>
+        
+
+          <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/img/why-us.png");' data-aos="zoom-in" data-aos-delay="150">&nbsp;</div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+            <img src="assets/img/skills.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+            <h3>Optimisez votre Gestion QHSE avec Précision et Efficacité</h3>
+            <p class="fst-italic">
+                Notre solution digitale apporte une innovation constante pour simplifier la gestion de la qualité, de l'hygiène, de la sécurité et de l'environnement.
+            </p>
+        
+            <div class="skills-content">
+        
+                <div class="progress">
+                    <span class="skill">Gestion des Incidents <i class="val">95%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+        
+                <div class="progress">
+                    <span class="skill">Conformité Réglementaire <i class="val">90%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+        
+                <div class="progress">
+                    <span class="skill">Analyse des Risques <i class="val">88%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+        
+                <div class="progress">
+                    <span class="skill">Formation et Habilitation <i class="val">85%</i></span>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+        
+            </div>
+        
+        </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Skills Section -->
+
+    
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Services</h2>
+            <p>QSE EXPERT offre une gamme de services spécifiquement conçus pour accompagner, former, et soutenir l'utilisation efficace de notre solution digitale QHSE.</p>
+        </div>
+    
+        <div class="row">
+            <!-- Service 1: Accompagnement à l'implémentation -->
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-help-circle"></i></div>
+                    <h4><a href="">Accompagnement à l'implémentation</a></h4>
+                    <p>Assistance personnalisée pour l'intégration de la solution digitale dans vos processus QHSE existants, assurant une transition fluide et efficace.</p>
+                </div>
+            </div>
+    
+            <!-- Service 2: Formation Utilisateur -->
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-book-reader"></i></div>
+                    <h4><a href="">Formation Utilisateur</a></h4>
+                    <p>Programmes de formation complets pour permettre à votre équipe d'utiliser pleinement toutes les fonctionnalités de la solution digitale QHSE.</p>
+                </div>
+            </div>
+    
+            <!-- Service 3: Support Technique Dédié -->
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
+                <div class="icon-box">
+                    <div class="icon"><i class="bx bx-support"></i></div>
+                    <h4><a href="">Support Technique Dédié</a></h4>
+                    <p>Support technique réactif pour résoudre rapidement toute question ou problème technique relatif à la solution digitale QHSE.</p>
+                </div>
+            </div>
+    
+            <!-- Service 4: Optimisation et Mise à Jour -->
+            <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
+                <div class="icon-box">
+                  <div class="icon"><i class="bx bx-stats"></i></div>
+                    <h4><a href="">Optimisation et Mise à Jour</a></h4>
+                    <p>Services continus d'optimisation et de mise à jour pour garantir que la solution reste à la pointe de la technologie QHSE.</p>
+                </div>
+            </div>
+    
+        </div>
+    
+    </div>
+    
+
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="row">
+            <div class="col-lg-9 text-center text-lg-start">
+                <h3>Découvrez Notre Solution Digitale QHSE</h3>
+                <p>Engagez votre entreprise dans une démarche QHSE efficace et dynamique avec notre solution digitale. Optimisez la gestion de la qualité, de la sécurité, et de l'environnement, tout en respectant la réglementation. N'attendez plus pour transformer votre gestion QHSE.</p>
+            </div>
+            <div class="col-lg-3 cta-btn-container text-center">
+                <a class="cta-btn align-middle" href="pages-login.html">Se connecter</a>
+            </div>
+        </div>
+    
+    </div>
+    
+    </section><!-- End Cta Section -->
+
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Notre Équipe</h2>
+          <p>Rencontrez l'équipe de QSE EXPERT, un groupe de professionnels passionnés et dévoués, prêts à vous aider à atteindre vos objectifs QHSE grâce à notre solution digitale innovante.</p>
+      </div>
+
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Yannick Mabicka</h4>
+                <span>Expert QHSE</span>
+                <p>Yannick vous accompagne dans la mise en place de votre démarche QHSE</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Yvan WATBO</h4>
+                <span>Consultant-Formateur</span>
+                <p>Yvan vous accompagen dans la défintion et la mise en place de votre stratégie de pilotage</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Me Curtis Yang</h4>
+                <span>Juriste de Profession</span>
+                <p>Curtis vous accompagne dans la définition et le suivi de vos exigence réglementaire</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="400">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Paul SIDJE</h4>
+                <span>Developpeur Full Stack</span>
+                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Nos Tarifs</h2>
+<p>Découvrez nos plans flexibles et adaptés à vos besoins en matière de gestion QHSE. Que vous soyez une petite entreprise ou une grande organisation, nous avons des solutions personnalisées qui s'intègrent parfaitement à vos opérations et à votre budget. Contactez-nous pour plus d'informations et trouver ensemble le plan qui vous correspond.</p>
+
+        </div>
+
+        <div class="row">
+
+          <!-- Plan de Base -->
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <div class="box">
+                  <h3>Plan de Base</h3>
+                  <h4><sup>FCFA</sup>500,000<span> par an</span></h4>
+                  <ul>
+                      <li><i class="bx bx-check"></i> Accès limité aux fonctionnalités</li>
+                      <li><i class="bx bx-check"></i> Support par email</li>
+                      <li><i class="bx bx-check"></i> Mise à jour mensuelle</li>
+                      <li class="na"><i class="bx bx-x"></i> <span>Formation incluse</span></li>
+                      <li class="na"><i class="bx bx-x"></i> <span>Consultation personnalisée</span></li>
+                  </ul>
+                  <a href="#" class="buy-btn">Commencer</a>
+              </div>
+          </div>
+      
+          <!-- Plan Professionnel -->
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+              <div class="box featured">
+                  <h3>Plan Professionnel</h3>
+                  <h4><sup>FCFA</sup>1,000,000<span> par an</span></h4>
+                  <ul>
+                      <li><i class="bx bx-check"></i> Accès à toutes les fonctionnalités</li>
+                      <li><i class="bx bx-check"></i> Support prioritaire</li>
+                      <li><i class="bx bx-check"></i> Mises à jour régulières</li>
+                      <li><i class="bx bx-check"></i> Formation incluse</li>
+                      <li class="na"><i class="bx bx-x"></i> <span>Consultation personnalisée</span></li>
+                  </ul>
+                  <a href="#" class="buy-btn">Commencer</a>
+              </div>
+          </div>
+      
+          <!-- Plan Entreprise -->
+          <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+              <div class="box">
+                  <h3>Plan Entreprise</h3>
+                  <h4><sup>FCFA</sup>1,500,000<span> par an</span></h4>
+                  <ul>
+                      <li><i class="bx bx-check"></i> Toutes fonctionnalités incluses</li>
+                      <li><i class="bx bx-check"></i> Support dédié 24/7</li>
+                      <li><i class="bx bx-check"></i> Mises à jour prioritaires</li>
+                      <li><i class="bx bx-check"></i> Formation avancée</li>
+                      <li><i class="bx bx-check"></i> Consultation personnalisée</li>
+                  </ul>
+                  <a href="#" class="buy-btn">Commencer</a>
+              </div>
+          </div>
+      
+      </div>
+      
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+            <h2>Questions Fréquemment Posées</h2>
+            <p>Vous avez des questions sur notre solution digitale QHSE ? Voici quelques réponses aux questions les plus fréquentes pour vous aider à mieux comprendre comment notre application peut bénéficier à votre organisation.</p>
+        </div>
+    
+        <div class="faq-list">
+            <ul>
+                <!-- Question 1 -->
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Comment notre solution digitale QHSE peut-elle améliorer la conformité réglementaire? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                        <p>
+                            Notre solution aide à maintenir la conformité en automatisant le suivi des réglementations, en alertant sur les mises à jour et en fournissant des outils d'audit facile à utiliser pour garantir une conformité continue.
+                        </p>
+                    </div>
+                </li>
+    
+                <!-- Question 2 -->
+                <li data-aos="fade-up" data-aos-delay="200">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Quelle formation est fournie pour utiliser l'application QHSE? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                        <p>
+                            Nous offrons une formation complète en ligne et sur site pour assurer que tous les utilisateurs sont compétents et à l'aise avec l'application, couvrant toutes les fonctionnalités et meilleures pratiques d'utilisation.
+                        </p>
+                    </div>
+                </li>
+    
+                <!-- Question 3 -->
+                <li data-aos="fade-up" data-aos-delay="300">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Comment l'application sécurise-t-elle les données QHSE? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                        <p>
+                            La sécurité est notre priorité. Notre application utilise le cryptage de pointe, des sauvegardes régulières et des protocoles stricts de confidentialité pour assurer que toutes vos données restent sécurisées et privées.
+                        </p>
+                    </div>
+                </li>
+    
+                <!-- Question 4 -->
+                <li data-aos="fade-up" data-aos-delay="400">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Est-ce que l'application est personnalisable selon les besoins spécifiques de mon entreprise? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                        <p>
+                            Absolument, notre application est hautement configurable pour s'adapter aux spécificités de votre entreprise. De la personnalisation des tableaux de bord à l'ajout de champs spécifiques, nous nous assurons qu'elle répond à vos besoins.
+                        </p>
+                    </div>
+                </li>
+    
+                <!-- Question 5 -->
+                <li data-aos="fade-up" data-aos-delay="500">
+                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Quel support est offert pour les utilisateurs de l'application? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                    <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                        <p>
+                            Nous offrons un support complet avec plusieurs canaux de contact, y compris assistance téléphonique, e-mail, et chat en direct, assurant que toute question ou problème est résolu rapidement et efficacement.
+                        </p>
+                    </div>
+                </li>
+    
+            </ul>
+        </div>
+    
+    </div>
+    
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contactez-Nous</h2>
+          <p>Vous êtes intéressé par nos solutions digitales QHSE ou avez des questions ? Notre équipe est à votre disposition pour vous fournir toutes les informations nécessaires et vous aider à intégrer les meilleures pratiques QHSE au sein de votre entreprise. N'hésitez pas à nous contacter.</p>
+      </div>
+
+        <div class="row">
+
+          <div class="col-lg-5 d-flex align-items-stretch">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Localisation:</h4>
+                <p>Ancienne SOBRAGA (face à l'Union)
+                  BP : 1632 Libreville-Gabon</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>contact@qse-expert.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Phone:</h4>
+                <p>+241 77 84 53 69 / +241 66 81 70 96</p>
+              </div>
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            </div>
+
+          </div>
+
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Votre nom</label>
+                  <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Votre Email</label>
+                  <input type="email" class="form-control" name="email" id="email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Sujet</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Votre message a été envoyé. Merci!</div>
+              </div>
+              <div class="text-center"><button type="submit">Envoyez un message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-newsletter">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4>Abonnez-vous à Notre Newsletter</h4>
+<p>Restez informé des dernières innovations et actualités en matière de gestion QHSE. Rejoignez notre communauté pour recevoir des conseils, des études de cas et les dernières mises à jour directement dans votre boîte de réception.</p>
+
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscrire">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>QSE EXPERT</h3>
+            <p>
+              Ancienne SOBRAGA (face à l'Union)
+ <br>
+ BP : 1632 Libreville-Gabon<br>
+              
+              <strong>Phone:</strong> +241 77 84 53 69 / +241 66 81 70 96<br>
+              <strong>Email:</strong> contact@qse-expert.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>lIEN</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Accueil</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">A propos</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Prix</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Nos Services</h4>
+            <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="http://qse-expert.com/" target="_blank">Accompagnement QHSE</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="http://qse-expert.com/" target="_blank">Audit et Conseil</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="http://qse-expert.com/" target="_blank">Formation Professionnelle</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="http://qse-expert.com/" target="_blank">Veille Réglementaire</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="http://qse-expert.com/" target="_blank">Soutien à la Certification</a></li>
+            </ul>
+        </div>
+        
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Nos Réseaux Sociaux</h4>
+<p>Rejoignez-nous sur les réseaux sociaux pour rester informé des dernières actualités, innovations et évènements liés à la gestion QHSE. Suivez-nous pour échanger, partager et grandir ensemble dans la communauté QHSE.</p>
+
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>QSE EXPERT</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+         Designed by <a href="http://qse-expert.com/">qse-expert</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main_landingpage.js  "></script>
+
+</body>
+
 </html>
