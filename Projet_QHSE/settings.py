@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-x2l+$skkrw9u_alf(pjot5^1p26(^*emux)@@n19!jkzju(7%3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['polo2206.pythonanywhere.com']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Acceuil'
+    'Acceuil',
+    'Accidents'
 ]
 
 MIDDLEWARE = [

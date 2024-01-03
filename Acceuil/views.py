@@ -12,3 +12,13 @@ def inscription(request):
 
 def mdpoublie(request):
     return render(request,'forgot-password.html')
+
+# fonctionalités
+def connexionprocessus(request):
+    return 
+
+def inscriptionprocessus(request):
+    return 
+
+def mdpoublieprocessus(request):
+    return 
