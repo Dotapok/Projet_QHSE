@@ -1,0 +1,1021 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.ico' %}" rel="icon" />
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/quill/quill.snow.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="{% static 'assets/img/logo.png' %}" alt="" />
+          <span class="d-none d-lg-block">DIGI QHSE</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <!-- End Logo -->
+
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item d-block d-lg-none">
+            <a class="nav-link nav-icon search-bar-toggle" href="#">
+              <i class="bi bi-search"></i>
+            </a>
+          </li>
+          <!-- End Search Icon-->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-bell"></i>
+              <span class="badge bg-primary badge-number">4</span> </a
+            ><!-- End Notification Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
+            >
+              <li class="dropdown-header">
+                You have 4 new notifications
+                <a href="#"
+                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
+                    >View all</span
+                  ></a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-exclamation-circle text-warning"></i>
+                <div>
+                  <h4>Lorem Ipsum</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>30 min. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-x-circle text-danger"></i>
+                <div>
+                  <h4>Atque rerum nesciunt</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>1 hr. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-check-circle text-success"></i>
+                <div>
+                  <h4>Sit rerum fuga</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>2 hrs. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-info-circle text-primary"></i>
+                <div>
+                  <h4>Dicta reprehenderit</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li class="dropdown-footer">
+                <a href="#">Show all notifications</a>
+              </li>
+            </ul>
+            <!-- End Notification Dropdown Items -->
+          </li>
+          <!-- End Notification Nav -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-chat-left-text"></i>
+              <span class="badge bg-success badge-number">3</span> </a
+            ><!-- End Messages Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
+            >
+              <li class="dropdown-header">
+                You have 3 new messages
+                <a href="#"
+                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
+                    >View all</span
+                  ></a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="message-item">
+                <a href="#">
+                  <img
+                    src="{% static 'assets/img/messages-1.jpg' %}"
+                    alt=""
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h4>Maria Hudson</h4>
+                    <p>
+                      Velit asperiores et ducimus soluta repudiandae labore
+                      officia est ut...
+                    </p>
+                    <p>4 hrs. ago</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="message-item">
+                <a href="#">
+                  <img
+                    src="{% static 'assets/img/messages-2.jpg' %}"
+                    alt=""
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h4>Anna Nelson</h4>
+                    <p>
+                      Velit asperiores et ducimus soluta repudiandae labore
+                      officia est ut...
+                    </p>
+                    <p>6 hrs. ago</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="message-item">
+                <a href="#">
+                  <img
+                    src="{% static 'assets/img/messages-3.jpg' %}"
+                    alt=""
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h4>David Muldon</h4>
+                    <p>
+                      Velit asperiores et ducimus soluta repudiandae labore
+                      officia est ut...
+                    </p>
+                    <p>8 hrs. ago</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="dropdown-footer">
+                <a href="#">Show all messages</a>
+              </li>
+            </ul>
+            <!-- End Messages Dropdown Items -->
+          </li>
+          <!-- End Messages Nav -->
+
+          <li class="nav-item dropdown pe-3">
+            <a
+              class="nav-link nav-profile d-flex align-items-center pe-0"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                src="{% static 'assets/img/profile-img.jpg' %}"
+                alt="Profile"
+                class="rounded-circle"
+              />
+              <span class="d-none d-md-block dropdown-toggle ps-2"
+                >K. Anderson</span
+              > </a
+            ><!-- End Profile Iamge Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
+            >
+              <li class="dropdown-header">
+                <h6>Kevin Anderson</h6>
+                <span>Web Designer</span>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="users-profile.html"
+                >
+                  <i class="bi bi-person"></i>
+                  <span>Profil</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="pages-contact.html"
+                >
+                  <i class="bi bi-question-circle"></i>
+                  <span>Besoin d'aide ?</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="{% url 'connexion' %}">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Se deconnecter</span>
+                </a>
+              </li>
+            </ul>
+            <!-- End Profile Dropdown Items -->
+          </li>
+          <!-- End Profile Nav -->
+        </ul>
+      </nav>
+      <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Dashboard' %}">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'AjouterAccident' %}">
+            <i class="bi bi-journal-text"></i>
+            <span>Ajouter un accident</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'tableauAction' %}">
+            <i class="bi bi-table"></i>
+            <span>Tableau des actions</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'profile' %}">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+        <!-- End Profile Page Nav -->
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </nav>
+      </div>
+      <!-- End Page Title -->
+
+      <section class="section dashboard">
+        <div class="row">
+          <!-- Left side columns -->
+          <div class="col-lg-8">
+            <div class="row">
+              <!-- AAA -->
+              <div class="col-xxl-6 col-md-6">
+                <div class="card info-card sales-card">
+                  
+
+                  <div class="card-body">
+                    <h5 class="card-title">Accident avec arrêt</h5>
+
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                      <i class="bi bi-graph-up"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>0</h6>
+                        <span class="text-success small pt-1 fw-bold">0.0%</span>
+                        <span class="text-muted small pt-2 ps-1">Total des événements</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End AAA -->
+
+              <!-- ASE -->
+              <div class="col-xxl-6 col-md-6">
+                <div class="card info-card revenue-card">
+                 
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      Accident sans arrêt</span>
+                    </h5>
+
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                      <i class="bi bi-clock-history"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>0</h6>
+                        <span class="text-success small pt-1 fw-bold">0.0%</span>
+                        <span class="text-muted small pt-2 ps-1">Total des événements</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End ASE -->
+
+              <!-- Incidents -->
+              <div class="col-xxl-6 col-xl-6">
+                <div class="card info-card customers-card">
+                  
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      Incidents </span>
+                    </h5>
+
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                      <i class="bi bi-exclamation-octagon"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>0</h6>
+                        <span class="text-danger small pt-1 fw-bold">0.0%</span>
+                        <span class="text-muted small pt-2 ps-1">Total des événements</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Incidents -->
+
+              <!-- presqu'incidents -->
+              <div class="col-xxl-6 col-xl-6">
+                <div class="card info-card customers-card">
+                
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      Presqu'incidents</span>
+                    </h5>
+
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="card-icon rounded-circle d-flex align-items-center justify-content-center"
+                      >
+                      <i class="bi bi-slash-circle"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>0</h6>
+                        <span class="text-danger small pt-1 fw-bold">0.0%</span>
+                        <span class="text-muted small pt-2 ps-1">Total des événements</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End presqu'incidents -->
+
+              
+
+              <!-- Evolution -->
+              <div class="col-12">
+                <div class="card">
+                                 <div class="card-body">
+                    <h5 class="card-title">Courbe d'évolution</span></h5>
+
+                    <!-- Line Chart -->
+                    <div id="reportsChart"></div>
+
+                    <script>
+                      document.addEventListener("DOMContentLoaded", () => {
+                        new ApexCharts(
+                          document.querySelector("#reportsChart"),
+                          {
+                            series: [
+                              {
+                                name: "AAA",
+                                data: [31, 40, 28, 51, 42, 82, 56,31, 40, 28, 51, 42 ],
+                              },
+                              {
+                                name: "ASA",
+                                data: [11, 32, 45, 32, 34, 52, 41,11, 32, 45, 32, 34 ],
+                              },
+                              {
+                                name: "Incidents",
+                                data: [15, 11, 32, 18, 9, 24, 11, 11, 32, 18, 9, 24 ],
+                              },
+                              {
+                                name: "Presqu'incidents",
+                                data: [50, 41, 52, 28, 6, 44, 31, 41, 52, 28, 6, 44 ],
+                              },
+                            ],
+                            chart: {
+                              height: 350,
+                              type: "area",
+                              toolbar: {
+                                show: false,
+                              },
+                            },
+                            markers: {
+                              size: 5,
+                            },
+                            colors: ["#4154f1", "#2eca6a", "#ff771d", "#d32626"],
+                            fill: {
+                              type: "gradient",
+                              gradient: {
+                                shadeIntensity: 1,
+                                opacityFrom: 0.3,
+                                opacityTo: 0.4,
+                                stops: [0, 90, 100],
+                              },
+                            },
+                            dataLabels: {
+                              enabled: false,
+                            },
+                            stroke: {
+                              curve: "smooth",
+                              width: 2,
+                            },
+                            xaxis: {
+                              type: "month",
+                              categories: [
+                                "Janvier",
+                                "Fevrier",
+                                "Mars",
+                                "Avril",
+                                "Mai",
+                                "Juin",
+                                "Juillet",
+                                "Août",
+                                "Septembre",
+                                "Octobre",
+                                "Novembre",
+                                "Décembre",
+                              ],
+                            },
+                            tooltip: {
+                              x: {
+                                format: "",
+                              },
+                            },
+                          }
+                        ).render();
+                      });
+                    </script>
+                    <!-- End Line Chart -->
+                  </div>
+                </div>
+              </div>
+              <!-- End Reports -->
+
+              <!-- Recent Sales -->
+              <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"
+                      ><i class="bi bi-three-dots"></i
+                    ></a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow"
+                    >
+                      <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                      </li>
+
+                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">This Year</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      Suivi des actions</span>
+                    </h5>
+
+                    <table class="table table-borderless datatable">
+                      <thead>
+                        <tr>
+                          <th scope="col">Origine</th>
+                          <th scope="col">Titre de l'action</th>
+                          <th scope="col">Responsable</th>
+                          <th scope="col">Début</th>
+                          <th scope="col">Fin</th>
+                          <th scope="col">Statut</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Accident</td>
+                          <td><a href="#">Achat des EPI</a></td>
+                          <td>Jean Dupont</td>
+                          <td>01/01/2024</td>
+                          <td>01/07/2024</td>
+                          <td><span class="badge bg-success">Terminé</span></td>
+                        </tr>
+                        <tr>
+                          <td>Incident</td>
+                          <td><a href="#">Formation SST</a></td>
+                          <td>Martine Lavoie</td>
+                          <td>05/02/2024</td>
+                          <td>05/08/2024</td>
+                          <td><span class="badge bg-warning">En cours</span></td>
+                        </tr>
+                        <tr>
+                          <td>Risque</td>
+                          <td><a href="#">Recyclage des chauffeurs</a></td>
+                          <td>Philippe Martin</td>
+                          <td>10/03/2024</td>
+                          <td>10/09/2024</td>
+                          <td><span class="badge bg-danger">Ouvert</span></td>
+                        </tr>
+                        <tr>
+                          <td>Révision</td>
+                          <td><a href="#">Mise à jour des procédures de sécurité</a></td>
+                          <td>Sarah Laval</td>
+                          <td>12/01/2024</td>
+                          <td>12/04/2024</td>
+                          <td><span class="badge bg-success">Terminé</span></td>
+                        </tr>
+                        <tr>
+                          <td>Amélioration</td>
+                          <td><a href="#">Optimisation du flux de travail</a></td>
+                          <td>Loïc Dubois</td>
+                          <td>15/02/2024</td>
+                          <td>15/06/2024</td>
+                          <td><span class="badge bg-warning">En cours</span></td>
+                        </tr>
+                        <tr>
+                          <td>Accident</td>
+                          <td><a href="#">Analyse de l'incident XYZ</a></td>
+                          <td>Marc Fontaine</td>
+                          <td>20/03/2024</td>
+                          <td>20/07/2024</td>
+                          <td><span class="badge bg-danger">Ouvert</span></td>
+                        </tr>
+                        <tr>
+                          <td>Formation</td>
+                          <td><a href="#">Formation sur les équipements de sécurité</a></td>
+                          <td>Emilie Tran</td>
+                          <td>22/03/2024</td>
+                          <td>25/04/2024</td>
+                          <td><span class="badge bg-warning">En cours</span></td>
+                        </tr>
+                        <tr>
+                          <td>Contrôle</td>
+                          <td><a href="#">Audit interne des procédures</a></td>
+                          <td>François Renaud</td>
+                          <td>05/04/2024</td>
+                          <td>10/05/2024</td>
+                          <td><span class="badge bg-danger">Ouvert</span></td>
+                        </tr>
+                        <tr>
+                          <td>Maintenance</td>
+                          <td><a href="#">Révision annuelle des machines</a></td>
+                          <td>Clara Martinet</td>
+                          <td>15/05/2024</td>
+                          <td>20/06/2024</td>
+                          <td><span class="badge bg-success">Terminé</span></td>
+                        </tr>
+                        <tr>
+                          <td>Accident</td>
+                          <td><a href="#">Enquête sur l'accident de travail n°123</a></td>
+                          <td>Pierre Dupont</td>
+                          <td>01/06/2024</td>
+                          <td>15/07/2024</td>
+                          <td><span class="badge bg-warning">En cours</span></td>
+                        </tr>
+                        <tr>
+                          <td>Projet</td>
+                          <td><a href="#">Implémentation du système de gestion de qualité</a></td>
+                          <td>Lucie Lemaire</td>
+                          <td>20/06/2024</td>
+                          <td>25/12/2024</td>
+                          <td><span class="badge bg-danger">Ouvert</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- End Recent Sales -->
+
+              <!-- Top Selling -->
+              <div class="col-12">
+                <div class="card top-selling overflow-auto">
+                  <div class="card-body pb-0">
+                    <h5 class="card-title">Suivi des actions par responsable</h5>
+
+                    <table class="table  table-bordered table-striped table-hover .table-primary">
+                      <thead>
+                        <tr>
+                          <th scope="col">Image</th>
+                          <th scope="col">Noms</th>
+                          <th scope="col">Ouvert</th>
+                          <th scope="col">En cours</th>
+                          <th scope="col">Dépassé</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <a href="#"><img src="{% static 'assets/img/team/team-1.jpg' %}" alt="team" /></a>
+                          </td>
+                          <td>Jean Dupont</td>
+                          <td>5</td>
+                          <td>2</td>
+                          <td>1</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a href="#"><img src="{% static 'assets/img/team/team-2.jpg' %}" alt="team" /></a>
+                          </td>
+                          <td>Martine Lavoie</td>
+                          <td>3</td>
+                          <td>6</td>
+                          <td>0</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a href="#"><img src="{% static 'assets/img/team/team-3.jpg' %}" alt="team" /></a>
+                          </td>
+                          <td>Philippe Martin</td>
+                          <td>7</td>
+                          <td>2</td>
+                          <td>3</td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <a href="#"><img src="{% static 'assets/img/team/team-4.jpg' %}" alt="team" /></a>
+                          </td>
+                          <td>WATBO Yvan</td>
+                          <td>5</td>
+                          <td>8</td>
+                          <td>1</td>
+                        </tr>
+                        <!-- Ajoutez autant de lignes que nécessaire... -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- End Top Selling -->
+            </div>
+          </div>
+          <!-- End Left side columns -->
+
+          <!-- Right side columns -->
+          <div class="col-lg-4">
+            <!-- Recent Activity -->
+            <div class="card">
+              
+              <div class="card-body ">
+                <h5 class="card-title">Suivi des actions</span></h5>
+
+                <div class="activity row">
+                  <!-- Actions en cours -->
+                  <div class="card mb-3 col-md-6 ">
+                    <div class="card-header bg-primary text-white w-100">
+                      Actions en cours
+                    </div>
+                    <div class="card-body">
+                      <i class="bi bi-hourglass-split" style="font-size: 2rem; color: #007bff;"></i>
+                      <span class="fw-bold" style="font-size: 2rem; color: #007bff">0</span>
+                      <p class="card-text"> actions en cours.</p>
+                    </div>
+                  </div>
+                
+                  <!-- Actions Ouvert -->
+                  <div class="card mb-3 col-md-6">
+                    <div class="card-header bg-warning text-white">
+                      Actions Ouvert
+                    </div>
+                    <div class="card-body">
+                      <i class="bi bi-exclamation-circle" style="font-size: 2rem; color: #ffc107;"></i>
+                      <span class="fw-bold" style="font-size: 2rem; color: #ffc107;">0</span>
+                      <p class="card-text"> actions ouvertes.</p>
+                    </div>
+                  </div>
+                
+                  <!-- Actions Terminé -->
+                  <div class="card mb-3 col-md-6">
+                    <div class="card-header bg-success text-white">
+                      Actions Terminé
+                    </div>
+                    <div class="card-body">
+                      <i class="bi bi-check-circle" style="font-size: 2rem; color: #28a745;"></i>
+                      <span class="fw-bold" style="font-size: 2rem; color: #28a745;">0</span>
+                      <p class="card-text"> actions terminées.</p>
+                    </div>
+                  </div>
+                
+                  <!-- Actions en Retard -->
+                  <div class="card mb-3 col-md-6">
+                    <div class="card-header bg-danger text-white">
+                      Actions en Retard
+                    </div>
+                    <div class="card-body">
+                      <i class="bi bi-clock-history" style="font-size: 2rem; color: #dc3545;"></i>
+                      <span class="fw-bold" style="font-size: 2rem; color: #dc3545;">0</span>
+                      <p class="card-text"> actions en retard.</p>
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+            <!-- End Recent Activity -->
+
+<!-- Accident Report -->
+<div class="card">
+  
+  <div class="card-body pb-0">
+    <h5 class="card-title">
+      Suivi des accidents par lieu</span>
+    </h5>
+
+    <div
+      id="accidentChart"
+      style="min-height: 400px"
+      class="echart"
+    ></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        var accidentChart = echarts
+          .init(document.querySelector("#accidentChart"))
+          .setOption({
+            legend: {
+              data: ["AAA", "ASA", "Incidents", "Presqu'incidents"],
+            },
+            radar: {
+              indicator: [
+                { name: "Magasin", max: 60},
+                { name: "Bureau", max: 60},
+                { name: "Garage", max: 60},
+                { name: "Usine", max: 60},
+                { name: "Atelier", max: 60},
+              ],
+            },
+            series: [{
+              name: 'Accidents par Lieu',
+              type: 'radar',
+              data: [
+                {
+                  value: [20, 30, 40, 50],
+                  name: 'AAA',
+                },
+                {
+                  value: [50, 20, 30, 40],
+                  name: 'ASA',
+                },
+                {
+                  value: [30, 40, 50, 20],
+                  name: 'Incidents',
+                },
+                {
+                  value: [40, 50, 20, 30],
+                  name: 'Presqu\'incidents',
+                }
+              ]
+            }]
+          });
+      });
+    </script>
+  </div>
+</div>
+<!-- End Accident Report -->
+
+
+<div class="card">
+  <div class="card-body pb-0">
+    <h5 class="card-title">Statistiques par Siège de la Lésion <span>| Cette Année</span></h5>
+
+    <div id="injuryLocationChart" style="min-height: 350px;" class="echart"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        echarts.init(document.querySelector("#injuryLocationChart")).setOption({
+          tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+          },
+          legend: {
+            top: "5%",
+            left: "center",
+            textStyle: {
+              color: "gray",
+            },
+          },
+          series: [
+            {
+              name: "Lieu de la lésion",
+              type: "pie",
+              radius: ["40%", "70%"],
+              avoidLabelOverlap: false,
+              label: {
+                show: false,
+                position: "center",
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  fontSize: "18",
+                  fontWeight: "bold",
+                },
+              },
+              labelLine: {
+                show: false,
+              },
+              data: [
+                { value: 335, name: "Tête" },
+                { value: 310, name: "Torse" },
+                { value: 234, name: "Bras" },
+                { value: 135, name: "Jambes" },
+                { value: 154, name: "Mains" },
+                { value: 125, name: "Pieds" },
+                { value: 148, name: "Dos" },
+                // Ajoutez d'autres parties du corps si nécessaire
+              ],
+            },
+          ],
+        });
+      });
+    </script>
+  </div>
+</div>
+
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Suivi par poste</h5>
+
+      <!-- Bar Chart -->
+      <div id="barChart"></div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          new ApexCharts(document.querySelector("#barChart"), {
+            series: [{
+              data: [40, 43, 44, 47, 54, 58, 69, 110, 120, 138]
+            }],
+            chart: {
+              type: 'bar',
+              height: 350
+            },
+            plotOptions: {
+              bar: {
+                borderRadius: 4,
+                horizontal: true,
+              }
+            },
+            dataLabels: {
+              enabled: false
+            },
+            xaxis: {
+              categories: [
+    'Comptabilité', 
+    'Ressources Humaines', 
+    'Support Technique', 
+    'Ventes', 
+    'Marketing', 
+    'Recherche et Développement', 
+    'Production', 
+    'Direction', 
+    'Logistique', 
+    'Service Client'
+],
+            }
+          }).render();
+        });
+      </script>
+      <!-- End Bar Chart -->
+
+    </div>
+  </div>
+
+
+
+<!-- Fin des Statistiques par Siège de la Lésion -->
+
+
+            
+          </div>
+          <!-- End Right side columns -->
+        </div>
+      </section>
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>DIGI QHSE</span></strong
+        >. All Rights Reserved
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/chart.js/chart.umd.js' %}"></script>
+    <script src="{% static 'assets/vendor/echarts/echarts.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/quill/quill.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+    <script src="{% static 'assets/vendor/tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+  </body>
+</html>

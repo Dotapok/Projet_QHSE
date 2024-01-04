@@ -1,0 +1,742 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Dashboard / Tableau actions</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon" />
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/quill/quill.snow.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <img src="{% static 'assets/img/logo.png' %}" alt="" />
+          <span class="d-none d-lg-block">DIGI QHSE</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+      </div>
+      <!-- End Logo -->
+
+      <div class="search-bar">
+        <form
+          class="search-form d-flex align-items-center"
+          method="POST"
+          action="#"
+        >
+          <input
+            type="text"
+            name="query"
+            placeholder="Search"
+            title="Enter search keyword"
+          />
+          <button type="submit" title="Search">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+      <!-- End Search Bar -->
+
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item d-block d-lg-none">
+            <a class="nav-link nav-icon search-bar-toggle" href="#">
+              <i class="bi bi-search"></i>
+            </a>
+          </li>
+          <!-- End Search Icon-->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-bell"></i>
+              <span class="badge bg-primary badge-number">4</span> </a
+            ><!-- End Notification Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
+            >
+              <li class="dropdown-header">
+                You have 4 new notifications
+                <a href="#"
+                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
+                    >View all</span
+                  ></a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-exclamation-circle text-warning"></i>
+                <div>
+                  <h4>Lorem Ipsum</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>30 min. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-x-circle text-danger"></i>
+                <div>
+                  <h4>Atque rerum nesciunt</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>1 hr. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-check-circle text-success"></i>
+                <div>
+                  <h4>Sit rerum fuga</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>2 hrs. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="notification-item">
+                <i class="bi bi-info-circle text-primary"></i>
+                <div>
+                  <h4>Dicta reprehenderit</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li class="dropdown-footer">
+                <a href="#">Show all notifications</a>
+              </li>
+            </ul>
+            <!-- End Notification Dropdown Items -->
+          </li>
+          <!-- End Notification Nav -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-chat-left-text"></i>
+              <span class="badge bg-success badge-number">3</span> </a
+            ><!-- End Messages Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
+            >
+              <li class="dropdown-header">
+                You have 3 new messages
+                <a href="#"
+                  ><span class="badge rounded-pill bg-primary p-2 ms-2"
+                    >View all</span
+                  ></a
+                >
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="message-item">
+                <a href="#">
+                  <img
+                    src="{% static 'assets/img/messages-1.jpg' %}"
+                    alt=""
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h4>Maria Hudson</h4>
+                    <p>
+                      Velit asperiores et ducimus soluta repudiandae labore
+                      officia est ut...
+                    </p>
+                    <p>4 hrs. ago</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="message-item">
+                <a href="#">
+                  <img
+                    src="{% static 'assets/img/messages-2.jpg' %}"
+                    alt=""
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h4>Anna Nelson</h4>
+                    <p>
+                      Velit asperiores et ducimus soluta repudiandae labore
+                      officia est ut...
+                    </p>
+                    <p>6 hrs. ago</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="message-item">
+                <a href="#">
+                  <img
+                    src="{% static 'assets/img/messages-3.jpg' %}"
+                    alt=""
+                    class="rounded-circle"
+                  />
+                  <div>
+                    <h4>David Muldon</h4>
+                    <p>
+                      Velit asperiores et ducimus soluta repudiandae labore
+                      officia est ut...
+                    </p>
+                    <p>8 hrs. ago</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li class="dropdown-footer">
+                <a href="#">Show all messages</a>
+              </li>
+            </ul>
+            <!-- End Messages Dropdown Items -->
+          </li>
+          <!-- End Messages Nav -->
+
+          <li class="nav-item dropdown pe-3">
+            <a
+              class="nav-link nav-profile d-flex align-items-center pe-0"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                src="{% static 'assets/img/profile-img.jpg' %}"
+                alt="Profile"
+                class="rounded-circle"
+              />
+              <span class="d-none d-md-block dropdown-toggle ps-2"
+                >K. Anderson</span
+              > </a
+            ><!-- End Profile Iamge Icon -->
+
+            <ul
+              class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
+            >
+              <li class="dropdown-header">
+                <h6>Kevin Anderson</h6>
+                <span>Web Designer</span>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="users-profile.html"
+                >
+                  <i class="bi bi-person"></i>
+                  <span>Profil</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="pages-contact.html"
+                >
+                  <i class="bi bi-question-circle"></i>
+                  <span>Besoin d'aide ?</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="{% url 'connexion' %}">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Se deconnecter</span>
+                </a>
+              </li>
+            </ul>
+            <!-- End Profile Dropdown Items -->
+          </li>
+          <!-- End Profile Nav -->
+        </ul>
+      </nav>
+      <!-- End Icons Navigation -->
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'Dashboard' %}">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'AjouterAccident' %}">
+            <i class="bi bi-journal-text"></i>
+            <span>Ajouter un accident</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tableauAction' %}">
+            <i class="bi bi-table"></i>
+            <span>Tableau des actions</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'profile' %}">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <div class="container mt-3 card p-4 w-80">
+        <h2>Tableau de suivi des actions</h2>
+        <div class="row g-3 mb-3">
+            <div class="col-md-3">
+              <label for="searchInput">Filtre du Tableau</label>
+                <input
+                    class="form-control"
+                    id="searchInput"
+                    type="text"
+                    placeholder="Rechercher..."
+                    onkeyup="filterTable()"
+                />
+            </div>
+            <div class="col-md-3">
+              <label for="statusFilter">Filtre par statut</label>
+                <select class="form-select" id="statusFilter" onchange="filterTable()">
+                    <option value="">Tous les statuts</option>
+                    <option value="En cours">En cours</option>
+                    <option value="Ouvert">Ouvert</option>
+                    <option value="Terminé">Terminé</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+              <label for="startDateFilter"> Plage date de début</label>
+                <input type="date" class="form-control" id="startDateFilter" onchange="filterTable()" />
+            </div>
+            <div class="col-md-3">
+              <label for="endDateFilter">Plage date de Fin</label>
+                <input type="date" class="form-control" id="endDateFilter" onchange="filterTable()" />
+            </div>
+        </div>
+        <div class="card-body">
+        <div class="table-responsive">
+        <table class="table table-hover table-striped overflow-hidden card-header " id="actionTable">
+            <thead>
+                <tr>
+                    <th>Origine</th>
+                    <th>Titre de l'action</th>
+                    <th>Description</th>
+                    <th>Responsable</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+          <tbody id="actionsTable">
+            <!-- Les lignes du tableau seront générées par JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <!-- La pagination sera générée par JavaScript -->
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Modal pour l'édition d'une action -->
+      <div
+        class="modal fade"
+        id="editActionModal"
+        tabindex="-1"
+        aria-labelledby="editActionModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editActionModalLabel">
+                Modifier l'action
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="editActionForm">
+                <!-- Les champs du formulaire -->
+                <div class="mb-3">
+                  <label for="originInput" class="form-label">Origine</label>
+                  <input type="text" class="form-control" id="originInput">
+                </div>
+                <div class="mb-3">
+                  <label for="titleInput" class="form-label">Titre de l'action</label>
+                  <input type="text" class="form-control" id="titleInput">
+                </div>
+                <div class="mb-3">
+                  <label for="descriptionInput" class="form-label">Description</label>
+                  <textarea class="form-control" id="descriptionInput"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="responsibleInput" class="form-label">Responsable</label>
+                  <input type="text" class="form-control" id="responsibleInput">
+                </div>
+                <div class="mb-3">
+                  <label for="startDateInput" class="form-label">Date de début</label>
+                  <input type="date" class="form-control" id="startDateInput">
+                </div>
+                <div class="mb-3">
+                  <label for="endDateInput" class="form-label">Date de fin</label>
+                  <input type="date" class="form-control" id="endDateInput">
+                </div>
+                <div class="mb-3">
+                  <label for="statusSelect" class="form-label">Statut</label>
+                  <select class="form-select" id="statusSelect">
+                    <option value="En cours">En cours</option>
+                    <option value="Ouvert">Ouvert</option>
+                    <option value="Terminé">Terminé</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Fermer
+              </button>
+              <button type="button" class="btn btn-primary" id="saveChanges" onclick="saveEdits()">
+                Sauvegarder
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>DIGI QHSE</span></strong
+        >. All Rights Reserved
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/chart.js/chart.umd.js' %}"></script>
+    <script src="{% static 'assets/vendor/echarts/echarts.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/quill/quill.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+    <script src="{% static 'assets/vendor/tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  // Initialisation du tableau avec des données fictives
+  initializeTable();
+
+  // Fonctions pour le tri et la recherche
+  window.sortTable = sortTable;
+  window.filterTable = filterTable;
+});
+
+function initializeTable() {
+    const actionsTable = document.getElementById("actionsTable");
+    // Génération de 15 actions fictives
+    for (let i = 1; i <= 15; i++) {
+      let row = actionsTable.insertRow();
+      row.insertCell(0).textContent = "Origine " + i;
+      row.insertCell(1).textContent = "Titre " + i;
+      row.insertCell(2).textContent = "Description " + i;
+      row.insertCell(3).textContent = "Responsable " + i;
+      row.insertCell(4).textContent = new Date().toLocaleDateString();
+      row.insertCell(5).textContent = new Date().toLocaleDateString();
+      // Statut avec système de badges
+    let status = i % 3 === 0 ? "Terminé" : i % 3 === 1 ? "En cours" : "Ouvert";
+    let statusCell = row.insertCell(6);
+    statusCell.innerHTML = getBadgeForStatus(status);
+    
+    // Actions avec icônes
+    let actionsCell = row.insertCell(7);
+    actionsCell.innerHTML = `
+    <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${i})"></i>
+        <i class=" btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="deleteAction(this)"></i>
+    `;
+
+      
+    }
+  }
+
+  function getBadgeForStatus(status) {
+  let badgeClass;
+  switch (status) {
+    case "Terminé":
+      badgeClass = "bg-success";
+      break;
+    case "En cours":
+      badgeClass = "bg-warning text-dark";
+      break;
+    case "Ouvert":
+      badgeClass = "bg-primary";
+      break;
+    default:
+      badgeClass = "bg-secondary";
+  }
+  return `<span class="badge ${badgeClass}">${status}</span>`;
+}
+
+
+let currentSortColumn = null;
+let sortAscending = true;
+
+
+function filterTable() {
+    const searchInput = document.getElementById("searchInput").value.toLowerCase();
+    const statusFilter = document.getElementById("statusFilter").value;
+    const startDateFilter = document.getElementById("startDateFilter").value;
+    const endDateFilter = document.getElementById("endDateFilter").value;
+    const tableRows = document.getElementById("actionTable").querySelectorAll("tbody tr");
+
+    for (let row of tableRows) {
+        // Text comparison in lower case for case-insensitivity
+        const titre = row.cells[1].textContent.toLowerCase();
+        const statut = row.cells[6].textContent.trim().toLowerCase(); // Trim and lower case for the status
+
+        // Ensure proper date comparison by parsing textContent into Date objects
+        const startDate = row.cells[4].textContent ? new Date(row.cells[4].textContent) : null;
+        const endDate = row.cells[5].textContent ? new Date(row.cells[5].textContent) : null;
+        const filterStart = startDateFilter ? new Date(startDateFilter) : null;
+        const filterEnd = endDateFilter ? new Date(endDateFilter) : null;
+
+        let textCondition = titre.includes(searchInput);
+        let statusCondition = !statusFilter || statut === statusFilter.toLowerCase();
+        let dateCondition = (!filterStart || (startDate && startDate >= filterStart)) &&
+                            (!filterEnd || (endDate && endDate <= filterEnd));
+
+        if (textCondition && statusCondition && dateCondition) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    }
+}
+
+// Initialisation des données du tableau et configuration de la première filtration
+document.addEventListener("DOMContentLoaded", function() {
+    // initialiserTable(); // À remplacer par la fonction qui remplit le tableau
+    filterTable(); // Appliquer les filtres par défaut
+});
+
+
+  // Filtre supplémentaire pour le statut
+  let select, status;
+  select = document.getElementById("statusFilter");
+  status = select.value.toLowerCase();
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[6]; // Index de la colonne Statut
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (status === "" || txtValue.toLowerCase() === status) {
+        if (tr[i].style.display !== "none") {
+          tr[i].style.display = "";
+        }
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+
+
+  function editAction(index) {
+  currentEditIndex = index;
+  console.log(currentEditIndex);
+  // Récupérer les données de l'action à partir du tableau
+  const table = document.getElementById('actionTable');
+  const row = table.rows[index]; // Index est déjà ajusté pour les lignes du tableau
+  
+  // Extraire les données de la ligne
+  const origin = row.cells[0].textContent;
+  const title = row.cells[1].textContent;
+  const description = row.cells[2].textContent;
+  const responsible = row.cells[3].textContent;
+  const startDate = row.cells[4].textContent;
+  const endDate = row.cells[5].textContent;
+  const status = row.cells[6].textContent.trim();
+
+  // Mettre à jour les champs du formulaire dans le modal avec les données de l'action
+  document.getElementById('originInput').value = origin;
+  document.getElementById('titleInput').value = title;
+  document.getElementById('descriptionInput').value = description;
+  document.getElementById('responsibleInput').value = responsible;
+  document.getElementById('startDateInput').value = startDate;
+  document.getElementById('endDateInput').value = endDate;
+  document.getElementById('statusSelect').value = status;
+
+  // Afficher le modal d'édition
+  var editModal = new bootstrap.Modal(document.getElementById('editActionModal'));
+  editModal.show();
+}
+
+function deleteAction(icon) {
+  // Confirmer avec l'utilisateur qu'il veut supprimer l'action
+  if (confirm('Êtes-vous sûr de vouloir supprimer cette action ?')) {
+    // Trouver la ligne du tableau à supprimer
+    const row = icon.closest('tr');
+    row.remove();
+    //ajouter une logique pour supprimer l'action du backend
+  }
+}
+
+function saveEdits() {
+  // Récupérer les nouvelles valeurs du formulaire dans le modal
+  const origin = document.getElementById('originInput').value;
+  const title = document.getElementById('titleInput').value;
+  const description = document.getElementById('descriptionInput').value;
+  const responsible = document.getElementById('responsibleInput').value;
+  const startDate = document.getElementById('startDateInput').value;
+  const endDate = document.getElementById('endDateInput').value;
+  const status = document.getElementById('statusSelect').value;
+  
+  // Mettre à jour la ligne du tableau avec les nouvelles valeurs
+  const table = document.getElementById('actionTable');
+  const row = table.rows[currentEditIndex]; // Utilisez currentEditIndex pour trouver la bonne ligne
+  
+  row.cells[0].textContent = origin;
+  row.cells[1].textContent = title;
+  row.cells[2].textContent = description;
+  row.cells[3].textContent = responsible;
+  row.cells[4].textContent = startDate;
+  row.cells[5].textContent = endDate;
+  row.cells[6].innerHTML = getBadgeForStatus(status); // Utilisez la fonction pour obtenir le badge HTML
+  
+  // Fermer le modal après la sauvegarde
+  var editModal = bootstrap.Modal.getInstance(document.getElementById('editActionModal'));
+  editModal.hide();
+}
+
+// Fonction pour obtenir le badge HTML en fonction du statut
+function getBadgeForStatus(status) {
+  let badgeClass;
+  switch (status) {
+    case "Terminé":
+      badgeClass = "bg-success";
+      break;
+    case "En cours":
+      badgeClass = "bg-warning text-dark";
+      break;
+    case "Ouvert":
+      badgeClass = "bg-primary";
+      break;
+    default:
+      badgeClass = "bg-secondary";
+  }
+  return `<span class="badge ${badgeClass}">${status}</span>`;
+}
+
+// Ajouter ces fonctions à l'objet window pour les rendre accessibles globalement
+window.editAction = editAction;
+window.deleteAction = deleteAction;
+
+document.addEventListener('DOMContentLoaded', function() {
+  initializeTable();
+  filterTable(); // Appliquer les filtres par défaut
+});
+
+
+
+
+    </script>
+  </body>
+</html>
