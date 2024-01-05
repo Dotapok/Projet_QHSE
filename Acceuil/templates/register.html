@@ -322,6 +322,11 @@
     document.getElementById('submitButton').addEventListener('click', function () {
         var companyForm = document.forms['companyForm'];
         var adminForm = document.forms['adminForm'];
+        var submitButton = document.getElementById('submitButton');
+          submitButton.disabled = true;
+          submitButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Inscription en cours...
+          `;
 
         var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
         var jetonCsrf = csrfTokenInput ? csrfTokenInput.value : null;
@@ -332,23 +337,27 @@
         for (var pair of adminFormData.entries()) {
             companyFormData.append(pair[0], pair[1]);
         }
-        var formDataString = '';
-        for (var pair of companyFormData.entries()) {
-          formDataString += pair[0] + ': ' + pair[1] + '\n';
-      }
 
-        axios.post("{% url 'inscriptionprocessus' %}", formDataString, {
+
+        axios.post("{% url 'inscriptionprocessus' %}", companyFormData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 'X-CSRFToken': jetonCsrf
             }
         })
         .then(function (response) {
-            console.log(response.data);
+            alert(response.data.message);
+            companyForm.reset();
+            adminForm.reset();
+            showPreviousForm();
         })
         .catch(function (error) {
-            console.error('Error submitting form:', error);
-        });
+          alert('Impossible de soumettre la requete,Verifier votre formulaire.');
+        })
+        .finally(function () {
+          submitButton.disabled = false;
+          submitButton.innerHTML = "Creer le compte";;
+      });
     });
 </script>
 

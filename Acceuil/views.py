@@ -5,8 +5,6 @@ from django.contrib.auth.models import User
 import random as Generateur
 from django.contrib.auth.decorators import login_required
 from Acceuil.models import *
-from .forms import *
-from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 def acceuil(request):
@@ -42,7 +40,62 @@ def connexionprocessus(request):
 
 def inscriptionprocessus(request):
     if request.method == 'POST':
-       ...
+        nom_entreprise = request.POST.get('nomEntreprise')
+        description = request.POST.get('description')
+        nombre_employe = request.POST.get('nombreEmploye')
+        secteur_activite = request.POST.get('secteurActivite')
+        adresse = request.POST.get('adresse')
+        telephone_entreprise = request.POST.get('telephone')
+        email_entreprise = request.POST.get('email')
+
+        nom_admin = request.POST.get('nom')
+        fonction_admin = request.POST.get('fonction')
+        email_admin = request.POST.get('email')
+        telephone_admin = request.POST.get('telephone')
+        mot_de_passe_admin = request.POST.get('mdp')
+
+        # Récupérer les fichiers téléchargés
+        logo_entreprise = request.FILES.get('logoEntreprise')
+        img_profil_admin = request.FILES.get('imgProfil')
+
+        idEnt = generateurID_Entreprise()
+        
+        compte_entreprise = CompteEntreprise.objects.create(
+            id_entreprise=idEnt,
+            nomEntreprise=nom_entreprise,
+            description=description,
+            nombreEmploye=nombre_employe,
+            secteurActivite=secteur_activite,
+            adresse=adresse,
+            telephone=telephone_entreprise,
+            email=email_entreprise,
+        )
+
+        compte_utilisateur = CompteUtilisateur.objects.create(
+            fonction=fonction_admin,
+            telephone=telephone_admin,
+            typeCompte='admin',
+            entrepriseID=compte_entreprise,
+            username=email_admin,
+            email=email_admin,
+            first_name=nom_admin,
+        )
+
+        compte_utilisateur.set_password(mot_de_passe_admin)
+
+        
+        if logo_entreprise:
+            compte_entreprise.logoEntreprise = logo_entreprise
+        compte_entreprise.save()
+
+        if img_profil_admin:
+            compte_utilisateur.imgProfil = img_profil_admin
+        compte_utilisateur.save()
+        iduni=ID_unique.objects.create(identifiant=idEnt,type='Entreprise')
+        iduni.save()
+        
+        response_data = {'message': 'Compte entreprise créé avec succès.'}
+        return JsonResponse(response_data, status=200)
     else:
         return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
 
