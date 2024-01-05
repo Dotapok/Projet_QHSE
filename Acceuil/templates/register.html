@@ -79,7 +79,8 @@
                           <h3>Informations sur l'entreprise</h3>
                         </div>
                       </div>
-                      <form class="row g-3 needs-validation" novalidate name="companyForm">
+                      <form class="row g-3 needs-validation" novalidate name="companyForm" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <div class="col-md-12">
                           <label for="nomEntreprise" class="form-label">Nom de l'entreprise</label>
                           <input type="text" name="nomEntreprise" class="form-control" id="nomEntreprise" required>
@@ -158,8 +159,8 @@
                           <h3>Informations administrateur</h3>
                         </div>
                       </div>
-                      <form class="row g-3 needs-validation" novalidate name="adminForm">
-                    
+                      <form class="row g-3 needs-validation" novalidate name="adminForm" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <div class="col-md-12">
                           <label for="nomAdmin" class="form-label">Nom</label>
                           <input type="text" name="nom" class="form-control" id="nomAdmin" required>
@@ -220,7 +221,7 @@
     <script src="{% static 'assets/vendor/list.js/list.min.js' %}"></script>
     <script src="{% static 'assets/js/theme.js' %}"></script>
       <!-- Template Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
       // Fonction pour lire et afficher l'image sélectionnée
       function readURL(input, previewId) {
@@ -305,98 +306,52 @@
       this.classList.remove('is-invalid');
     }
   });
-      </script>
+  </script>
   
   <script>
-    const companyForm = document.forms['companyForm'];
-    const adminForm = document.forms['adminForm'];
-    
-    // URL des endpoints
-    const urlCompany = 'https://dotapok237.eu.pythonanywhere.com/api/authentification/creerEntreprise';
-    const urlAdmin = 'https://dotapok237.eu.pythonanywhere.com/api/authentification/creerCompteUtilisateur';
-    
-    // Fonction pour envoyer des données à l'endpoint de l'entreprise avec Axios
-    async function sendCompanyData() {
-    // Convertir FormData en JSON
-    const object = {};
-    for (let field of companyForm.elements) {
-      if (field.name) {  
-        object[field.name] = field.value;
+    function showNextForm() {
+        document.getElementById('companyInfo').style.display = 'none';
+        document.getElementById('adminInfo').style.display = 'block';
+    }
+
+    function showPreviousForm() {
+        document.getElementById('adminInfo').style.display = 'none';
+        document.getElementById('companyInfo').style.display = 'block';
+    }
+
+    document.getElementById('submitButton').addEventListener('click', function () {
+        var companyForm = document.forms['companyForm'];
+        var adminForm = document.forms['adminForm'];
+
+        var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+        var jetonCsrf = csrfTokenInput ? csrfTokenInput.value : null;
+
+        var companyFormData = new FormData(companyForm);
+        var adminFormData = new FormData(adminForm);
+
+        for (var pair of adminFormData.entries()) {
+            companyFormData.append(pair[0], pair[1]);
+        }
+        var formDataString = '';
+        for (var pair of companyFormData.entries()) {
+          formDataString += pair[0] + ': ' + pair[1] + '\n';
       }
-    }
-    const jsonData = JSON.stringify(object);
-  
-    console.log("Sending to company endpoint:", jsonData); // Log pour débogage
-  
-  
-    try {
-      const response = await axios.post(urlCompany, jsonData, {
-        headers: {
-          'Content-Type': 'application/json' // Définir le type de contenu en JSON
-        }
-      });
-      console.log("Company Data Response:", response.data);
-      return response.data;
-    } catch(error) {
-      console.error('Error in sendCompanyData:', error);
-    }
-  }
-    
-    // Fonction pour envoyer des données à l'endpoint de l'utilisateur avec Axios
-    async function sendAdminData(entrepriseID) {
-    // Convertir FormData en JSON
-    const object = {};
-    adminForm.forEach((value, key) => {object[key] = value});
-    object['entrepriseID'] = entrepriseID;  // Ajouter entrepriseID au JSON
-    const jsonData = JSON.stringify(object);
-  
-    console.log("Sending to admin endpoint:", jsonData); // Log pour débogage
-  
-    try {
-      const response = await axios.post(urlAdmin, jsonData, {
-        headers: {
-          'Content-Type': 'application/json' // Définir le type de contenu en JSON
-        }
-      });
-      console.log("Admin Data Response:", response.data);
-      return response.data;
-    } catch(error) {
-      console.error('Error in sendAdminData:', error);
-    }
-  }
-    
-    // Fonction asynchrone pour gérer la soumission des deux formulaires
-    async function handleFormSubmit(event) {
-      event.preventDefault();
-    
-      try {
-        const companyData = await sendCompanyData(); // Attendre la création de l'entreprise
-        if (companyData && companyData.entrepriseID) { // Supposons que entrepriseID est l'identifiant retourné
-          await sendAdminData(companyData.entrepriseID); // Attendre la création de l'administrateur
-        } else {
-          // Gérer le cas où l'entreprise n'est pas créée correctement
-          console.error('Erreur lors de la création de l\'entreprise');
-        }
-      } catch (error) {
-        console.error('Erreur lors de la soumission des formulaires :', error);
-      }
-    }
-    
-    // Attachez la fonction handleFormSubmit au bouton de soumission
-    document.getElementById('submitButton').addEventListener('click', handleFormSubmit);
 
-    // JavaScript pour contrôler l'affichage des formulaires
-function showNextForm() {
-  document.getElementById('companyInfo').style.display = 'none';
-  document.getElementById('adminInfo').style.display = 'block';
-}
-
-function showPreviousForm() {
-  document.getElementById('companyInfo').style.display = 'block';
-  document.getElementById('adminInfo').style.display = 'none';
-}
-
+        axios.post("{% url 'inscriptionprocessus' %}", formDataString, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'X-CSRFToken': jetonCsrf
+            }
+        })
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.error('Error submitting form:', error);
+        });
+    });
 </script>
+
 </body>
 
 

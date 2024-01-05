@@ -30,6 +30,7 @@
     <link href="{% static 'assets/css/theme.min.css' %}" rel="stylesheet" id="style-default">
     <link href="{% static 'assets/css/user-rtl.min.css' %}" rel="stylesheet" id="user-style-rtl">
     <link href="{% static 'assets/css/user.min.css' %}" rel="stylesheet" id="user-style-default">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       var isRTL = JSON.parse(localStorage.getItem('isRTL'));
       if (isRTL) {
@@ -74,7 +75,8 @@
                           <h3>Connectez vous à votre compte</h3>
                         </div>
                       </div>
-                      <form>
+                      <form id="loginForm">
+                        {% csrf_token %}
                         <div class="mb-3"><label class="form-label" for="card-email">Email </label><input class="form-control" id="card-email" type="email" /></div>
                         <div class="mb-3">
                           <div class="d-flex justify-content-between"><label class="form-label" for="card-password">Mot de passe</label></div><input class="form-control" id="card-password" type="password" />
@@ -85,7 +87,7 @@
                           </div>
                           <div class="col-auto"><a class="fs-10" href="{% url 'mdpoublie' %}">Mot de passe oublié ?</a></div>
                         </div>
-                        <div class="mb-3"><button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit"> <a class="btn btn-primary" href="#">Se connecter</a></button></div>
+                        <div class="mb-3"><button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit" id="submitBtn">Se connecter</button></div>
                       </form>
                       <a class="fs-10 text-600" href="{% url 'acceuil' %}"> Retourner à la page d'acceuil<span class="d-inline-block ms-1">&rarr;</span></a>
                     </div>
@@ -97,6 +99,60 @@
         </div>
       </div>
     </main><!-- ===============================================--><!--    End of Main Content--><!-- ===============================================-->
+   
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+          event.preventDefault(); 
+
+          var submitButton = document.getElementById('submitBtn');
+          submitButton.disabled = true;
+          submitButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          verification en cours...
+          `;
+  
+          var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+          var jetonCsrf = csrfTokenInput ? csrfTokenInput.value : null;
+  
+          var email = document.getElementById('card-email').value;
+          var password = document.getElementById('card-password').value;
+  
+          var formData = {
+              email: email,
+              password: password
+          };
+  
+          // Use Axios to send the form data to your server
+          axios.post("{% url 'connexionprocessus' %}", formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data',
+                  'X-CSRFToken': jetonCsrf  
+              }
+          })
+          .then(function (response) {
+              if (response.status >= 200 && response.status < 300) {
+                  var redirectionUrl = response.data.redirection_url;
+                  
+                  if (redirectionUrl) {
+                      window.location.href = redirectionUrl;
+                  } else {
+                      console.error('Aucune url retourné par le serveur.');
+                  }
+              } else {
+                  console.error("Echec de l'envoi de la requete:", response.status);
+              }
+          })
+          .catch(function (error) {
+              console.error('Error submitting form:', error);
+              alert('Informations de connexion invalides.');
+          })
+          .finally(function () {
+              submitButton.disabled = false;
+              submitButton.innerHTML = "Se connecter";;
+          });
+      });
+  </script>
+  
+  
 
        <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <script src="{% static 'assets/vendor/popper/popper.min.js' %}"></script>
