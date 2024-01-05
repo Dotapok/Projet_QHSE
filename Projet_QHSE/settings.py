@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['polo2206.pythonanywhere.com','localhost']
 
 # settings.py
-AUTH_USER_MODEL = 'Acceuil.CompteUtilisateur'
+AUTH_USER_MODEL = "Acceuil.CompteUtilisateur"
 
 # Application definition
 
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'Projet_QHSE.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/ "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

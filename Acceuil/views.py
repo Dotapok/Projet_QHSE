@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 import random as Generateur
@@ -28,15 +28,16 @@ def connexionprocessus(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         pwd = request.POST.get('password')
-        
-        user = authenticate(request, email=email, password=pwd)
+
+        user = authenticate(request,email=email, password=pwd)
         if user:
             login(request, user)
             redirection_url = '/Dashboard/'
             return JsonResponse({'success': True,'redirection_url': redirection_url})
         else:
             return JsonResponse({'success': False}, status=401)
-    return JsonResponse({'success': False, 'message': 'Mauvaise methode de requete.'}, status=400)
+    else:
+        return JsonResponse({'success': False, 'message': 'Mauvaise methode de requete.'}, status=400)
 
 def inscriptionprocessus(request):
     if request.method == 'POST':

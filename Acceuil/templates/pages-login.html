@@ -116,10 +116,9 @@
           var email = document.getElementById('card-email').value;
           var password = document.getElementById('card-password').value;
   
-          var formData = {
-              email: email,
-              password: password
-          };
+          var formData = new FormData();
+          formData.append('email', email);
+          formData.append('password', password);
   
           // Use Axios to send the form data to your server
           axios.post("{% url 'connexionprocessus' %}", formData, {
