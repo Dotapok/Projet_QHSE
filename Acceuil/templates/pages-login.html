@@ -119,8 +119,6 @@
           var formData = new FormData();
           formData.append('email', email);
           formData.append('password', password);
-  
-          // Use Axios to send the form data to your server
           axios.post("{% url 'connexionprocessus' %}", formData, {
               headers: {
                   'Content-Type': 'multipart/form-data',
@@ -142,7 +140,7 @@
           })
           .catch(function (error) {
               console.error('Error submitting form:', error);
-              alert('Informations de connexion invalides.');
+              alert("Compte inexistant.");
           })
           .finally(function () {
               submitButton.disabled = false;

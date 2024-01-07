@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login,logout
 from django.http import JsonResponse
-from django.contrib.auth.models import User
+from django.core.mail import send_mail
 import random as Generateur
 from django.contrib.auth.decorators import login_required
 from Acceuil.models import *
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 def acceuil(request):
@@ -28,16 +29,30 @@ def connexionprocessus(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         pwd = request.POST.get('password')
-
-        user = authenticate(request,email=email, password=pwd)
+        
+        try:
+            user = authenticate(request,email=email, password=pwd)
+            if user:
+                print(f"User authenticated: {user}")
+            else:
+                print("Authentication failed: User is None")
+        except Exception as e:
+            print(f"Authentication error: {str(e)}")
+            return JsonResponse({'success': False, 'message': "Compte inexistant"}, status=400)
+        
         if user:
             login(request, user)
             redirection_url = '/Dashboard/'
             return JsonResponse({'success': True,'redirection_url': redirection_url})
         else:
-            return JsonResponse({'success': False}, status=401)
+            return JsonResponse({'success': False,'message':"Erreur lors de la connexion."}, status=401)
     else:
         return JsonResponse({'success': False, 'message': 'Mauvaise methode de requete.'}, status=400)
+
+def deconnexionprocessus(request):
+    logout(request)
+    redirection_url = 'connexion/'
+    return redirect(redirection_url)
 
 def inscriptionprocessus(request):
     if request.method == 'POST':
@@ -77,7 +92,6 @@ def inscriptionprocessus(request):
             telephone=telephone_admin,
             typeCompte='admin',
             entrepriseID=compte_entreprise,
-            username=email_admin,
             email=email_admin,
             first_name=nom_admin,
         )
@@ -128,3 +142,13 @@ def generateurID_Entreprise():
         identifiant = 'DQ.E.' + ''.join(choix)
         if not existenceID(identifiant):
             return identifiant
+        
+def contacter(request):
+    if request.method == 'POST':
+        message = request.POST.get('message')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        name = request.POST.get('name')
+        
+        send_mail(name,message,'settings.EMAIL_HOST_USER',[email],fail_silently=False)
+    return render(request,'index.html')

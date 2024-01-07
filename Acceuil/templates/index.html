@@ -611,7 +611,8 @@
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="{% url 'contacter' %}" method="post" role="form" class="php-email-form">
+              {% csrf_token %}
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Votre nom</label>
@@ -628,7 +629,7 @@
               </div>
               <div class="form-group">
                 <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
+                <textarea class="form-control" name="message" id="message" rows="10" required></textarea>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
@@ -657,7 +658,7 @@
 <p>Restez informé des dernières innovations et actualités en matière de gestion QHSE. Rejoignez notre communauté pour recevoir des conseils, des études de cas et les dernières mises à jour directement dans votre boîte de réception.</p>
 
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscrire">
+              <input type="email" name="email"><input type="submit" value="Souscrire">
             </form>
           </div>
         </div>

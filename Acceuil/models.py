@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,PermissionsMixin,BaseUserManager
+from django.utils.translation import gettext_lazy as _
+
 
 # Create your models here.
 class ID_unique(models.Model):
@@ -18,7 +20,24 @@ class CompteEntreprise(models.Model):
     email = models.EmailField()
     dateCreationCompte = models.DateTimeField(auto_now_add=True)
     
-class CompteUtilisateur(AbstractUser):
+class CompteUtilisateurManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError(_('The Email field must be set'))
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(email, password, **extra_fields)
+
+class CompteUtilisateur(AbstractUser,PermissionsMixin):
+    username=None
+    email = models.EmailField(_("email address"), unique=True)
     imgProfil = models.ImageField(upload_to='profiles/',blank=True)
     fonction = models.CharField(max_length=250)
     telephone = models.CharField(max_length=100)
@@ -35,3 +54,14 @@ class CompteUtilisateur(AbstractUser):
         'auth.Permission',
         related_name='compte_utilisateurs_permissions'
     )
+    
+    objects = CompteUtilisateurManager()
+    
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+    
+    def get_username(self):
+        return self.email
+    
+    def __str__(self):
+        return self.email
