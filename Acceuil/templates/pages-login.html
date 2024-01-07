@@ -136,11 +136,12 @@
                   }
               } else {
                   console.error("Echec de l'envoi de la requete:", response.status);
+                  alert("Connexion internet indisponible.");
               }
           })
           .catch(function (error) {
               console.error('Error submitting form:', error);
-              alert("Compte inexistant.");
+              alert("Erreur survenue.");
           })
           .finally(function () {
               submitButton.disabled = false;
