@@ -51,7 +51,7 @@ def connexionprocessus(request):
 
 def deconnexionprocessus(request):
     logout(request)
-    redirection_url = 'connexion/'
+    redirection_url = '/connexion/'
     return redirect(redirection_url)
 
 def inscriptionprocessus(request):
