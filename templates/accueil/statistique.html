@@ -334,11 +334,19 @@
           </a>
         </li>
 
-        <li class="nav-item">
+                <li class="nav-item">
           <a class="nav-link collapsed" href="tab_actions.html">
             <i class="bi bi-table"></i>
             <span>Tableau des actions</span>
           </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="tab_accidents.html">
+            <i class="bi bi-table"></i>
+            <span>Tableau des accidents</span>
+          </a>
+        </li>
         </li>
 
         <li class="nav-item">
@@ -431,250 +439,102 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h5 class="card-title">Accident avec arrêt</h5>
-                  <h1 text-success small pt-1 fw-bold>28</h1>
-                </div>
-
-                <!-- AAA -->
-                <div id="aaa_charts"></div>
-
+                <h5 class="card-title">Accident avec arrêt Vs Accident sans arrêt</h5>
+  
+                <!-- Line Chart -->
+                <canvas id="lineChart" style="max-height: 400px;"></canvas>
                 <script>
                   document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#aaa_charts"), {
-                      series: [
-                        {
-                          name: "AAA",
-                          data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-                        },
-                      ],
-                      chart: {
-                        height: 350,
-                        type: "line",
-                        zoom: {
-                          enabled: false,
-                        },
-                      },
-                      dataLabels: {
-                        enabled: false,
-                      },
-                      stroke: {
-                        curve: "straight",
-                      },
-                      grid: {
-                        row: {
-                          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-                          opacity: 0.5,
-                        },
-                      },
-                      xaxis: {
-                        categories: [
-                          "Jan",
-                          "Feb",
-                          "Mar",
-                          "Apr",
-                          "May",
-                          "Jun",
-                          "Jul",
-                          "Aug",
-                          "Sep",
-                        ],
-                      },
-                    }).render();
-                  });
-                </script>
-                <!-- End AAA -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h5 class="card-title">Accident sans arrêt</h5>
-                  <h1 text-success small pt-1 fw-bold>145</h1>
-                </div>
-
-                <!-- ASA -->
-                <div id="asa"></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#asa"), {
-                      series: [
-                        {
-                          name: "ASA",
-                          data: [120, 103, 106, 124, 88, 134, 7, 88, 104],
-                        },
-                      ],
-                      chart: {
-                        height: 350,
-                        type: "line",
-                        zoom: {
-                          enabled: false,
-                        },
-                      },
-                      dataLabels: {
-                        enabled: false,
-                      },
-                      stroke: {
-                        curve: "straight",
-                      },
-                      grid: {
-                        row: {
-                          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-                          opacity: 0.5,
-                        },
-                      },
-                      xaxis: {
-                        categories: [
-                          "Jan",
-                          "Feb",
-                          "Mar",
-                          "Apr",
-                          "May",
-                          "Jun",
-                          "Jul",
-                          "Aug",
-                          "Sep",
-                        ],
-                      },
-                    }).render();
-                  });
-                </script>
-                <!-- End ASA -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h5 class="card-title">Incidents</h5>
-                  <h1 text-success small pt-1 fw-bold>47</h1>
-                </div>
-
-                <!-- Incidents -->
-                <div id="Incident"></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#Incident"), {
-                      series: [
-                        {
-                          name: "Incidents",
-                          data: [135, 148, 17, 60, 121, 124, 73, 54, 37],
-                        },
-                      ],
-                      chart: {
-                        height: 350,
-                        type: "line",
-                        zoom: {
-                          enabled: false,
-                        },
-                      },
-                      dataLabels: {
-                        enabled: false,
-                      },
-                      stroke: {
-                        curve: "straight",
-                      },
-                      grid: {
-                        row: {
-                          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-                          opacity: 0.5,
-                        },
-                      },
-                      xaxis: {
-                        categories: [
-                          "Jan",
-                          "Feb",
-                          "Mar",
-                          "Apr",
-                          "May",
-                          "Jun",
-                          "Jul",
-                          "Aug",
-                          "Sep",
-                        ],
-                      },
-                    }).render();
-                  });
-                </script>
-                <!-- End ASA -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                  <h5 class="card-title">Presqu'incidents</h5>
-                  <h1 text-success small pt-1 fw-bold>69</h1>
-                </div>
-
-                <!-- Incidents -->
-                <div id="presqu_incidents"></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(
-                      document.querySelector("#presqu_incidents"),
-                      {
-                        series: [
+                    new Chart(document.querySelector('#lineChart'), {
+                      type: 'line',
+                      data: {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        datasets: [
                           {
-                            name: "Presqu'incidents",
-                            data: [23, 53, 39, 121, 143, 104, 124, 66, 13],
+                            label: 'Accidents avec arrêt',
+                            data: [65, 59, 80, 81, 56, 55, 40], // Données fictives pour les accidents avec arrêt
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
                           },
-                        ],
-                        chart: {
-                          height: 350,
-                          type: "line",
-                          zoom: {
-                            enabled: false,
-                          },
-                        },
-                        dataLabels: {
-                          enabled: false,
-                        },
-                        stroke: {
-                          curve: "straight",
-                        },
-                        grid: {
-                          row: {
-                            colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-                            opacity: 0.5,
-                          },
-                        },
-                        xaxis: {
-                          categories: [
-                            "Jan",
-                            "Feb",
-                            "Mar",
-                            "Apr",
-                            "May",
-                            "Jun",
-                            "Jul",
-                            "Aug",
-                            "Sep",
-                          ],
-                        },
+                          {
+                            label: 'Accidents sans arrêt',
+                            data: [45, 49, 60, 70, 46, 35, 30], // Données fictives pour les accidents sans arrêt
+                            fill: false,
+                            borderColor: 'rgb(255, 99, 132)',
+                            tension: 0.1
+                          }
+                        ]
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true
+                          }
+                        }
                       }
-                    ).render();
+                    });
                   });
                 </script>
-                <!-- End ASA -->
+                
+                <!-- End Line CHart -->
+  
               </div>
             </div>
           </div>
-
+          
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Column Chart</h5>
+                <h5 class="card-title">Incidents Vs Presqu'incidents</h5>
+  
+                <!-- Line Chart -->
+                <canvas id="lineCharts" style="max-height: 400px;"></canvas>
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new Chart(document.querySelector('#lineCharts'), {
+                      type: 'line',
+                      data: {
+                        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                        datasets: [
+                          {
+                            label: 'Incidents',
+                            data: [60, 25, 40, 45, 10, 55, 20], // Données fictives pour les incidents
+                            fill: false,
+                            borderColor: 'rgb(255, 159, 64)',
+                            tension: 0.1
+                          },
+                          {
+                            label: 'Presqu\'incidents',
+                            data: [45, 20, 25, 18, 15, 40, 43], // Données fictives pour les presqu'incidents
+                            fill: false,
+                            borderColor: 'rgb(153, 102, 255)',
+                            tension: 0.1
+                          }
+                        ]
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true
+                          }
+                        }
+                      }
+                    });
+                  });
+                </script>
+                
+                
+                <!-- End Line CHart -->
+  
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Comparaison AAA, ASA et Incidents</h5>
 
                 <!-- Column Chart -->
                 <div id="columnChart"></div>
@@ -684,16 +544,16 @@
                     new ApexCharts(document.querySelector("#columnChart"), {
                       series: [
                         {
-                          name: "Net Profit",
-                          data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+                          name: "AAA",
+                          data: [30, 40, 45, 50, 49, 60, 70, 91, 125], // Remplacer par les données réelles de AAA
                         },
                         {
-                          name: "Revenue",
-                          data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+                          name: "ASA",
+                          data: [80, 85, 88, 85, 86, 90, 95, 100, 105], // Remplacer par les données réelles de ASA
                         },
                         {
-                          name: "Free Cash Flow",
-                          data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
+                          name: "Incidents",
+                          data: [20, 22, 30, 22, 25, 24, 20, 18, 30], // Remplacer par les données réelles d'Incidents
                         },
                       ],
                       chart: {
@@ -717,20 +577,12 @@
                       },
                       xaxis: {
                         categories: [
-                          "Feb",
-                          "Mar",
-                          "Apr",
-                          "May",
-                          "Jun",
-                          "Jul",
-                          "Aug",
-                          "Sep",
-                          "Oct",
-                        ],
+                          "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"
+                        ], // Adaptez les catégories en fonction des périodes ou des critères spécifiques
                       },
                       yaxis: {
                         title: {
-                          text: "$ (thousands)",
+                          text: "Nombre d'événements", // Adapté pour correspondre à la nature des données
                         },
                       },
                       fill: {
@@ -739,13 +591,14 @@
                       tooltip: {
                         y: {
                           formatter: function (val) {
-                            return "$ " + val + " thousands";
+                            return val + " événements"; // Formatter pour les événements
                           },
                         },
                       },
                     }).render();
                   });
                 </script>
+                
                 <!-- End Column Chart -->
               </div>
             </div>
@@ -754,7 +607,7 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Bar Chart</h5>
+                <h5 class="card-title">Suivi des accidents par poste</h5>
 
                 <!-- Bar Chart -->
                 <div id="barChart"></div>
@@ -784,17 +637,17 @@
                       },
                       xaxis: {
                         categories: [
-                          "South Korea",
-                          "Canada",
-                          "United Kingdom",
-                          "Netherlands",
-                          "Italy",
-                          "France",
-                          "Japan",
-                          "United States",
-                          "China",
-                          "Germany",
-                        ],
+    'Comptabilité', 
+    'Ressources Humaines', 
+    'Support Technique', 
+    'Ventes', 
+    'Marketing', 
+    'Recherche et Développement', 
+    'Production', 
+    'Direction', 
+    'Logistique', 
+    'Service Client'
+],
                       },
                     }).render();
                   });
@@ -807,7 +660,7 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Pie Chart</h5>
+                <h5 class="card-title">Repartition des accidents par type</h5>
 
                 <!-- Pie Chart -->
                 <div id="pieChart"></div>
@@ -815,7 +668,7 @@
                 <script>
                   document.addEventListener("DOMContentLoaded", () => {
                     new ApexCharts(document.querySelector("#pieChart"), {
-                      series: [44, 55, 13, 43, 22],
+                      series: [30, 25, 45, 10], // Remplacer par les données réelles des types d'accidents
                       chart: {
                         height: 350,
                         type: "pie",
@@ -823,16 +676,11 @@
                           show: true,
                         },
                       },
-                      labels: [
-                        "Team A",
-                        "Team B",
-                        "Team C",
-                        "Team D",
-                        "Team E",
-                      ],
+                      labels: ["AAA", "ASA", "Incidents", "Presqu'incidents"], // Mise à jour des labels pour les types d'accidents
                     }).render();
                   });
                 </script>
+                
                 <!-- End Pie Chart -->
               </div>
             </div>
@@ -841,251 +689,135 @@
           <div class="col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Donut Chart</h5>
-
-                <!-- Donut Chart -->
-                <div id="donutChart"></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#donutChart"), {
-                      series: [44, 55, 13, 43, 22],
-                      chart: {
-                        height: 350,
-                        type: "donut",
-                        toolbar: {
-                          show: true,
-                        },
-                      },
-                      labels: [
-                        "Team A",
-                        "Team B",
-                        "Team C",
-                        "Team D",
-                        "Team E",
-                      ],
-                    }).render();
-                  });
-                </script>
-                <!-- End Donut Chart -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Radar Chart</h5>
-
-                <!-- Radar Chart -->
-                <div id="radarChart"></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#radarChart"), {
-                      series: [
-                        {
-                          name: "Series 1",
-                          data: [80, 50, 30, 40, 100, 20],
-                        },
-                      ],
-                      chart: {
-                        height: 350,
-                        type: "radar",
-                      },
-                      xaxis: {
-                        categories: [
-                          "January",
-                          "February",
-                          "March",
-                          "April",
-                          "May",
-                          "June",
-                        ],
-                      },
-                    }).render();
-                  });
-                </script>
-                <!-- End Radar Chart -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Polar Area Chart</h5>
-
+                <h5 class="card-title">Repartition des accidents par siége de la léson</h5>
+  
                 <!-- Polar Area Chart -->
-                <div id="polarAreaChart"></div>
-
+                <canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
                 <script>
                   document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#polarAreaChart"), {
-                      series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
-                      chart: {
-                        type: "polarArea",
-                        height: 350,
-                        toolbar: {
-                          show: true,
-                        },
-                      },
-                      stroke: {
-                        colors: ["#fff"],
-                      },
-                      fill: {
-                        opacity: 0.8,
-                      },
-                    }).render();
-                  });
-                </script>
-                <!-- End Polar Area Chart -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Radial Bar Chart</h5>
-
-                <!-- Radial Bar Chart -->
-                <div id="radialBarChart"></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    new ApexCharts(document.querySelector("#radialBarChart"), {
-                      series: [44, 55, 67, 83],
-                      chart: {
-                        height: 350,
-                        type: "radialBar",
-                        toolbar: {
-                          show: true,
-                        },
-                      },
-                      plotOptions: {
-                        radialBar: {
-                          dataLabels: {
-                            name: {
-                              fontSize: "22px",
-                            },
-                            value: {
-                              fontSize: "16px",
-                            },
-                            total: {
-                              show: true,
-                              label: "Total",
-                              formatter: function (w) {
-                                // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                                return 249;
-                              },
-                            },
-                          },
-                        },
-                      },
-                      labels: ["Apples", "Oranges", "Bananas", "Berries"],
-                    }).render();
-                  });
-                </script>
-                <!-- End Radial Bar Chart -->
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Bubble Chart</h5>
-
-                <!-- Bubble Chart -->
-                <div id="bubbleChart"></div>
-
-                <script>
-                  document.addEventListener("DOMContentLoaded", () => {
-                    function generateData(baseval, count, yrange) {
-                      var i = 0;
-                      var series = [];
-                      while (i < count) {
-                        var x = Math.floor(Math.random() * (750 - 1 + 1)) + 1;
-                        var y =
-                          Math.floor(
-                            Math.random() * (yrange.max - yrange.min + 1)
-                          ) + yrange.min;
-                        var z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
-                        series.push([x, y, z]);
-                        baseval += 86400000;
-                        i++;
+                    new Chart(document.querySelector('#polarAreaChart'), {
+                      type: 'polarArea',
+                      data: {
+                        labels: [
+                          'Tête',
+                          'Torse',
+                          'Bras',
+                          'Jambes',
+                          'Mains',
+                          'Pieds',
+                          'Dos'
+                        ], // Les sièges de la lésion
+                        datasets: [{
+                          label: 'Nombre',
+                          data: [10, 12, 8, 15, 7, 14, 9], // Données fictives, remplacer par des données réelles
+                          backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(75, 192, 192)',
+                            'rgb(255, 205, 86)',
+                            'rgb(201, 203, 207)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 159, 64)',
+                            'rgb(153, 102, 255)'
+                          ] // Couleurs pour chaque siège de la lésion
+                        }]
                       }
-                      return series;
-                    }
-                    new ApexCharts(document.querySelector("#bubbleChart"), {
-                      series: [
-                        {
-                          name: "Bubble1",
-                          data: generateData(
-                            new Date("11 Feb 2017 GMT").getTime(),
-                            20,
-                            {
-                              min: 10,
-                              max: 60,
-                            }
-                          ),
-                        },
-                        {
-                          name: "Bubble2",
-                          data: generateData(
-                            new Date("11 Feb 2017 GMT").getTime(),
-                            20,
-                            {
-                              min: 10,
-                              max: 60,
-                            }
-                          ),
-                        },
-                        {
-                          name: "Bubble3",
-                          data: generateData(
-                            new Date("11 Feb 2017 GMT").getTime(),
-                            20,
-                            {
-                              min: 10,
-                              max: 60,
-                            }
-                          ),
-                        },
-                        {
-                          name: "Bubble4",
-                          data: generateData(
-                            new Date("11 Feb 2017 GMT").getTime(),
-                            20,
-                            {
-                              min: 10,
-                              max: 60,
-                            }
-                          ),
-                        },
-                      ],
+                    });
+                  });
+                </script>
+                
+                <!-- End Polar Area Chart -->
+  
+              </div>
+            </div>
+          </div>
+  
+
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Suivi des actions par auteur</h5>
+  
+                <!-- Radar Chart -->
+                <div id="radarChart" style="min-height: 400px;" class="echart"></div>
+  
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    echarts.init(document.querySelector("#radarChart")).setOption({
+                      tooltip: {
+                        trigger: 'item'
+                      },
+                      legend: {
+                        data: ['Ouvert', 'En cours', 'Terminé', 'En retard']
+                      },
+                      radar: {
+                        indicator: [
+                          { name: 'Yannick Mabicka', max: 100 },
+                          { name: 'Paul Sidje', max: 100 },
+                          { name: 'Yvan WATBO', max: 100 },
+                          { name: 'Curtis Yang', max: 100 },
+                          { name: 'Paul Biya', max: 100 },
+                          // Vous pouvez ajouter plus d'auteurs si nécessaire
+                        ]
+                      },
+                      series: [{
+                        name: 'Répartition par statut',
+                        type: 'radar',
+                        data: [
+                          {
+                            value: [20, 30, 40, 50, 18], // Valeurs pour "Ouvert"
+                            name: 'Ouvert'
+                          },
+                          {
+                            value: [60, 70, 80, 90, 45], // Valeurs pour "En cours"
+                            name: 'En cours'
+                          },
+                          {
+                            value: [25, 35, 45, 55, 14], // Valeurs pour "Terminé"
+                            name: 'Terminé'
+                          },
+                          {
+                            value: [10, 15, 20, 25, 23], // Valeurs pour "En retard"
+                            name: 'En retard'
+                          }
+                          // Ajoutez ou modifiez les séries selon vos données réelles
+                        ]
+                      }]
+                    });
+                  });
+                </script>
+                
+                <!-- End Radar Chart -->
+  
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Repartition des actions par statut</h5>
+
+                <!-- Pie Chart -->
+                <div id="pieCharts"></div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    new ApexCharts(document.querySelector("#pieCharts"), {
+                      series: [20, 30, 25, 15], // Remplacer par les données réelles des statuts des actions
                       chart: {
-                        height: 333,
-                        type: "bubble",
+                        height: 350,
+                        type: "pie",
+                        toolbar: {
+                          show: true,
+                        },
                       },
-                      dataLabels: {
-                        enabled: false,
-                      },
-                      fill: {
-                        opacity: 0.8,
-                      },
-                      xaxis: {
-                        tickAmount: 12,
-                        type: "category",
-                      },
-                      yaxis: {
-                        max: 70,
-                      },
+                      labels: ["Ouvert", "En cours", "Terminé", "En retard"], // Mise à jour des labels pour les statuts des actions
                     }).render();
                   });
                 </script>
-                <!-- End Bubble Chart -->
+                
+                
+                <!-- End Pie Chart -->
               </div>
             </div>
           </div>
@@ -1097,15 +829,11 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
       <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong
+        &copy; Copyright <strong><span>QSE EXPERT</span></strong
         >. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="http://qse-expert.com">qse-expert</a>
       </div>
     </footer>
     <!-- End Footer -->

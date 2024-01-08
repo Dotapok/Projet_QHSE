@@ -50,24 +50,7 @@
       </div>
       <!-- End Logo -->
 
-      <div class="search-bar">
-        <form
-          class="search-form d-flex align-items-center"
-          method="POST"
-          action="#"
-        >
-          <input
-            type="text"
-            name="query"
-            placeholder="Search"
-            title="Enter search keyword"
-          />
-          <button type="submit" title="Search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-      </div>
-      <!-- End Search Bar -->
+
 
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -346,12 +329,21 @@
         </li>
 
 
-        <li class="nav-item">
+                <li class="nav-item">
           <a class="nav-link collapsed" href="tab_actions.html">
             <i class="bi bi-table"></i>
             <span>Tableau des actions</span>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="tab_accidents.html">
+            <i class="bi bi-table"></i>
+            <span>Tableau des accidents</span>
+          </a>
+        </li>
+        </li>
+
 
         <li class="nav-item">
           <a class="nav-link collapsed" href="formulaire.html">
@@ -431,16 +423,6 @@
         <h2>Tableau de suivi des actions</h2>
         <div class="row g-3 mb-3">
             <div class="col-md-3">
-              <label for="searchInput">Filtre du Tableau</label>
-                <input
-                    class="form-control"
-                    id="searchInput"
-                    type="text"
-                    placeholder="Rechercher..."
-                    onkeyup="filterTable()"
-                />
-            </div>
-            <div class="col-md-3">
               <label for="statusFilter">Filtre par statut</label>
                 <select class="form-select" id="statusFilter" onchange="filterTable()">
                     <option value="">Tous les statuts</option>
@@ -460,7 +442,7 @@
         </div>
         <div class="card-body">
         <div class="table-responsive">
-        <table class="table table-hover table-striped overflow-hidden card-header " id="actionTable">
+        <table class="table table-hover table-striped overflow-hidden card-header" id="actionTable">
             <thead>
                 <tr>
                     <th>Origine</th>
@@ -479,12 +461,7 @@
         </table>
       </div>
     </div>
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-            <!-- La pagination sera générée par JavaScript -->
-          </ul>
-        </nav>
-      </div>
+       
 
       <!-- Modal pour l'édition d'une action -->
       <div
@@ -654,36 +631,29 @@ let sortAscending = true;
 
 
 function filterTable() {
-    const searchInput = document.getElementById("searchInput").value.toLowerCase();
     const statusFilter = document.getElementById("statusFilter").value;
     const startDateFilter = document.getElementById("startDateFilter").value;
     const endDateFilter = document.getElementById("endDateFilter").value;
-    const tableRows = document.getElementById("actionTable").querySelectorAll("tbody tr");
+    const tableRows = document.getElementById("actionsTable").querySelectorAll("tbody tr");
 
     for (let row of tableRows) {
-        // Text comparison in lower case for case-insensitivity
-        const titre = row.cells[1].textContent.toLowerCase();
-        const statut = row.cells[6].textContent.trim().toLowerCase(); // Trim and lower case for the status
+      const statut = row.cells[6].textContent.trim().toLowerCase(); // trim and lowercase for status
+      const startDate = row.cells[4].textContent ? new Date(row.cells[4].textContent) : null;
+      const endDate = row.cells[5].textContent ? new Date(row.cells[5].textContent) : null;
+      const filterStart = startDateFilter ? new Date(startDateFilter) : null;
+      const filterEnd = endDateFilter ? new Date(endDateFilter) : null;
 
-        // Ensure proper date comparison by parsing textContent into Date objects
-        const startDate = row.cells[4].textContent ? new Date(row.cells[4].textContent) : null;
-        const endDate = row.cells[5].textContent ? new Date(row.cells[5].textContent) : null;
-        const filterStart = startDateFilter ? new Date(startDateFilter) : null;
-        const filterEnd = endDateFilter ? new Date(endDateFilter) : null;
+      let statusCondition = !statusFilter || statut === statusFilter.toLowerCase();
+      let dateCondition = (!filterStart || (startDate && startDate >= filterStart)) &&
+                          (!filterEnd || (endDate && endDate <= filterEnd));
 
-        let textCondition = titre.includes(searchInput);
-        let statusCondition = !statusFilter || statut === statusFilter.toLowerCase();
-        let dateCondition = (!filterStart || (startDate && startDate >= filterStart)) &&
-                            (!filterEnd || (endDate && endDate <= filterEnd));
-
-        if (textCondition && statusCondition && dateCondition) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
+      if (statusCondition && dateCondition) {
+          row.style.display = "";
+      } else {
+          row.style.display = "none";
+      }
     }
-}
-
+  }
 // Initialisation des données du tableau et configuration de la première filtration
 document.addEventListener("DOMContentLoaded", function() {
     // initialiserTable(); // À remplacer par la fonction qui remplit le tableau

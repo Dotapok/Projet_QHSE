@@ -1413,3 +1413,16 @@ h6 {
   border-color: #007bff;
 }
 
+/* Assurez-vous que le modal et le toast sont centrés et visibles */
+#loadingModal .modal-content {
+  background-color: transparent;
+  border: none;
+}
+#loadingModal .modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toast {
+  opacity: 1; /* Assurez-vous que le toast est toujours visible */
+}
