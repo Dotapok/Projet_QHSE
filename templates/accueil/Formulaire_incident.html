@@ -354,12 +354,15 @@
           </a>
         </li>
 
+       
+
         <li class="nav-item">
           <a class="nav-link collapsed" href="Formulaire_incident.html">
             <i class="bi bi-journal-text"></i>
             <span>Formulaire Incident</span>
           </a>
         </li>
+
 
         <li class="nav-item">
           <a class="nav-link collapsed" href="users-profile.html">
@@ -443,14 +446,13 @@
                   <div class="col">
                     <h5 class="mb-0 text-primary position-relative">
                       <span class="bg-200 dark__bg-1100 pe-3"
-                        >Formulaire de sauvegarde des accidents</span
+                        >Formulaire de sauvegarde des incidents, Presqu'accident et premiers soins</span
                       ><span
                         class="border position-absolute top-50 translate-middle-y w-100 start-0 z-n1"
                       ></span>
                     </h5>
                     <p class="mb-0">
-                      Renseigner ici les informations relatives à votre
-                      accident.
+                     Donnez les infomations sur votre événement.
                     </p>
                   </div>
                 </div>
@@ -469,56 +471,12 @@
                                 class="fas fa-car-crash"
                               ></span></span></span
                           ><span class="d-none d-md-block mt-1 fs-10"
-                            >Information sur l'accident</span
+                            >Information sur l'événement</span
                           ></a
                         >
                       </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link fw-semi-bold"
-                          href="#bootstrap-wizard-validation-tab2"
-                          data-bs-toggle="tab"
-                          data-wizard-step="2"
-                          ><span class="nav-item-circle-parent"
-                            ><span class="nav-item-circle"
-                              ><span
-                                class="fas fa-user-injured"
-                              ></span></span></span
-                          ><span class="d-none d-md-block mt-1 fs-10"
-                            >Information sur la victimes</span
-                          ></a
-                        >
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link fw-semi-bold"
-                          href="#bootstrap-wizard-validation-tab3"
-                          data-bs-toggle="tab"
-                          data-wizard-step="3"
-                          ><span class="nav-item-circle-parent"
-                            ><span class="nav-item-circle"
-                              ><span
-                                class="fas fa-clipboard-list"
-                              ></span></span></span
-                          ><span class="d-none d-md-block mt-1 fs-10"
-                            >Témoin(s) et tiers Responsable</span
-                          ></a
-                        >
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link fw-semi-bold"
-                          href="#bootstrap-wizard-validation-tab4"
-                          data-bs-toggle="tab"
-                          data-wizard-step="4"
-                          ><span class="nav-item-circle-parent"
-                            ><span class="nav-item-circle"
-                              ><span class="fas fa-search"></span></span></span
-                          ><span class="d-none d-md-block mt-1 fs-10"
-                            >Analyse des causes</span
-                          ></a
-                        >
-                      </li>
+                      
+                                          
                       <li class="nav-item">
                         <a
                           class="nav-link fw-semi-bold"
@@ -565,146 +523,23 @@
                           data-wizard-form="1"
                         >
                           <div class="row">
-                            <!-- N° Cotisant -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label for="number-cotisant" class="form-label">N° Cotisant</label>
-                              <input type="text" class="form-control" name="numberCotisant" id="number-cotisant" required>
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
+                            
+                            
+                                                        <!-- Type d'événement -->
+<div class="mb-3 col-12 col-md-6 mb-3">
+  <label for="event-type" class="form-label">Type d'événement</label>
+  <select class="form-control" id="event-type" name="eventType" required>
+    <option>Situation</option>
+    <option>Premier soin</option>
+    <option>Presqu'accident</option>
+  </select>
+  <div class="invalid-feedback">
+    Ce champ est requis.
+  </div>
+</div>
 
-                            <!-- Nom ou raison sociale -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label
-                                class="form-label"
-                                for="name-or-corporate-name"
-                                >Nom ou raison sociale</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="nameOrCorporateName"
-                                id="name-or-corporate-name" required 
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- Sigle -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="acronym"
-                                >Sigle</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="acronym"
-                                id="acronym" required 
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- Adresse -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="address"
-                                >Adresse</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="address"
-                                id="address" required 
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- N° téléphone -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="phone-number"
-                                >N° téléphone</label
-                              >
-                              <input
-                                class="form-control"
-                                type="tel"
-                                name="phoneNumber"
-                                id="phone-number" required 
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- Fax -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="fax">Fax</label>
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="fax"
-                                id="fax" required 
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- E-mail -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="email"
-                                >E-mail</label
-                              >
-                              <input
-                                class="form-control"
-                                type="email"
-                                name="email"
-                                id="email" required 
-                              /> 
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- Secteur d'activité -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="activity-sector"
-                                >Secteur d'activité</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="activitySector"
-                                id="activity-sector" required 
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- Nbre de salariés de l'établissement au moment de l'accident -->
-                            <div class="col-12 col-md-6 mb-3 mb-3">
-                              <label
-                                class="form-label"
-                                for="number-of-employees"
-                                >Nbre de salariés de l'établissement au moment
-                                de l'accident</label
-                              >
-                              <input
-                                class="form-control"
-                                type="number"
-                                name="numberOfEmployees"
-                                id="number-of-employees" required 
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-                            <!-- Titre de l'événement -->
+                      
+                           <!-- Titre de l'événement -->
 <div class="mb-3 col-12 col-md-6 mb-3">
   <label for="event-title" class="form-label">Titre de l'événement</label>
   <input type="text" class="form-control" id="event-title" name="eventTitle" required >
@@ -741,19 +576,7 @@
                               </div>
                             </div>
 
-                            <!-- Type d'événement -->
-<div class="mb-3 col-12 col-md-6 mb-3">
-  <label for="event-type" class="form-label">Type d'événement</label>
-  <select class="form-control" id="event-type" name="eventType" required>
-    <option>AAA</option>
-    <option>ASA</option>
-    <option>Incidents</option>
-    <option>Presqu'incidents</option>
-  </select>
-  <div class="invalid-feedback">
-    Ce champ est requis.
-  </div>
-</div>
+
                             <!-- Lieu de l'accident -->
                             <div class="col-12 col-md-6 mb-3 mb-3">
                               <label class="form-label" for="accident-location"
@@ -770,16 +593,18 @@
                               </div>
                             </div>
 
-                            <!-- Horaire de travail dans l'entreprise -->
+                            <!-- Nom ou raison sociale -->
                             <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="work-schedule"
-                                >Horaire de travail dans l'entreprise</label
+                              <label
+                                class="form-label"
+                                for="name-or-corporate-name"
+                                >Type d'évènement</label
                               >
                               <input
                                 class="form-control"
                                 type="text"
-                                name="workSchedule"
-                                id="work-schedule" required
+                                name="nameOrCorporateName"
+                                id="name-or-corporate-name" required 
                               />
                               <div class="invalid-feedback">
                                 Ce champ est requis.
@@ -819,29 +644,13 @@
                                 Ce champ est requis.
                               </div>
                             </div>
-                            <!-- Nom du medecin ou infirmier ayant pratiqué les premiers soins -->
-                            <div class="col-12 col-md-6 mb-3">
-                              <label class="form-label" for="first-aid-provider"
-                                >Nom du medecin ou infirmier ayant pratiqué les
-                                premiers soins</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="firstAidProvider"
-                                id="first-aid-provider"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-                            <!-- Circonstances détaillées de l'accident -->
+                            
+                            <!-- Actions immédiate aprés l'événement -->
                             <div class="col-12 mb-3">
                               <label
                                 class="form-label"
                                 for="detailed-circumstances"
-                                >Circonstances détaillées de l'accident</label
+                                >Actions immédiate aprés l'événement</label
                               >
                               <textarea
                                 class="form-control"
@@ -853,458 +662,12 @@
                               </div>
                             </div>
 
-                            <!-- Cause de l'accident -->
-                            <div class="col-12 mb-3">
-                              <label class="form-label" for="cause-of-accident"
-                                >Cause de l'accident</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="causeOfAccident"
-                                id="cause-of-accident" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            
-
-                            <!-- Suite probable -->
-                            <div class="col-12 mb-3">
-                              <label class="form-label" for="probable-outcome"
-                                >Suite probable</label
-                              >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="probableOutcome"
-                                id="probable-outcome"
-                              />
-                            </div>
-
-                           <!-- Sans arrêt de travail -->
-                              <div class="mb-3 col-3 form-check">
-                                <input
-                                  type="radio"
-                                  class="form-check-input"
-                                  id="no-work-stoppage"
-                                  name="workStoppage"
-                                  value="none"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="no-work-stoppage"
-                                  >Sans arrêt de travail</label
-                                >
-                              </div>
-
-                              <!-- Avec arrêt de travail supérieur à 24 heures -->
-                              <div class="mb-3 col-3 form-check">
-                                <input
-                                  type="radio"
-                                  class="form-check-input"
-                                  id="work-stoppage-over-24h"
-                                  name="workStoppage"
-                                  value="over24h"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="work-stoppage-over-24h"
-                                  >Avec arrêt de travail supérieur à 24 heures</label
-                                >
-                              </div>
-
-                              <!-- Décès immédiat -->
-                              <div class="mb-3 col-3 form-check">
-                                <input
-                                  type="radio"
-                                  class="form-check-input"
-                                  id="immediate-death"
-                                  name="workStoppage"
-                                  value="immediateDeath"
-                                />
-                                <label
-                                  class="form-check-label"
-                                  for="immediate-death"
-                                  >Décès immédiat</label
-                                >
-                              </div>
-                              <!-- Nombre de jours d'arrêt -->
-<div class="mb-3 col-3">
-  <label for="stoppage-days" class="form-label">Nombre de jours d'arrêt</label>
-  <input type="number" class="form-control" id="stoppage-days" name="stoppageDays">
-</div>
-
-
                           </div>
                           
                         </form>
                       </div>
-                      <div
-                        class="tab-pane px-sm-3 px-md-5"
-                        role="tabpanel"
-                        aria-labelledby="bootstrap-wizard-validation-tab2"
-                        id="bootstrap-wizard-validation-tab2"
-                      >
-                      <form class="needs-validation was-validated" data-wizard-form="2">
-                          <div class="row">
-                            <div class="mb-3 col-4">
-                              <label for="social-security-number"
-                                >N° assuré social :</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="social-security-number"
-                                name="socialSecurityNumber" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="full-name">Nom et Prénoms :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="full-name"
-                                name="fullName" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label>Sexe :</label>
-                              <div>
-                                <input
-                                  type="radio"
-                                  id="male"
-                                  name="gender"
-                                  value="male"
-                                />
-                                <label for="male">Masculin</label>
-                                <input
-                                  type="radio"
-                                  id="female"
-                                  name="gender"
-                                  value="female"
-                                />
-                                <label for="female">Feminin</label>
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="address">Adresse :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="address"
-                                name="address" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="phone-number">N° téléphone :</label>
-                              <input
-                                type="tel"
-                                class="form-control"
-                                id="phone-number"
-                                name="phoneNumber" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="fax">Fax :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="fax"
-                                name="fax" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="email">E-mail :</label>
-                              <input
-                                type="email"
-                                class="form-control"
-                                id="email"
-                                name="email" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="hiring-date">Date d'embauche :</label>
-                              <input
-                                type="date"
-                                class="form-control"
-                                id="hiring-date"
-                                name="hiringDate" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="nationality">Nationalité :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="nationality"
-                                name="nationality" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="profession">Profession :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="profession"
-                                name="profession" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="job-position"
-                                >Poste de travail :</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="job-position"
-                                name="jobPosition" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="seniority"
-                                >Ancienneté au poste :</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="seniority"
-                                name="seniority" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="spouse-full-name"
-                                >Noms et Prénoms (Conjoint/Proche Parent)
-                                :</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="spouse-full-name"
-                                name="spouseFullName" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="spouse-phone-number"
-                                >N° téléphone :</label
-                              >
-                              <input
-                                type="tel"
-                                class="form-control"
-                                id="spouse-phone-number"
-                                name="spousePhoneNumber" required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                      <div
-                        class="tab-pane px-sm-3 px-md-5"
-                        role="tabpanel"
-                        aria-labelledby="bootstrap-wizard-validation-tab3"
-                        id="bootstrap-wizard-validation-tab3"
-                      >
-                      <form class="needs-validation was-validated" data-wizard-form="3">
-                          <div class="row">
-                            <h5>TEMOIN(S)</h5>
-                            <div class="mb-3 col-6">
-                              <label for="witness-name"
-                                >Nom(s)/Prénom(s) :</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="witness-name"
-                                name="witnessName"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-6">
-                              <label for="witness-address">Adresse :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="witness-address"
-                                name="witnessAddress"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <!-- Police Report -->
-                            <div class="mb-3 col-6">
-                              <label
-                                >Un rapport de police a-t-il été établi ?</label
-                              >
-                              <div>
-                                <input
-                                  type="radio"
-                                  id="police-report-yes"
-                                  name="policeReport"
-                                  value="yes"
-                                />
-                                <label for="police-report-yes">Oui</label>
-                                <input
-                                  type="radio"
-                                  id="police-report-no"
-                                  name="policeReport"
-                                  value="no"
-                                />
-                                <label for="police-report-no">Non</label>
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-6">
-                              <label for="report-author">Par qui :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="report-author"
-                                name="reportAuthor"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <h5>RISQUE CAUSE PAR UN TIERS</h5>
-                            <div class="mb-3 col-6">
-                              <label for="name">Nom :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="name"
-                                name="name"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-6">
-                              <label for="address">Adresse :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="address"
-                                name="address"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="insurance-company"
-                                >Cie d'assurances :</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="insurance-company"
-                                name="insuranceCompany"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="third-party">du Tiers :</label>
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="third-party"
-                                name="thirdParty"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-
-                            <div class="mb-3 col-4">
-                              <label for="policy-number"
-                                >N° de Police d'assurance :</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="policy-number"
-                                name="policyNumber"
-                                required
-                              />
-                              <div class="invalid-feedback">
-                                Ce champ est requis.
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
+                      
+                      
                       <div
                         class="tab-pane text-center px-sm-3 px-md-5"
                         role="tabpanel"
