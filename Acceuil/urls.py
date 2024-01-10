@@ -20,6 +20,8 @@ urlpatterns = [
     
     # appels exterieurs
     path('Dashboard/AjouterAccident', AjouterAccident,name='AjouterAccident'),
+    path('Dashboard/AjouterIncident', AjouterIncident,name='AjouterIncident'),
+    path('Dashboard/tableauAccident', tableauAccident,name='tableauAccident'),
     path('Dashboard/tableauAction', tableauAction,name='tableauAction'),
     path('Dashboard/profile', profile,name='profile'),
 ]

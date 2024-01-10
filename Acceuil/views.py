@@ -123,6 +123,14 @@ def AjouterAccident(request):
     return render(request,'Formulaire.html')
 
 @login_required(login_url='connexion')
+def AjouterIncident(request):
+    return render(request,'Formulaire_incident.html')
+
+@login_required(login_url='connexion')
+def tableauAccident(request):
+    return render(request,'tab_accidents.html')
+
+@login_required(login_url='connexion')
 def tableauAction(request):
     return render(request,'tab_actions.html')
 

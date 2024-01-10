@@ -1,0 +1,1764 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png'%}" rel="icon" />
+    <link href="{% static 'assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css'%}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css'%}"
+      rel="stylesheet"
+    />
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/quill/quill.snow.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/quill/quill.bubble.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/css/theme.min.css'%}" rel="stylesheet" id="style-default" />
+    <link
+      href="{% static 'assets/css/user-rtl.min.css'%}"
+      rel="stylesheet"
+      id="user-style-rtl"
+    />
+    <link
+      href="{% static 'assets/css/user.min.css'%}"
+      rel="stylesheet"
+      id="user-style-default"
+    />
+
+    <!-- Inclure pdf-lib depuis un CDN -->
+    <script src="https://unpkg.com/pdf-lib@latest/dist/pdf-lib.min.js'%}"></script>
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css'%}" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Nov 17 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+
+  <body>
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="#" class="logo d-flex align-items-center">
+              <img src="assets/img/logo.png" alt="" />
+              <span class="d-none d-lg-block">QSE EXPERT</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+          </div>
+          <!-- End Logo -->
+    
+        
+    
+          <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+              <li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle" href="#">
+                  <i class="bi bi-search"></i>
+                </a>
+              </li>
+              <!-- End Search Icon-->
+    
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                  <i class="bi bi-bell"></i>
+                  <span class="badge bg-primary badge-number">4</span> </a
+                ><!-- End Notification Icon -->
+    
+                <ul
+                  class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications"
+                >
+                  <li class="dropdown-header">
+                    You have 4 new notifications
+                    <a href="#"
+                      ><span class="badge rounded-pill bg-primary p-2 ms-2"
+                        >View all</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="notification-item">
+                    <i class="bi bi-exclamation-circle text-warning"></i>
+                    <div>
+                      <h4>Lorem Ipsum</h4>
+                      <p>Quae dolorem earum veritatis oditseno</p>
+                      <p>30 min. ago</p>
+                    </div>
+                  </li>
+    
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="notification-item">
+                    <i class="bi bi-x-circle text-danger"></i>
+                    <div>
+                      <h4>Atque rerum nesciunt</h4>
+                      <p>Quae dolorem earum veritatis oditseno</p>
+                      <p>1 hr. ago</p>
+                    </div>
+                  </li>
+    
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="notification-item">
+                    <i class="bi bi-check-circle text-success"></i>
+                    <div>
+                      <h4>Sit rerum fuga</h4>
+                      <p>Quae dolorem earum veritatis oditseno</p>
+                      <p>2 hrs. ago</p>
+                    </div>
+                  </li>
+    
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="notification-item">
+                    <i class="bi bi-info-circle text-primary"></i>
+                    <div>
+                      <h4>Dicta reprehenderit</h4>
+                      <p>Quae dolorem earum veritatis oditseno</p>
+                      <p>4 hrs. ago</p>
+                    </div>
+                  </li>
+    
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li class="dropdown-footer">
+                    <a href="#">Show all notifications</a>
+                  </li>
+                </ul>
+                <!-- End Notification Dropdown Items -->
+              </li>
+              <!-- End Notification Nav -->
+    
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                  <i class="bi bi-chat-left-text"></i>
+                  <span class="badge bg-success badge-number">3</span> </a
+                ><!-- End Messages Icon -->
+    
+                <ul
+                  class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages"
+                >
+                  <li class="dropdown-header">
+                    You have 3 new messages
+                    <a href="#"
+                      ><span class="badge rounded-pill bg-primary p-2 ms-2"
+                        >View all</span
+                      ></a
+                    >
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="message-item">
+                    <a href="#">
+                      <img
+                        src="assets/img/messages-1.jpg"
+                        alt=""
+                        class="rounded-circle"
+                      />
+                      <div>
+                        <h4>Maria Hudson</h4>
+                        <p>
+                          Velit asperiores et ducimus soluta repudiandae labore
+                          officia est ut...
+                        </p>
+                        <p>4 hrs. ago</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="message-item">
+                    <a href="#">
+                      <img
+                        src="assets/img/messages-2.jpg"
+                        alt=""
+                        class="rounded-circle"
+                      />
+                      <div>
+                        <h4>Anna Nelson</h4>
+                        <p>
+                          Velit asperiores et ducimus soluta repudiandae labore
+                          officia est ut...
+                        </p>
+                        <p>6 hrs. ago</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="message-item">
+                    <a href="#">
+                      <img
+                        src="assets/img/messages-3.jpg"
+                        alt=""
+                        class="rounded-circle"
+                      />
+                      <div>
+                        <h4>David Muldon</h4>
+                        <p>
+                          Velit asperiores et ducimus soluta repudiandae labore
+                          officia est ut...
+                        </p>
+                        <p>8 hrs. ago</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li class="dropdown-footer">
+                    <a href="#">Show all messages</a>
+                  </li>
+                </ul>
+                <!-- End Messages Dropdown Items -->
+              </li>
+              <!-- End Messages Nav -->
+    
+              <li class="nav-item dropdown pe-3">
+                <a
+                  class="nav-link nav-profile d-flex align-items-center pe-0"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="assets/img/profile-img.jpg"
+                    alt="Profile"
+                    class="rounded-circle"
+                  />
+                  <span class="d-none d-md-block dropdown-toggle ps-2"
+                    >K. Anderson</span
+                  > </a
+                ><!-- End Profile Iamge Icon -->
+    
+                <ul
+                  class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
+                >
+                  <li class="dropdown-header">
+                    <h6>Kevin Anderson</h6>
+                    <span>Web Designer</span>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li>
+                    <a
+                      class="dropdown-item d-flex align-items-center"
+                      href="users-profile.html"
+                    >
+                      <i class="bi bi-person"></i>
+                      <span>Profil</span>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li>
+                    <a
+                      class="dropdown-item d-flex align-items-center"
+                      href="pages-contact.html"
+                    >
+                      <i class="bi bi-question-circle"></i>
+                      <span>Besoin d'aide ?</span>
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+    
+                  <li>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                      <i class="bi bi-box-arrow-right"></i>
+                      <span>Se deconnecter</span>
+                    </a>
+                  </li>
+                </ul>
+                <!-- End Profile Dropdown Items -->
+              </li>
+              <!-- End Profile Nav -->
+            </ul>
+          </nav>
+          <!-- End Icons Navigation -->
+        </header>
+        <!-- End Header -->
+    
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+          <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Dashboard' %}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <!-- End Dashboard Nav -->
+    
+            <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'AjouterAccident' %}">
+            <i class="bi bi-journal-text"></i>
+            <span>Ajouter un accident</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'AjouterIncident' %}">
+            <i class="bi bi-journal-text"></i>
+            <span>Ajouter un incident</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'tableauAccident' %}">
+            <i class="bi bi-journal-text"></i>
+            <span>Tableau des accidents</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'tableauAction' %}">
+            <i class="bi bi-table"></i>
+            <span>Tableau des actions</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="{% url 'profile' %}">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+        </aside>
+        <!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <section class="section" style="padding-top: 0">
+        <div class="row">
+          <div class="card-body container mt-2 card p-4">
+            <h2 class="fw-bold">Tableau de suivi des accidents</h2>
+
+            <!-- Table with stripped rows -->
+            <div
+              class="tab-pane preview-tab-pane active"
+              role="tabpanel"
+              aria-labelledby="tab-dom-88202497-593f-464d-888e-68d67a1d9bd3"
+              id="dom-88202497-593f-464d-888e-68d67a1d9bd3"
+            >
+              <div
+                id="tableExample3"
+                data-list='{"valueNames":["id","titre","date","victime","type","lieu"],"page":7,"pagination":true}'
+              >
+                <div class="row justify-content-end g-0">
+                  <div class="col-auto col-sm-5 mb-3">
+                    <form>
+                      <div class="input-group">
+                        <input
+                          class="form-control form-control-sm shadow-none search"
+                          type="search"
+                          placeholder="Search..."
+                          aria-label="search"
+                        />
+                        <div class="input-group-text bg-transparent">
+                          <span class="fa fa-search fs-10 text-600"></span>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="table-responsive scrollbar">
+                  <table
+                    class="table table-bordered table-hover table-striped fs-10 mb-0"
+                  >
+                    <thead>
+                      <tr>
+                        <th class="text-10000">id</th>
+                        <th class="text-10000 sort" data-sort="titre">
+                          Titre de l'événement
+                        </th>
+                        <th
+                          class="text-10000 sort"
+                          data-sort="date"
+                          data-type="date"
+                          data-format="YYYY/DD/MM"
+                        >
+                          Date
+                        </th>
+                        <th class="text-10000 sort" data-sort="victime">
+                          Victime
+                        </th>
+                        <th class="text-10000 sort" data-sort="type">Type</th>
+                        <th class="text-10000 sort" data-sort="lieu">Lieu</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody class="list" id="accident_tab"></tbody>
+                  </table>
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                  <button
+                    class="btn btn-sm btn-falcon-default me-1"
+                    type="button"
+                    title="Previous"
+                    data-list-pagination="prev"
+                  >
+                    <span class="fas fa-chevron-left"></span>
+                  </button>
+                  <ul class="pagination mb-0"></ul>
+                  <button
+                    class="btn btn-sm btn-falcon-default ms-1"
+                    type="button"
+                    title="Next"
+                    data-list-pagination="next"
+                  >
+                    <span class="fas fa-chevron-right"> </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- End Table with stripped rows -->
+          </div>
+        </div>
+      </section>
+      <!-- Modal pour bloquer l'interaction -->
+      <div
+        class="modal"
+        id="loadingModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="loadingModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <!-- Toast au centre du modal -->
+              <div
+                id="loadingToast"
+                class="toast"
+                role="alert"
+                aria-live="assertive"
+                aria-atomic="true"
+                data-bs-autohide="false"
+              >
+                <div class="toast-header">
+                  <strong class="me-auto">Chargement</strong>
+                </div>
+                <div class="toast-body">
+                  Génération du fichier PDF en cours...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>QSE EXPERT</span></strong
+        >. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+        Designed by <a href="http://qse-expert.com/">qse-expert</a>
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+    <!-- Vendor JS Files -->
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="assets/vendor/quill/quill.min.js"></script>
+
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+
+    <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/anchorjs/anchor.min.js"></script>
+    <script src="assets/vendor/is/is.min.js"></script>
+    <script src="assets/vendor/prism/prism.js"></script>
+    <script src="assets/vendor/fontawesome/all.min.js"></script>
+    <script src="assets/vendor/lodash/lodash.min.js"></script>
+
+    <script src="assets/js/theme.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/vendor//list.js/list.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@^1.16.0/dist/pdf-lib.min.js"></script>
+
+    <script>
+      let accidentsJson = [
+        {
+          id: "1",
+          tab1: {
+            numberCotisant: "123456789",
+            nameOrCorporateName: "Entreprise A",
+            acronym: "EA",
+            address: "123 Rue de l'Industrie, 75000 Paris",
+            phoneNumber: "0123456789",
+            fax: "0123456790",
+            email: "contact@entreprisea.fr",
+            activitySector: "Manufacturing",
+            numberOfEmployees: "150",
+            eventTitle: "Chute d'une échelle",
+            accidentDate: "2024-01-15",
+            accidentTime: "09:30",
+            eventType: "Incident",
+            accidentLocation: "Entrepôt Central",
+            workSchedule: "08:00 - 17:00",
+            natureOfLesions: "Fracture de la cheville",
+            locationOfLesions: "Cheville droite",
+            firstAidProvider: "Dr. Dupont",
+            detailedCircumstances: "Chute due à une échelle mal fixée",
+            causeOfAccident: "Négligence de sécurité",
+            probableOutcome: "Rétablissement complet",
+            workStoppage: "over24h",
+            stoppageDays: "30",
+          },
+          tab2: {
+            socialSecurityNumber: "286075A123456789",
+            fullName: "Jean Dupont",
+            gender: "male",
+            address: "456 Avenue de la Liberté, 75000 Paris",
+            phoneNumber: "0987654321",
+            fax: "0987654322",
+            email: "jeandupont@exemple.com",
+            hiringDate: "2020-05-20",
+            nationality: "Française",
+            profession: "Technicien",
+            jobPosition: "Technicien de maintenance",
+            seniority: "4 ans",
+            spouseFullName: "Marie Dupont",
+            spousePhoneNumber: "0987654323",
+          },
+          tab3: {
+            witnessName: "Lucie Martin",
+            witnessAddress: "789 Boulevard de la République, 75000 Paris",
+            policeReport: "yes",
+            reportAuthor: "Officier Durand",
+            name: "Paul Lemaire",
+            address: "101 Avenue des Champs-Élysées, 75000 Paris",
+            insuranceCompany: "Assurances B",
+            thirdParty: "Société B",
+            policyNumber: "AB123456789",
+          },
+          tab4: {
+            accidentDate: "2024-01-15",
+            accidentTime: "09:30",
+            eventType: "Incident",
+            accidentLocation: "Entrepôt Central",
+            workSchedule: "08:00 - 17:00",
+            natureOfLesions: "Fracture de la cheville",
+            locationOfLesions: "Cheville droite",
+            firstAidProvider: "Dr. Dupont",
+            detailedCircumstances: "Chute due à une échelle mal fixée",
+            causeOfAccident: "Négligence de sécurité",
+            probableOutcome: "Rétablissement complet",
+            workStoppage: "over24h",
+            stoppageDays: "30",
+          },
+        },
+        {
+          id: "2",
+          tab1: {
+            numberCotisant: "987654321",
+            nameOrCorporateName: "Compagnie B",
+            acronym: "CB",
+            address: "321 Avenue de la Paix, 69000 Lyon",
+            phoneNumber: "0234567890",
+            fax: "0234567891",
+            email: "info@compagnieb.com",
+            activitySector: "Transport",
+            numberOfEmployees: "200",
+            eventTitle: "Collision véhiculaire",
+            accidentDate: "2024-02-20",
+            accidentTime: "14:45",
+            eventType: "Accident",
+            accidentLocation: "Route Nationale 7",
+            workSchedule: "Shifts",
+            natureOfLesions: "Contusions multiples",
+            locationOfLesions: "Torse et tête",
+            firstAidProvider: "Infirmière Legrand",
+            detailedCircumstances:
+              "Collision avec un autre véhicule en stationnement",
+            causeOfAccident: "Visibilité réduite",
+            probableOutcome: "Rééducation",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+          tab2: {
+            socialSecurityNumber: "275049B987654321",
+            fullName: "Sophie Durand",
+            gender: "female",
+            address: "789 Rue de la Solidarité, 69000 Lyon",
+            phoneNumber: "0987654324",
+            fax: "0987654325",
+            email: "sophiedurand@exemple.fr",
+            hiringDate: "2021-09-15",
+            nationality: "Française",
+            profession: "Chauffeur",
+            jobPosition: "Chauffeur PL",
+            seniority: "2 ans",
+            spouseFullName: "David Durand",
+            spousePhoneNumber: "0987654326",
+          },
+          tab3: {
+            witnessName: "Éric Petit",
+            witnessAddress: "123 Rue des Écoles, 69000 Lyon",
+            policeReport: "no",
+            reportAuthor: "",
+            name: "Laetitia Moreau",
+            address: "456 Rue du Commerce, 69000 Lyon",
+            insuranceCompany: "Assurances C",
+            thirdParty: "Entreprise C",
+            policyNumber: "AC987654321",
+          },
+          tab4: {
+            accidentDate: "2024-02-20",
+            accidentTime: "10:45",
+            eventType: "Accident",
+            accidentLocation: "Chantier de construction",
+            workSchedule: "07:00 - 15:00",
+            natureOfLesions: "Blessure à la tête",
+            locationOfLesions: "Tête",
+            firstAidProvider: "Infirmière Lemaire",
+            detailedCircumstances: "Chute de matériel",
+            causeOfAccident: "Défaillance équipement",
+            probableOutcome: "Hospitalisation",
+            workStoppage: "over24h",
+            stoppageDays: "60",
+          },
+        },
+
+        {
+          id: "3",
+          tab1: {
+            numberCotisant: "222333444",
+            nameOrCorporateName: "Société C",
+            acronym: "SC",
+            address: "55 Allée des Ormes, 33000 Bordeaux",
+            phoneNumber: "0334567890",
+            fax: "0334567891",
+            email: "contact@societec.fr",
+            activitySector: "IT",
+            numberOfEmployees: "50",
+            eventTitle: "Incendie dans la salle serveur",
+            accidentDate: "2024-03-11",
+            accidentTime: "11:00",
+            eventType: "Incendie",
+            accidentLocation: "Bureau central",
+            workSchedule: "09:00 - 18:00",
+            natureOfLesions: "Inhalation de fumée",
+            locationOfLesions: "Voies respiratoires",
+            firstAidProvider: "Dr. Mercier",
+            detailedCircumstances: "Court-circuit d'un serveur",
+            causeOfAccident: "Surcharge électrique",
+            probableOutcome: "Observation",
+            workStoppage: "over24h",
+            stoppageDays: "7",
+          },
+          tab2: {
+            socialSecurityNumber: "184075C222333444",
+            fullName: "Marc Lefevre",
+            gender: "male",
+            address: "88 Rue Neuve, 33000 Bordeaux",
+            phoneNumber: "0976543322",
+            fax: "0976543323",
+            email: "marclefevre@exemple.net",
+            hiringDate: "2019-04-10",
+            nationality: "Français",
+            profession: "Ingénieur système",
+            jobPosition: "Responsable IT",
+            seniority: "5 ans",
+            spouseFullName: "Julie Lefevre",
+            spousePhoneNumber: "0976543324",
+          },
+          tab3: {
+            witnessName: "Anne Fontaine",
+            witnessAddress: "77 Rue de la Pompe, 33000 Bordeaux",
+            policeReport: "yes",
+            reportAuthor: "Capitaine Joubert",
+            name: "SARL Démolition",
+            address: "99 Rue de la Révolution, 33000 Bordeaux",
+            insuranceCompany: "Assurances D",
+            thirdParty: "Société D",
+            policyNumber: "AD333444222",
+          },
+          tab4: {
+            accidentDate: "2024-03-14",
+            accidentTime: "14:00",
+            eventType: "Incident",
+            accidentLocation: "Usine de production",
+            workSchedule: "09:00 - 18:00",
+            natureOfLesions: "Brûlures chimiques",
+            locationOfLesions: "Mains et bras",
+            firstAidProvider: "Dr. Moreau",
+            detailedCircumstances: "Contact avec produit chimique",
+            causeOfAccident: "Mauvaise manipulation",
+            probableOutcome: "Soins intensifs",
+            workStoppage: "over24h",
+            stoppageDays: "45",
+          },
+        },
+
+        {
+          id: "4",
+          tab1: {
+            numberCotisant: "555666777",
+            nameOrCorporateName: "Entreprise D",
+            acronym: "ED",
+            address: "99 Rue du Port, 13000 Marseille",
+            phoneNumber: "0423456789",
+            fax: "0423456790",
+            email: "direction@entreprised.com",
+            activitySector: "Construction",
+            numberOfEmployees: "300",
+            eventTitle: "Chute de hauteur sur le chantier",
+            accidentDate: "2024-04-22",
+            accidentTime: "15:30",
+            eventType: "Accident de travail",
+            accidentLocation: "Chantier naval",
+            workSchedule: "07:00 - 16:00",
+            natureOfLesions: "Traumatisme crânien",
+            locationOfLesions: "Tête",
+            firstAidProvider: "Infirmier Dubois",
+            detailedCircumstances: "Défaillance de l'équipement de sécurité",
+            causeOfAccident: "Matériel défectueux",
+            probableOutcome: "Réadaptation",
+            workStoppage: "over24h",
+            stoppageDays: "60",
+          },
+          tab2: {
+            socialSecurityNumber: "293075D555666777",
+            fullName: "Claire Dubois",
+            gender: "female",
+            address: "67 Rue de la République, 13000 Marseille",
+            phoneNumber: "0423456781",
+            fax: "0423456782",
+            email: "clairedubois@exemple.org",
+            hiringDate: "2022-01-05",
+            nationality: "Française",
+            profession: "Ouvrière",
+            jobPosition: "Soudeuse",
+            seniority: "1 an",
+            spouseFullName: "Luc Dubois",
+            spousePhoneNumber: "0423456783",
+          },
+          tab3: {
+            witnessName: "Thierry Noir",
+            witnessAddress: "45 Rue du Calvaire, 13000 Marseille",
+            policeReport: "no",
+            reportAuthor: "",
+            name: "EURL Bâtiment",
+            address: "11 Rue des Entrepreneurs, 13000 Marseille",
+            insuranceCompany: "Assurances E",
+            thirdParty: "Entreprise E",
+            policyNumber: "AE777666555",
+          },
+          tab4: {
+            accidentDate: "2024-04-12",
+            accidentTime: "16:15",
+            eventType: "Presqu'incident",
+            accidentLocation: "Entrepôt de stockage",
+            workSchedule: "13:00 - 21:00",
+            natureOfLesions: "Égratignures et contusions",
+            locationOfLesions: "Jambes et bras",
+            firstAidProvider: "Infirmier Dupont",
+            detailedCircumstances: "Glissade sur surface mouillée",
+            causeOfAccident: "Sol non marqué",
+            probableOutcome: "Repos à domicile",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+        },
+        {
+          id: "5",
+          tab1: {
+            numberCotisant: "888999000",
+            nameOrCorporateName: "Groupe E",
+            acronym: "GE",
+            address: "12 Rue des Lilas, 21000 Dijon",
+            phoneNumber: "0523456789",
+            fax: "0523456790",
+            email: "contact@groupee.fr",
+            activitySector: "Énergie",
+            numberOfEmployees: "120",
+            eventTitle: "Exposition chimique accidentelle",
+            accidentDate: "2024-05-30",
+            accidentTime: "10:20",
+            eventType: "Incident industriel",
+            accidentLocation: "Usine de traitement",
+            workSchedule: "Rotating shifts",
+            natureOfLesions: "Brûlures chimiques",
+            locationOfLesions: "Mains et avant-bras",
+            firstAidProvider: "Dr. Lemoine",
+            detailedCircumstances: "Renversement d'un réactif",
+            causeOfAccident: "Erreur humaine",
+            probableOutcome: "Guérison avec soins",
+            workStoppage: "over24h",
+            stoppageDays: "45",
+          },
+          tab2: {
+            socialSecurityNumber: "304075E888999000",
+            fullName: "Alexandre Renaud",
+            gender: "male",
+            address: "23 Rue des Vignerons, 21000 Dijon",
+            phoneNumber: "0523456780",
+            fax: "0523456781",
+            email: "alexrenaud@exemple.com",
+            hiringDate: "2023-02-17",
+            nationality: "Français",
+            profession: "Chimiste",
+            jobPosition: "Technicien de laboratoire",
+            seniority: "3 mois",
+            spouseFullName: "Emma Renaud",
+            spousePhoneNumber: "0523456782",
+          },
+          tab3: {
+            witnessName: "Isabelle Marechal",
+            witnessAddress: "32 Rue des Écoles, 21000 Dijon",
+            policeReport: "yes",
+            reportAuthor: "Lieutenant Bonnet",
+            name: "SAS Chimie",
+            address: "18 Rue de l'Industrie, 21000 Dijon",
+            insuranceCompany: "Assurances F",
+            thirdParty: "Société F",
+            policyNumber: "AF000999888",
+          },
+          tab4: {
+            accidentDate: "2024-05-10",
+            accidentTime: "08:00",
+            eventType: "Incident",
+            accidentLocation: "Atelier mécanique",
+            workSchedule: "06:00 - 14:00",
+            natureOfLesions: "Coupure profonde",
+            locationOfLesions: "Main gauche",
+            firstAidProvider: "Dr. Boucher",
+            detailedCircumstances: "Contact avec outil tranchant",
+            causeOfAccident: "Manque d'attention",
+            probableOutcome: "Chirurgie mineure",
+            workStoppage: "over24h",
+            stoppageDays: "15",
+          },
+        },
+        {
+          id: "6",
+          tab1: {
+            numberCotisant: "192837465",
+            nameOrCorporateName: "Global Tech",
+            acronym: "GT",
+            address: "15 Rue de la High-Tech, 31000 Toulouse",
+            phoneNumber: "0534567890",
+            fax: "0534567891",
+            email: "support@globaltech.fr",
+            activitySector: "Technologie",
+            numberOfEmployees: "80",
+            eventTitle: "Surcharge électrique",
+            accidentDate: "2024-06-01",
+            accidentTime: "16:15",
+            eventType: "Incident technique",
+            accidentLocation: "Salle serveurs",
+            workSchedule: "09:00 - 17:00",
+            natureOfLesions: "Brûlures légères",
+            locationOfLesions: "Mains",
+            firstAidProvider: "Infirmier Moreau",
+            detailedCircumstances: "Court-circuit serveur principal",
+            causeOfAccident: "Défaut de composant",
+            probableOutcome: "Guérison rapide",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+          tab2: {
+            socialSecurityNumber: "175093F192837465",
+            fullName: "Nadia Comaneci",
+            gender: "female",
+            address: "22 Rue des Innovateurs, 31000 Toulouse",
+            phoneNumber: "0534567892",
+            fax: "0534567893",
+            email: "nadia.comaneci@exemple.com",
+            hiringDate: "2023-08-10",
+            nationality: "Française",
+            profession: "Ingénieur réseau",
+            jobPosition: "Admin réseau",
+            seniority: "1 an",
+            spouseFullName: "Emil Comaneci",
+            spousePhoneNumber: "0534567894",
+          },
+          tab3: {
+            witnessName: "Fabien Barthez",
+            witnessAddress: "30 Rue du Progrès, 31000 Toulouse",
+            policeReport: "yes",
+            reportAuthor: "Commandant Blanc",
+            name: "Michel Platini",
+            address: "47 Rue du Stade, 31000 Toulouse",
+            insuranceCompany: "Assurance Nouvelle",
+            thirdParty: "Nouvelles Techs",
+            policyNumber: "AN192837465",
+          },
+          tab4: {
+            accidentDate: "2024-06-03",
+            accidentTime: "12:30",
+            eventType: "Accident",
+            accidentLocation: "Entrepôt logistique",
+            workSchedule: "08:00 - 16:00",
+            natureOfLesions: "Entorse",
+            locationOfLesions: "Cheville",
+            firstAidProvider: "Infirmière Durant",
+            detailedCircumstances: "Glissement sur surface glissante",
+            causeOfAccident: "Mauvais entretien",
+            probableOutcome: "Rééducation",
+            workStoppage: "over24h",
+            stoppageDays: "20",
+          },
+        },
+        {
+          id: "7",
+          tab1: {
+            numberCotisant: "891011121",
+            nameOrCorporateName: "Innovatech Solutions",
+            acronym: "ITS",
+            address: "45 Rue de l'Innovation, 13000 Marseille",
+            phoneNumber: "0491765432",
+            fax: "0491765433",
+            email: "contact@innovatech-sol.com",
+            activitySector: "Recherche et développement",
+            numberOfEmployees: "60",
+            eventTitle: "Incident en laboratoire",
+            accidentDate: "2024-07-05",
+            accidentTime: "11:20",
+            eventType: "Exposition à un produit chimique",
+            accidentLocation: "Labo R&D Bâtiment A",
+            workSchedule: "Flexibles",
+            natureOfLesions: "Irritation cutanée",
+            locationOfLesions: "Mains et avant-bras",
+            firstAidProvider: "Infirmière Fontaine",
+            detailedCircumstances: "Renversement d'un réactif sur la paillasse",
+            causeOfAccident: "Manipulation inappropriée",
+            probableOutcome: "Soins locaux et reprise rapide",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+          tab2: {
+            socialSecurityNumber: "2603827491811",
+            fullName: "Émilie Durand",
+            gender: "female",
+            address: "78 Avenue des Peupliers, 13000 Marseille",
+            phoneNumber: "0491765434",
+            fax: "0491765435",
+            email: "emilie.durand@soltech-innovation.com",
+            hiringDate: "2021-06-20",
+            nationality: "Française",
+            profession: "Chercheuse chimiste",
+            jobPosition: "Responsable de sécurité chimique",
+            seniority: "3 ans",
+            spouseFullName: "Thierry Durand",
+            spousePhoneNumber: "0491765436",
+          },
+          tab3: {
+            witnessName: "Lucas Bernard",
+            witnessAddress: "33 Rue de la Réactif, 13000 Marseille",
+            policeReport: "no",
+            reportAuthor: "",
+            name: "Sophie Petit",
+            address: "12 Rue de la Science, 13000 Marseille",
+            insuranceCompany: "Assurances Générales",
+            thirdParty: "LaboTech Pharma",
+            policyNumber: "AG3918LAB",
+          },
+          tab4: {
+            accidentDate: "2024-07-21",
+            accidentTime: "14:20",
+            eventType: "Presqu'accident",
+            accidentLocation: "Salle des machines",
+            workSchedule: "10:00 - 18:00",
+            natureOfLesions: "Aucune lésion",
+            locationOfLesions: "Aucune",
+            firstAidProvider: "Non applicable",
+            detailedCircumstances: "Arrêt d'urgence d'une machine",
+            causeOfAccident: "Défaut de fonctionnement",
+            probableOutcome: "Aucun",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+        },
+        {
+          id: "8",
+          tab1: {
+            numberCotisant: "123456789",
+            nameOrCorporateName: "Entreprise A",
+            acronym: "EA",
+            address: "123 Rue de l'Industrie, 75000 Paris",
+            phoneNumber: "0123456789",
+            fax: "0123456790",
+            email: "contact@entreprisea.fr",
+            activitySector: "Manufacturing",
+            numberOfEmployees: "150",
+            eventTitle: "Chute d'une échelle",
+            accidentDate: "2024-01-15",
+            accidentTime: "09:30",
+            eventType: "Incident",
+            accidentLocation: "Entrepôt Central",
+            workSchedule: "08:00 - 17:00",
+            natureOfLesions: "Fracture de la cheville",
+            locationOfLesions: "Cheville droite",
+            firstAidProvider: "Dr. Dupont",
+            detailedCircumstances: "Chute due à une échelle mal fixée",
+            causeOfAccident: "Négligence de sécurité",
+            probableOutcome: "Rétablissement complet",
+            workStoppage: "over24h",
+            stoppageDays: "30",
+          },
+          tab2: {
+            socialSecurityNumber: "286075A123456789",
+            fullName: "Jean Dupont",
+            gender: "male",
+            address: "456 Avenue de la Liberté, 75000 Paris",
+            phoneNumber: "0987654321",
+            fax: "0987654322",
+            email: "jeandupont@exemple.com",
+            hiringDate: "2020-05-20",
+            nationality: "Française",
+            profession: "Technicien",
+            jobPosition: "Technicien de maintenance",
+            seniority: "4 ans",
+            spouseFullName: "Marie Dupont",
+            spousePhoneNumber: "0987654323",
+          },
+          tab3: {
+            witnessName: "Lucie Martin",
+            witnessAddress: "789 Boulevard de la République, 75000 Paris",
+            policeReport: "yes",
+            reportAuthor: "Officier Durand",
+            name: "Paul Lemaire",
+            address: "101 Avenue des Champs-Élysées, 75000 Paris",
+            insuranceCompany: "Assurances B",
+            thirdParty: "Société B",
+            policyNumber: "AB123456789",
+          },
+          tab4: {
+            accidentDate: "2024-08-15",
+            accidentTime: "09:45",
+            eventType: "Incident",
+            accidentLocation: "Cuisine de l'entreprise",
+            workSchedule: "05:00 - 13:00",
+            natureOfLesions: "Brûlure légère",
+            locationOfLesions: "Avant-bras",
+            firstAidProvider: "Infirmier Morel",
+            detailedCircumstances: "Contact avec surface chaude",
+            causeOfAccident: "Distraction",
+            probableOutcome: "Soins immédiats",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+        },
+        {
+          id: "9",
+          tab1: {
+            numberCotisant: "987654321",
+            nameOrCorporateName: "Compagnie B",
+            acronym: "CB",
+            address: "321 Avenue de la Paix, 69000 Lyon",
+            phoneNumber: "0234567890",
+            fax: "0234567891",
+            email: "info@compagnieb.com",
+            activitySector: "Transport",
+            numberOfEmployees: "200",
+            eventTitle: "Collision véhiculaire",
+            accidentDate: "2024-02-20",
+            accidentTime: "14:45",
+            eventType: "Accident",
+            accidentLocation: "Route Nationale 7",
+            workSchedule: "Shifts",
+            natureOfLesions: "Contusions multiples",
+            locationOfLesions: "Torse et tête",
+            firstAidProvider: "Infirmière Legrand",
+            detailedCircumstances:
+              "Collision avec un autre véhicule en stationnement",
+            causeOfAccident: "Visibilité réduite",
+            probableOutcome: "Rééducation",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+          tab2: {
+            socialSecurityNumber: "275049B987654321",
+            fullName: "Sophie Durand",
+            gender: "female",
+            address: "789 Rue de la Solidarité, 69000 Lyon",
+            phoneNumber: "0987654324",
+            fax: "0987654325",
+            email: "sophiedurand@exemple.fr",
+            hiringDate: "2021-09-15",
+            nationality: "Française",
+            profession: "Chauffeur",
+            jobPosition: "Chauffeur PL",
+            seniority: "2 ans",
+            spouseFullName: "David Durand",
+            spousePhoneNumber: "0987654326",
+          },
+          tab3: {
+            witnessName: "Éric Petit",
+            witnessAddress: "123 Rue des Écoles, 69000 Lyon",
+            policeReport: "no",
+            reportAuthor: "",
+            name: "Laetitia Moreau",
+            address: "456 Rue du Commerce, 69000 Lyon",
+            insuranceCompany: "Assurances C",
+            thirdParty: "Entreprise C",
+            policyNumber: "AC987654321",
+          },
+          tab4: {
+            accidentDate: "2024-09-12",
+            accidentTime: "11:00",
+            eventType: "Accident",
+            accidentLocation: "Site de construction",
+            workSchedule: "07:00 - 15:00",
+            natureOfLesions: "Fracture multiple",
+            locationOfLesions: "Jambe droite",
+            firstAidProvider: "Dr. Lefevre",
+            detailedCircumstances: "Chute de hauteur",
+            causeOfAccident: "Non-respect des normes de sécurité",
+            probableOutcome: "Longue convalescence",
+            workStoppage: "over24h",
+            stoppageDays: "90",
+          },
+        },
+        {
+          id: "10",
+          tab1: {
+            numberCotisant: "222333444",
+            nameOrCorporateName: "Société C",
+            acronym: "SC",
+            address: "55 Allée des Ormes, 33000 Bordeaux",
+            phoneNumber: "0334567890",
+            fax: "0334567891",
+            email: "contact@societec.fr",
+            activitySector: "IT",
+            numberOfEmployees: "50",
+            eventTitle: "Incendie dans la salle serveur",
+            accidentDate: "2024-03-11",
+            accidentTime: "11:00",
+            eventType: "Incendie",
+            accidentLocation: "Bureau central",
+            workSchedule: "09:00 - 18:00",
+            natureOfLesions: "Inhalation de fumée",
+            locationOfLesions: "Voies respiratoires",
+            firstAidProvider: "Dr. Mercier",
+            detailedCircumstances: "Court-circuit d'un serveur",
+            causeOfAccident: "Surcharge électrique",
+            probableOutcome: "Observation",
+            workStoppage: "over24h",
+            stoppageDays: "7",
+          },
+          tab2: {
+            socialSecurityNumber: "184075C222333444",
+            fullName: "Marc Lefevre",
+            gender: "male",
+            address: "88 Rue Neuve, 33000 Bordeaux",
+            phoneNumber: "0976543322",
+            fax: "0976543323",
+            email: "marclefevre@exemple.net",
+            hiringDate: "2019-04-10",
+            nationality: "Français",
+            profession: "Ingénieur système",
+            jobPosition: "Responsable IT",
+            seniority: "5 ans",
+            spouseFullName: "Julie Lefevre",
+            spousePhoneNumber: "0976543324",
+          },
+          tab3: {
+            witnessName: "Anne Fontaine",
+            witnessAddress: "77 Rue de la Pompe, 33000 Bordeaux",
+            policeReport: "yes",
+            reportAuthor: "Capitaine Joubert",
+            name: "SARL Démolition",
+            address: "99 Rue de la Révolution, 33000 Bordeaux",
+            insuranceCompany: "Assurances D",
+            thirdParty: "Société D",
+            policyNumber: "AD333444222",
+          },
+          tab4: {
+            accidentDate: "2024-10-15",
+            accidentTime: "16:00",
+            eventType: "Incident",
+            accidentLocation: "Laboratoire chimique",
+            workSchedule: "08:00 - 16:00",
+            natureOfLesions: "Irritation des yeux",
+            locationOfLesions: "Yeux",
+            firstAidProvider: "Dr. Bernard",
+            detailedCircumstances: "Exposition à des vapeurs chimiques",
+            causeOfAccident: "Fuite de contenant",
+            probableOutcome: "Traitement et repos",
+            workStoppage: "over24h",
+            stoppageDays: "10",
+          },
+        },
+
+        {
+          id: "11",
+          tab1: {
+            numberCotisant: "555666777",
+            nameOrCorporateName: "Entreprise D",
+            acronym: "ED",
+            address: "99 Rue du Port, 13000 Marseille",
+            phoneNumber: "0423456789",
+            fax: "0423456790",
+            email: "direction@entreprised.com",
+            activitySector: "Construction",
+            numberOfEmployees: "300",
+            eventTitle: "Chute de hauteur sur le chantier",
+            accidentDate: "2024-04-22",
+            accidentTime: "15:30",
+            eventType: "Accident de travail",
+            accidentLocation: "Chantier naval",
+            workSchedule: "07:00 - 16:00",
+            natureOfLesions: "Traumatisme crânien",
+            locationOfLesions: "Tête",
+            firstAidProvider: "Infirmier Dubois",
+            detailedCircumstances: "Défaillance de l'équipement de sécurité",
+            causeOfAccident: "Matériel défectueux",
+            probableOutcome: "Réadaptation",
+            workStoppage: "over24h",
+            stoppageDays: "60",
+          },
+          tab2: {
+            socialSecurityNumber: "293075D555666777",
+            fullName: "Claire Dubois",
+            gender: "female",
+            address: "67 Rue de la République, 13000 Marseille",
+            phoneNumber: "0423456781",
+            fax: "0423456782",
+            email: "clairedubois@exemple.org",
+            hiringDate: "2022-01-05",
+            nationality: "Française",
+            profession: "Ouvrière",
+            jobPosition: "Soudeuse",
+            seniority: "1 an",
+            spouseFullName: "Luc Dubois",
+            spousePhoneNumber: "0423456783",
+          },
+          tab3: {
+            witnessName: "Thierry Noir",
+            witnessAddress: "45 Rue du Calvaire, 13000 Marseille",
+            policeReport: "no",
+            reportAuthor: "",
+            name: "EURL Bâtiment",
+            address: "11 Rue des Entrepreneurs, 13000 Marseille",
+            insuranceCompany: "Assurances E",
+            thirdParty: "Entreprise E",
+            policyNumber: "AE777666555",
+          },
+          tab4: {
+            accidentDate: "2024-11-05",
+            accidentTime: "13:00",
+            eventType: "Accident",
+            accidentLocation: "Zone de chargement",
+            workSchedule: "10:00 - 19:00",
+            natureOfLesions: "Coupure et contusion",
+            locationOfLesions: "Bras gauche",
+            firstAidProvider: "Infirmière Dupuis",
+            detailedCircumstances: "Chute de caisse",
+            causeOfAccident: "Manutention incorrecte",
+            probableOutcome: "Soins et possible arrêt",
+            workStoppage: "over24h",
+            stoppageDays: "14",
+          },
+        },
+        {
+          id: "12",
+          tab1: {
+            numberCotisant: "888999000",
+            nameOrCorporateName: "Groupe E",
+            acronym: "GE",
+            address: "12 Rue des Lilas, 21000 Dijon",
+            phoneNumber: "0523456789",
+            fax: "0523456790",
+            email: "contact@groupee.fr",
+            activitySector: "Énergie",
+            numberOfEmployees: "120",
+            eventTitle: "Exposition chimique accidentelle",
+            accidentDate: "2024-05-30",
+            accidentTime: "10:20",
+            eventType: "Incident industriel",
+            accidentLocation: "Usine de traitement",
+            workSchedule: "Rotating shifts",
+            natureOfLesions: "Brûlures chimiques",
+            locationOfLesions: "Mains et avant-bras",
+            firstAidProvider: "Dr. Lemoine",
+            detailedCircumstances: "Renversement d'un réactif",
+            causeOfAccident: "Erreur humaine",
+            probableOutcome: "Guérison avec soins",
+            workStoppage: "over24h",
+            stoppageDays: "45",
+          },
+          tab2: {
+            socialSecurityNumber: "304075E888999000",
+            fullName: "Alexandre Renaud",
+            gender: "male",
+            address: "23 Rue des Vignerons, 21000 Dijon",
+            phoneNumber: "0523456780",
+            fax: "0523456781",
+            email: "alexrenaud@exemple.com",
+            hiringDate: "2023-02-17",
+            nationality: "Français",
+            profession: "Chimiste",
+            jobPosition: "Technicien de laboratoire",
+            seniority: "3 mois",
+            spouseFullName: "Emma Renaud",
+            spousePhoneNumber: "0523456782",
+          },
+          tab3: {
+            witnessName: "Isabelle Marechal",
+            witnessAddress: "32 Rue des Écoles, 21000 Dijon",
+            policeReport: "yes",
+            reportAuthor: "Lieutenant Bonnet",
+            name: "SAS Chimie",
+            address: "18 Rue de l'Industrie, 21000 Dijon",
+            insuranceCompany: "Assurances F",
+            thirdParty: "Société F",
+            policyNumber: "AF000999888",
+          },
+          tab4: {
+            accidentDate: "2024-12-10",
+            accidentTime: "11:15",
+            eventType: "Accident grave",
+            accidentLocation: "Site industriel",
+            workSchedule: "06:00 - 14:00",
+            natureOfLesions: "Brûlures graves",
+            locationOfLesions: "Corps entier",
+            firstAidProvider: "Dr. Fontaine",
+            detailedCircumstances: "Explosion de réacteur",
+            causeOfAccident: "Défaut technique",
+            probableOutcome: "Hospitalisation longue durée",
+            workStoppage: "over24h",
+            stoppageDays: "180",
+          },
+        },
+        {
+          id: "13",
+          tab1: {
+            numberCotisant: "192837465",
+            nameOrCorporateName: "Global Tech",
+            acronym: "GT",
+            address: "15 Rue de la High-Tech, 31000 Toulouse",
+            phoneNumber: "0534567890",
+            fax: "0534567891",
+            email: "support@globaltech.fr",
+            activitySector: "Technologie",
+            numberOfEmployees: "80",
+            eventTitle: "Surcharge électrique",
+            accidentDate: "2024-06-01",
+            accidentTime: "16:15",
+            eventType: "Incident technique",
+            accidentLocation: "Salle serveurs",
+            workSchedule: "09:00 - 17:00",
+            natureOfLesions: "Brûlures légères",
+            locationOfLesions: "Mains",
+            firstAidProvider: "Infirmier Moreau",
+            detailedCircumstances: "Court-circuit serveur principal",
+            causeOfAccident: "Défaut de composant",
+            probableOutcome: "Guérison rapide",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+          tab2: {
+            socialSecurityNumber: "175093F192837465",
+            fullName: "Nadia Comaneci",
+            gender: "female",
+            address: "22 Rue des Innovateurs, 31000 Toulouse",
+            phoneNumber: "0534567892",
+            fax: "0534567893",
+            email: "nadia.comaneci@exemple.com",
+            hiringDate: "2023-08-10",
+            nationality: "Française",
+            profession: "Ingénieur réseau",
+            jobPosition: "Admin réseau",
+            seniority: "1 an",
+            spouseFullName: "Emil Comaneci",
+            spousePhoneNumber: "0534567894",
+          },
+          tab3: {
+            witnessName: "Fabien Barthez",
+            witnessAddress: "30 Rue du Progrès, 31000 Toulouse",
+            policeReport: "yes",
+            reportAuthor: "Commandant Blanc",
+            name: "Michel Platini",
+            address: "47 Rue du Stade, 31000 Toulouse",
+            insuranceCompany: "Assurance Nouvelle",
+            thirdParty: "Nouvelles Techs",
+            policyNumber: "AN192837465",
+          },
+        },
+        {
+          id: "14",
+          tab1: {
+            numberCotisant: "891011121",
+            nameOrCorporateName: "Innovatech Solutions",
+            acronym: "ITS",
+            address: "45 Rue de l'Innovation, 13000 Marseille",
+            phoneNumber: "0491765432",
+            fax: "0491765433",
+            email: "contact@innovatech-sol.com",
+            activitySector: "Recherche et développement",
+            numberOfEmployees: "60",
+            eventTitle: "Incident en laboratoire",
+            accidentDate: "2024-07-05",
+            accidentTime: "11:20",
+            eventType: "Exposition à un produit chimique",
+            accidentLocation: "Labo R&D Bâtiment A",
+            workSchedule: "Flexibles",
+            natureOfLesions: "Irritation cutanée",
+            locationOfLesions: "Mains et avant-bras",
+            firstAidProvider: "Infirmière Fontaine",
+            detailedCircumstances: "Renversement d'un réactif sur la paillasse",
+            causeOfAccident: "Manipulation inappropriée",
+            probableOutcome: "Soins locaux et reprise rapide",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+          tab2: {
+            socialSecurityNumber: "2603827491811",
+            fullName: "Émilie Durand",
+            gender: "female",
+            address: "78 Avenue des Peupliers, 13000 Marseille",
+            phoneNumber: "0491765434",
+            fax: "0491765435",
+            email: "emilie.durand@soltech-innovation.com",
+            hiringDate: "2021-06-20",
+            nationality: "Française",
+            profession: "Chercheuse chimiste",
+            jobPosition: "Responsable de sécurité chimique",
+            seniority: "3 ans",
+            spouseFullName: "Thierry Durand",
+            spousePhoneNumber: "0491765436",
+          },
+          tab3: {
+            witnessName: "Lucas Bernard",
+            witnessAddress: "33 Rue de la Réactif, 13000 Marseille",
+            policeReport: "no",
+            reportAuthor: "",
+            name: "Sophie Petit",
+            address: "12 Rue de la Science, 13000 Marseille",
+            insuranceCompany: "Assurances Générales",
+            thirdParty: "LaboTech Pharma",
+            policyNumber: "AG3918LAB",
+          },
+          tab4: {
+            accidentDate: "2024-07-25",
+            accidentTime: "15:30",
+            eventType: "Presqu'accident",
+            accidentLocation: "Atelier de maintenance",
+            workSchedule: "09:00 - 17:00",
+            natureOfLesions: "Aucune",
+            locationOfLesions: "Aucune",
+            firstAidProvider: "Non nécessaire",
+            detailedCircumstances: "Événement évité de justesse",
+            causeOfAccident: "Réaction rapide de l'équipe",
+            probableOutcome: "Aucune conséquence",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+        },
+        {
+          id: "15",
+          tab1: {
+            numberCotisant: "114477889",
+            nameOrCorporateName: "LogiTrans Express",
+            acronym: "LTE",
+            address: "231 Rue du Transporteur, 76000 Rouen",
+            phoneNumber: "0277889944",
+            fax: "0277889955",
+            email: "service-client@logitrans-express.fr",
+            activitySector: "Logistique et transport",
+            numberOfEmployees: "85",
+            eventTitle: "Accrochage sur le parking",
+            accidentDate: "2024-07-18",
+            accidentTime: "13:45",
+            eventType: "Accident mineur",
+            accidentLocation: "Parking entreprise",
+            workSchedule: "09:00 - 17:00",
+            natureOfLesions: "Légères égratignures",
+            locationOfLesions: "Avant-bras gauche",
+            firstAidProvider: "Infirmier Dupuis",
+            detailedCircumstances: "Glissade près d'un véhicule",
+            causeOfAccident: "Sol humide non signalé",
+            probableOutcome: "Soins sur place",
+            workStoppage: "none",
+            stoppageDays: "0",
+          },
+          tab2: {
+            socialSecurityNumber: "25566778899",
+            fullName: "Élise Martin",
+            gender: "female",
+            address: "118 Avenue des Peupliers, 76000 Rouen",
+            phoneNumber: "0277889966",
+            fax: "0277889977",
+            email: "elise.martin@logitrans-express.fr",
+            hiringDate: "2022-06-01",
+            nationality: "Française",
+            profession: "Responsable logistique",
+            jobPosition: "Coordinateur de flotte",
+            seniority: "2 ans",
+            spouseFullName: "Luc Martin",
+            spousePhoneNumber: "0277889988",
+          },
+          tab3: {
+            witnessName: "Maxime Richard",
+            witnessAddress: "47 Rue de l'Égalité, 76000 Rouen",
+            policeReport: "yes",
+            reportAuthor: "Officier Moreau",
+            name: "Delphine Bernard",
+            address: "59 Rue de la Liberté, 76000 Rouen",
+            insuranceCompany: "Assurances Rapides",
+            thirdParty: "LogiTrans Express",
+            policyNumber: "LR114477889",
+          },
+          tab4: {
+            accidentDate: "2024-09-12",
+            accidentTime: "11:00",
+            eventType: "Accident",
+            accidentLocation: "Site de construction",
+            workSchedule: "07:00 - 15:00",
+            natureOfLesions: "Fracture multiple",
+            locationOfLesions: "Jambe droite",
+            firstAidProvider: "Dr. Lefevre",
+            detailedCircumstances: "Chute de hauteur",
+            causeOfAccident: "Non-respect des normes de sécurité",
+            probableOutcome: "Longue convalescence",
+            workStoppage: "over24h",
+            stoppageDays: "90",
+          },
+        },
+      ];
+      let jsonString = JSON.stringify(accidentsJson);
+
+      let accidents = JSON.parse(jsonString);
+
+      console.log(accidents);
+
+      let accidentList;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const tableBody = document.getElementById("accident_tab");
+        accidents.forEach((accident, index) => {
+          // Note: Ajout de 'index' pour l'utiliser dans editAction et deleteAction
+          let row = tableBody.insertRow();
+          row.innerHTML = `
+        <td class="id">${accident.id}</td>
+        <td class="titre">${accident.tab1.eventTitle}</td>
+        <td class="date">${accident.tab1.accidentDate}</td>
+        <td class="victime">${accident.tab2.fullName}</td>
+        <td class="type">${accident.tab1.eventType}</td>
+        <td class="lieu">${accident.tab1.accidentLocation}</td>
+`;
+
+          // Ajouter ici les actions avec icônes à chaque ligne
+          let actionsCell = row.insertCell(6);
+          actionsCell.innerHTML = `
+          <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${accident.id})"></i>
+          <i class="btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="removeItem(${accident.id})"></i>
+          <i class="btn btn-outline-primary btn-sm me-2 bi bi-printer btn-edit-action" onclick="printPdf(${accident.id})"></i>
+
+        `;
+        });
+        // Initialize List.js here
+        var options = {
+          valueNames: ["titre", "date", "victime", "type", "lieu", "id"],
+          page: 7,
+          pagination: true,
+        };
+
+        accidentList = new List("tableExample3", options);
+      });
+
+      function removeItem(itemId) {
+        if (accidentList) {
+          // Check if accidentList is defined before using it
+          accidentList.remove("id", itemId);
+        } else {
+          showToast("L'accident n'a pas été trouvé dans la BD!", "error");
+          return;
+        }
+      }
+
+      async function printPdf(accidentId) {
+        const { PDFDocument, StandardFonts, rgb } = PDFLib;
+
+        // Trouver l'accident par ID
+
+        const accident = accidents.find(
+          (accident) => accident.id == accidentId
+        );
+        if (!accident) {
+          showToast(
+            "L'accident n'a pas été trouvé dans la Base de donée!",
+            "error"
+          );
+          return;
+        }
+
+        // Afficher le modal et le toast de début de génération
+        const loadingModal = new bootstrap.Modal(
+          document.getElementById("loadingModal"),
+          {
+            backdrop: "static", // empêche de fermer en cliquant en dehors ou en appuyant sur ESC
+            keyboard: false, // empêche la fermeture avec la touche échappe
+          }
+        );
+        loadingModal.show();
+        alert("Génération du pdf en cours...");
+        // Charger le document PDF existant
+        const url = "assets/déclaration_accident.pdf";
+        const existingPdfBytes = await fetch(url).then((res) =>
+          res.arrayBuffer()
+        );
+
+        // Charger un PDFDocument à partir des octets existants
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+        // Obtenir le formulaire dans le PDF
+        const form = pdfDoc.getForm();
+
+        // Remplir les champs de formulaire avec les informations de l'accident
+        form.getTextField("Texte1").setText(accident.tab1.numberCotisant);
+        form.getTextField("Texte2").setText(accident.tab1.nameOrCorporateName);
+        form.getTextField("Texte3").setText(accident.tab1.acronym);
+        form.getTextField("Texte4").setText(accident.tab1.address);
+        form.getTextField("Texte5").setText(accident.tab1.phoneNumber);
+        form.getTextField("Texte6").setText(accident.tab1.fax);
+        form.getTextField("Texte7").setText(accident.tab1.email);
+        form.getTextField("Texte8").setText(accident.tab1.activitySector);
+        form.getTextField("Texte9").setText(accident.tab1.numberOfEmployees);
+        form
+          .getTextField("Texte10")
+          .setText(accident.tab2.socialSecurityNumber);
+        form.getTextField("Texte11").setText(accident.tab2.fullName);
+        form.getTextField("Texte12").setText(accident.tab2.gender);
+        form.getTextField("Texte13").setText(accident.tab2.address);
+        form.getTextField("Texte14").setText(accident.tab2.phoneNumber);
+        form.getTextField("Texte15").setText(accident.tab2.fax);
+        form.getTextField("Texte16").setText(accident.tab2.email);
+        form.getTextField("Texte17").setText(accident.tab2.hiringDate);
+        form.getTextField("Texte18").setText(accident.tab2.nationality);
+        form.getTextField("Texte19").setText(accident.tab2.profession);
+        form.getTextField("Texte20").setText(accident.tab2.jobPosition);
+        form.getTextField("Texte21").setText(accident.tab2.seniority);
+        form.getTextField("Texte22").setText(accident.tab2.spouseFullName);
+        form.getTextField("Texte23").setText(accident.tab2.spousePhoneNumber);
+        form.getTextField("Texte37").setText(accident.tab3.witnessName);
+        form.getTextField("Texte39").setText(accident.tab3.witnessAddress);
+        form.getTextField("Texte42").setText(accident.tab3.policeReport);
+        form.getTextField("Texte40").setText(accident.tab3.reportAuthor);
+        form.getTextField("Texte38").setText(accident.tab3.name);
+        form.getTextField("Texte41").setText(accident.tab3.address);
+        form.getTextField("Texte43").setText(accident.tab3.insuranceCompany);
+        form.getTextField("Texte44").setText(accident.tab3.thirdParty);
+        form.getTextField("Texte45").setText(accident.tab3.policyNumber);
+        form.getTextField("Texte24").setText(accident.tab4.accidentDate);
+        form.getTextField("Texte25").setText(accident.tab4.accidentTime);
+        form.getTextField("Texte26").setText(accident.tab4.accidentLocation);
+        form.getTextField("Texte27").setText(accident.tab4.workSchedule);
+        form.getTextField("Texte28").setText(accident.tab4.natureOfLesions);
+        form.getTextField("Texte29").setText(accident.tab4.locationOfLesions);
+        form
+          .getTextField("Texte30")
+          .setText(accident.tab4.detailedCircumstances);
+        form.getTextField("Texte31").setText(accident.tab4.causeOfAccident);
+        form.getTextField("Texte32").setText(accident.tab3.name);
+
+        // Enregistrer le PDF modifié
+        const pdfBytes = await pdfDoc.save();
+
+        // Télécharger le PDF rempli
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "Declaration_Accident_" + accidentId + ".pdf";
+        link.click();
+        loadingModal.hide();
+        alert("Le fichier PDF a été généré et téléchargé avec succès!");
+      }
+
+      // Fonction pour montrer le toast avec un message
+      function showToast(message, type) {
+        const pdfToast = document.getElementById("pdfToast");
+        const toastBody = pdfToast.querySelector(".toast-body");
+        toastBody.textContent = message;
+
+        // Appliquer la classe correspondante au type de notification
+        pdfToast.classList.remove(
+          "text-bg-info",
+          "text-bg-success",
+          "text-bg-error"
+        );
+        if (type === "info") {
+          pdfToast.classList.add("text-bg-info");
+        } else if (type === "success") {
+          pdfToast.classList.add("text-bg-success");
+        } else if (type === "error") {
+          pdfToast.classList.add("text-bg-danger");
+        }
+
+        // Afficher le toast
+        var toast = new bootstrap.Toast(pdfToast);
+        toast.show();
+      }
+
+      // Note: Assurez-vous d'avoir cette fonction dans la portée globale si vous l'utilisez dans un attribut `onclick`
+      window.printPdf = printPdf;
+    </script>
+    <script src="assets/vendor//list.js/list.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@^1.16.0/dist/pdf-lib.min.js"></script>
+  </body>
+</html>
