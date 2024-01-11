@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Tables / Data - NiceAdmin Bootstrap Template</title>
+    <title>Dashboard | Tableau des accidents</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -65,8 +65,8 @@
         <header id="header" class="header fixed-top d-flex align-items-center">
           <div class="d-flex align-items-center justify-content-between">
             <a href="#" class="logo d-flex align-items-center">
-              <img src="assets/img/logo.png" alt="" />
-              <span class="d-none d-lg-block">QSE EXPERT</span>
+              <img src="{% static 'assets/img/logo.png'%}" alt="" />
+              <span class="d-none d-lg-block">DIGI QHSE</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
           </div>
@@ -187,7 +187,7 @@
                   <li class="message-item">
                     <a href="#">
                       <img
-                        src="assets/img/messages-1.jpg"
+                        src="{% static 'assets/img/messages-1.jpg'%}"
                         alt=""
                         class="rounded-circle"
                       />
@@ -208,7 +208,7 @@
                   <li class="message-item">
                     <a href="#">
                       <img
-                        src="assets/img/messages-2.jpg"
+                        src="{% static 'assets/img/messages-2.jpg'%}"
                         alt=""
                         class="rounded-circle"
                       />
@@ -229,7 +229,7 @@
                   <li class="message-item">
                     <a href="#">
                       <img
-                        src="assets/img/messages-3.jpg"
+                        src="{% static 'assets/img/messages-3.jpg'%}%"
                         alt=""
                         class="rounded-circle"
                       />
@@ -262,7 +262,7 @@
                   data-bs-toggle="dropdown"
                 >
                   <img
-                    src="assets/img/profile-img.jpg"
+                    src="{% static 'assets/img/profile-img.jpg'%}%"
                     alt="Profile"
                     class="rounded-circle"
                   />
@@ -309,7 +309,7 @@
                   </li>
     
                   <li>
-                    <a class="dropdown-item d-flex align-items-center" href="#">
+                    <a class="dropdown-item d-flex align-items-center" href="{% url 'deconnexionprocessus' %}">
                       <i class="bi bi-box-arrow-right"></i>
                       <span>Se deconnecter</span>
                     </a>
@@ -498,7 +498,7 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
       <div class="copyright">
-        &copy; Copyright <strong><span>QSE EXPERT</span></strong
+        &copy; Copyright <strong><span>DIGI QHSE</span></strong
         >. All Rights Reserved
       </div>
       <div class="credits">

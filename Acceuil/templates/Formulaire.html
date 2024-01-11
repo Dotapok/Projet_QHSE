@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Ajouter un accident</title>
+    <title>Dashboard | Ajouter un accident</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -50,7 +50,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
           <img src="{% static 'assets/img/logo.png' %}" alt="" />
-          <span class="d-none d-lg-block">QSE EXPERT</span>
+          <span class="d-none d-lg-block">DIGI QHSE</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
@@ -670,18 +670,18 @@
                             </div>
 
                             <!-- Type d'événement -->
-<div class="mb-3 col-12 col-md-6 mb-3">
-  <label for="event-type" class="form-label">Type d'événement</label>
-  <select class="form-control" id="event-type" name="eventType" required>
-    <option>AAA</option>
-    <option>ASA</option>
-    <option>Incidents</option>
-    <option>Presqu'incidents</option>
-  </select>
-  <div class="invalid-feedback">
-    Ce champ est requis.
-  </div>
-</div>
+                          <div class="mb-3 col-12 col-md-6 mb-3">
+                            <label for="event-type" class="form-label">Type d'événement</label>
+                            <select class="form-control" id="event-type" name="eventType" required>
+                              <option>AAA</option>
+                              <option>ASA</option>
+                              <option>Incidents</option>
+                              <option>Presqu'incidents</option>
+                            </select>
+                            <div class="invalid-feedback">
+                              Ce champ est requis.
+                            </div>
+                          </div>
                             <!-- Lieu de l'accident -->
                             <div class="col-12 col-md-6 mb-3 mb-3">
                               <label class="form-label" for="accident-location"
@@ -860,10 +860,10 @@
                                 >
                               </div>
                               <!-- Nombre de jours d'arrêt -->
-<div class="mb-3 col-3">
-  <label for="stoppage-days" class="form-label">Nombre de jours d'arrêt</label>
-  <input type="number" class="form-control" id="stoppage-days" name="stoppageDays">
-</div>
+                          <div class="mb-3 col-3">
+                            <label for="stoppage-days" class="form-label">Nombre de jours d'arrêt</label>
+                            <input type="number" class="form-control" id="stoppage-days" name="stoppageDays">
+                          </div>
 
 
                           </div>
@@ -1301,7 +1301,7 @@
                   <div class="success-icon mx-auto my-3"><i class="fas fa-check-circle fa-4x text-success"></i></div>
                   <h4 class="mb-1">Votre accident a été enregistré avec succès!</h4>
                   <p>Vous pouvez maintenant consulter les statistiques et informations sur vos accidents.</p>
-                  <a class="btn btn-primary px-5 my-3" href="index.html">Voir le Tableau de Bord</a>
+                  <a class="btn btn-primary px-5 my-3" href="{% url 'Dashboard' %}>Voir le Tableau de Bord</a>
                 </div>
             </div>
 

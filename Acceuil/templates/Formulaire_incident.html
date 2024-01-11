@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Ajouter un Incident</title>
+    <title>Dashboard | Ajouter un Incident</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -50,7 +50,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="#" class="logo d-flex align-items-center">
           <img src="{% static 'assets/img/logo.png' %}" alt="" />
-          <span class="d-none d-lg-block">QSE EXPERT</span>
+          <span class="d-none d-lg-block">DIGI QHSE</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
       </div>
@@ -311,7 +311,7 @@
       <ul class="sidebar-nav" id="sidebar-nav">
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-              <a class="nav-link collapsed" href="dashboard.html">
+              <a class="nav-link collapsed" href="{% url 'Dashboard' %}">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
               </a>
@@ -660,9 +660,9 @@
               <div class="tab-pane text-center px-sm-3 px-md-5" role="tabpanel" aria-labelledby="bootstrap-wizard-validation-tab4" id="bootstrap-wizard-validation-tab4">
                 <div class="wizard-success-wrapper">
                   <div class="success-icon mx-auto my-3"><i class="fas fa-check-circle fa-4x text-success"></i></div>
-                  <h4 class="mb-1">Votre accident a été enregistré avec succès!</h4>
-                  <p>Vous pouvez maintenant consulter les statistiques et informations sur vos accidents.</p>
-                  <a class="btn btn-primary px-5 my-3" href="index.html">Voir le Tableau de Bord</a>
+                  <h4 class="mb-1">Votre incident a été enregistré avec succès!</h4>
+                  <p>Vous pouvez maintenant consulter les statistiques et informations sur vos incidents.</p>
+                  <a class="btn btn-primary px-5 my-3" href="{% url 'Dashboard' %}">Voir le Tableau de Bord</a>
                 </div>
             </div>
 

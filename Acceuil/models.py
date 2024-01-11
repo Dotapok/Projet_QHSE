@@ -41,7 +41,7 @@ class CompteUtilisateur(AbstractUser,PermissionsMixin):
     imgProfil = models.ImageField(upload_to='profiles/',blank=True)
     fonction = models.CharField(max_length=250)
     telephone = models.CharField(max_length=100)
-    typeCompte = models.CharField(max_length=10,choices=[('admin','Admin'),('user','User'),('manager','Manager')])
+    typeCompte = models.CharField(max_length=10,choices=[('admin','Admin'),('user','Utilisateur'),('manager','Manager')])
     entrepriseID = models.ForeignKey(CompteEntreprise, on_delete=models.CASCADE, related_name='entreprise_utilisateurs')
     dateCreationCompte = models.DateTimeField(auto_now_add=True)
     
@@ -69,53 +69,110 @@ class CompteUtilisateur(AbstractUser,PermissionsMixin):
 
 class Accident(models.Model):
     identifiant_uniqueAccident = models.CharField(max_length=50, unique=True)
+    NumCotisant = models.CharField(max_length=100)
+    raisonSociale = models.CharField(max_length=100)
+    type_accident = models.CharField(max_length=100)
+    sigle = models.CharField(max_length=100)
+    adresse = models.CharField(max_length=100)
+    numtel = models.CharField(max_length=100)
+    fax = models.CharField(max_length=100)
+    email = models.EmailField()
+    secteurActivite = models.CharField(max_length=100)
+    nombreSalarie = models.IntegerField()
+    titreEvenement = models.CharField(max_length=100)
     date_accident = models.DateField()
     heure_accident = models.TimeField()
+    typeEvenement = models.CharField(max_length=100)
     lieu = models.CharField(max_length=100)
-    description = models.TextField()
-    type_accident = models.CharField(max_length=100)
-    equipement_implique = models.TextField()
+    circonstances = models.TextField()
+    horaireTravail = models.CharField(max_length=100)
+    natureLesions = models.CharField(max_length=100)
+    siegeLesion = models.CharField(max_length=100)
+    NomMedecin = models.CharField(max_length=100)
+    causeAccident = models.CharField(max_length=100)
+    suiteProbable = models.CharField(max_length=100)
+    decisionFinale = models.CharField(max_length=100)
     declarant = models.CharField(max_length=100)
     matriculeDeclarant = models.CharField(max_length=100)
     heure_enregistrement_et_jour = models.DateTimeField(auto_now_add=True)
-    fichierAssocie = models.FileField(blank=True, null=True)
     
+class Incident(models.Model):
+    identifiant_uniqueIncident = models.CharField(max_length=50, unique=True)
+    typeEvenement = models.CharField(max_length=100)
+    titreEvenement = models.CharField(max_length=100)
+    date_accident = models.DateField()
+    heure_accident = models.TimeField()
+    lieuAccident = models.CharField(max_length=100)
+    natureLesion = models.CharField(max_length=100)
+    siegeLesion = models.CharField(max_length=100)
+    actionImediate = models.CharField(max_length=100)
+    declarant = models.CharField(max_length=100)
+    matriculeDeclarant = models.CharField(max_length=100)
+    heure_enregistrement_et_jour = models.DateTimeField(auto_now_add=True)
+
 # Victimes
 class Victime(models.Model):
     identifiant_uniqueVictime = models.CharField(max_length=50, unique=True)
-    id_accident = models.ForeignKey(Accident, on_delete=models.CASCADE, related_name='accident_Victime')
+    id_accident = models.ForeignKey(Accident,on_delete=models.CASCADE, related_name='accident_Victime')
+    numeroAssurance = models.CharField(max_length=100)
     nom_victime = models.CharField(max_length=250)
-    fonction = models.CharField(max_length=100)
-    nature_blessure = models.TextField()
+    prenom_victime = models.CharField(max_length=250)
+    sexe = models.CharField(max_length=20)
+    adresse = models.CharField(max_length=250)
+    numeroTel = models.CharField(max_length=250)
+    fax = models.CharField(max_length=250)
+    email = models.EmailField()
+    dateEmbauche = models.DateField()
+    nationalite = models.CharField(max_length=250)
+    profession = models.CharField(max_length=250)
+    posteTravail = models.CharField(max_length=250)
+    ancienetePoste = models.CharField(max_length=250)
+    nomPrenomProche = models.CharField(max_length=250)
+    numTelephone = models.CharField(max_length=250)
     
-# Temoignages
-class Temoignage(models.Model):
+# Temoin et tiers
+class Temoin(models.Model):
     identifiant_uniqueTemoignage = models.CharField(max_length=50, unique=True)
     id_accident = models.ForeignKey(Accident, on_delete=models.CASCADE, related_name='accident_Temoignage')
-    nom_temoin = models.CharField(max_length=250)
-    temoignages = models.TextField()
+    nomPrenom_temoin = models.CharField(max_length=250)
+    adresseTemoin = models.CharField(max_length=250)
+    rapportPolice = models.CharField(max_length=20, choices=[('non', 'Non'), (
+        'oui', 'Oui')], default='non')
+    ParQui = models.CharField(max_length=250,blank=True,null=True)
+    nomTiers = models.CharField(max_length=250)
+    adresseTiers = models.CharField(max_length=250)
+    cleAssuranceTiers = models.CharField(max_length=250)
+    duTiers = models.CharField(max_length=250)
+    numPoliceTiersAssurance = models.CharField(max_length=250)
     
-# Analyses des causes
-class Analyse(models.Model):
+# Causes
+class Cause(models.Model):
     identifiant_uniqueAnalyse = models.CharField(max_length=50, unique=True)
-    id_accident = models.ForeignKey(Accident, on_delete=models.CASCADE, related_name='accident_Analyse')
-    categorie = models.CharField(max_length=100)
-    cause1 = models.CharField(max_length=100)
-    cause2 = models.CharField(max_length=100 ,blank=True, null=True)
-    cause3 = models.CharField(max_length=100, blank=True, null=True)
-    cause4 = models.CharField(max_length=100, blank=True, null=True)
-    cause5 = models.CharField(max_length=100, blank=True, null=True)
-    heure_enregistrement_et_jour = models.DateTimeField(auto_now_add=True)
+    id_accident = models.ForeignKey(Accident, on_delete=models.CASCADE, related_name='accident_Cause')
+    causeLibele = models.CharField(max_length=100)
     
 # Actions
-class Action(models.Model):
+class PlanAction(models.Model):
     identifiant_uniqueAction = models.CharField(max_length=50, unique=True)
-    id_accident = models.ForeignKey(Accident, on_delete=models.CASCADE, related_name='accident_Action')
+    id_accident = models.ForeignKey(
+        Accident, on_delete=models.CASCADE, related_name='accident_PlanAction')
+    titreAction = models.CharField(max_length=250)
     description = models.TextField()
-    ressources_necessaires = models.TextField()
-    cout = models.IntegerField()
+    responsable = models.CharField(max_length=250)
     date_debut = models.DateField()
     date_fin = models.DateField()
-    responsable = models.CharField(max_length=100)
-    statut = models.CharField(max_length=20, choices=[('planifie', 'Planifié'), ('encours', 'En cours'), ('depasse', 'Depassé')], default='planifie')
-    heure_enregistrement_et_jour = models.DateTimeField(auto_now_add=True)
+    statut = models.CharField(max_length=20, choices=[(
+        'ouvert', 'Ouvert'), ('encours', 'En cours'), ('termine', 'Terminé')], default='encours')
+
+# Plan d'action inciident
+class PlanActionIncident(models.Model):
+    identifiant_uniqueAction = models.CharField(max_length=50, unique=True)
+    id_incident = models.ForeignKey(
+        Accident, on_delete=models.CASCADE, related_name='incident_PlanActionIncident')
+    titreAction = models.CharField(max_length=250)
+    description = models.TextField()
+    responsable = models.CharField(max_length=250)
+    date_debut = models.DateField()
+    date_fin = models.DateField()
+    statut = models.CharField(max_length=20, choices=[(
+        'ouvert', 'Ouvert'), ('encours', 'En cours'), ('termine', 'Terminé')], default='encours')
