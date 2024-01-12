@@ -130,19 +130,55 @@ def mdpoublieprocessus(request):
 # Pages standards
 @login_required(login_url='connexion')
 def AjouterAccident(request):
-    return render(request,'Formulaire.html')
+    context = {
+        'entreprise_nom': request.session['entreprise'],
+        'nom': request.session['nom'],
+        'email': request.session['email'],
+        'fonction': request.session['fonction'],
+        'telephone': request.session['telephone'],
+        'type_compte': request.session['typeCompte'],
+        'profile_image_url': request.session['image_profile'],
+    }
+    return render(request,'Formulaire.html',context)
 
 @login_required(login_url='connexion')
 def AjouterIncident(request):
-    return render(request,'Formulaire_incident.html')
+    context = {
+        'entreprise_nom': request.session['entreprise'],
+        'nom': request.session['nom'],
+        'email': request.session['email'],
+        'fonction': request.session['fonction'],
+        'telephone': request.session['telephone'],
+        'type_compte': request.session['typeCompte'],
+        'profile_image_url': request.session['image_profile'],
+    }
+    return render(request,'Formulaire_incident.html',context)
 
 @login_required(login_url='connexion')
 def tableauAccident(request):
-    return render(request,'tab_accidents.html')
+    context = {
+        'entreprise_nom': request.session['entreprise'],
+        'nom': request.session['nom'],
+        'email': request.session['email'],
+        'fonction': request.session['fonction'],
+        'telephone': request.session['telephone'],
+        'type_compte': request.session['typeCompte'],
+        'profile_image_url': request.session['image_profile'],
+    }
+    return render(request,'tab_accidents.html',context)
 
 @login_required(login_url='connexion')
 def tableauAction(request):
-    return render(request,'tab_actions.html')
+    context = {
+        'entreprise_nom': request.session['entreprise'],
+        'nom': request.session['nom'],
+        'email': request.session['email'],
+        'fonction': request.session['fonction'],
+        'telephone': request.session['telephone'],
+        'type_compte': request.session['typeCompte'],
+        'profile_image_url': request.session['image_profile'],
+    }
+    return render(request,'tab_actions.html',context)
 
 @login_required(login_url='connexion')
 def profile(request):
@@ -179,3 +215,33 @@ def contacter(request):
         
         send_mail(name,message,'settings.EMAIL_HOST_USER',[email],fail_silently=False)
     return render(request,'index.html')
+
+
+# fonctions asynchrones
+# profile
+def listeUsers(request):
+    return
+
+def updateProfil(request):
+    return
+
+def updatePass(request):
+    return
+
+def addUser(request):
+    return
+
+# accident
+def AjouterAccidentProcessus(request):
+    return
+
+def tableauAccidentListe(request):
+    return
+
+# incident
+def AjouterIncidentProcessus(request):
+    return
+
+def tableauIncidentListe(request):
+    return
+

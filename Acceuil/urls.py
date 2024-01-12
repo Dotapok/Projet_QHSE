@@ -17,6 +17,23 @@ urlpatterns = [
     path('restaurationMDP/processus', mdpoublieprocessus,name='mdpoublieprocessus'),
     
     # Asynchronisme
+    # accident
+    path('Dashboard/AjouterAccident/AjouterAccidentProcessus',
+         AjouterAccidentProcessus, name='AjouterAccidentProcessus'),
+    path('Dashboard/tableauAccident/liste',
+         tableauAccidentListe, name='tableauAccidentListe'),
+
+    # incident
+    path('Dashboard/AjouterIncident/AjouterIncidentProcessus',
+         AjouterIncidentProcessus, name='AjouterIncidentProcessus'),
+    path('Dashboard/tableauIncident/liste',
+         tableauIncidentListe, name='tableauIncidentListe'),
+
+    # profile
+    path('Dashboard/profile/updateProfil', updateProfil, name='updateProfil'),
+    path('Dashboard/profile/listeUsers', listeUsers, name='listeUsers'),
+    path('Dashboard/profile/updatePass', updatePass, name='updatePass'),
+    path('Dashboard/profile/addUser', addUser, name='addUser'),
     
     # appels exterieurs
     path('Dashboard/AjouterAccident', AjouterAccident,name='AjouterAccident'),

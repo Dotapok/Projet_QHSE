@@ -245,7 +245,8 @@
               data-bs-toggle="dropdown"
             >
             {% if profile_image_url %}
-            <img src="{{ profile_image_url }}" alt="Profil Image">
+            <img src="{{ profile_image_url }}" alt="Profile"
+                class="rounded-circle">
             {% else %}
              <img
                 src="{% static 'assets/img/profile-img.jpg' %}"

@@ -239,12 +239,12 @@
               data-bs-toggle="dropdown"
             >
               <img
-                src="{% static 'assets/img/profile-img.jpg' %}"
+                src="{{ profile_image_url }}"
                 alt="Profile"
                 class="rounded-circle"
               />
               <span class="d-none d-md-block dropdown-toggle ps-2"
-                >K. Anderson</span
+                >{{ nom }}</span
               > </a
             ><!-- End Profile Iamge Icon -->
 
@@ -252,34 +252,11 @@
               class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"
             >
               <li class="dropdown-header">
-                <h6>Kevin Anderson</h6>
-                <span>Web Designer</span>
+                <h6>{{ nom }}</h6>
+                <span>{{ fonction }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="users-profile.html"
-                >
-                  <i class="bi bi-person"></i>
-                  <span>Profil</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="pages-contact.html"
-                >
-                  <i class="bi bi-question-circle"></i>
-                  <span>Besoin d'aide ?</span>
-                </a>
               </li>
               <li>
                 <hr class="dropdown-divider" />
