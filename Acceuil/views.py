@@ -218,6 +218,10 @@ def contacter(request):
 
 
 # fonctions asynchrones
+# dashboard
+def initialisation(request):
+    return 
+
 # profile
 def listeUsers(request):
     return
