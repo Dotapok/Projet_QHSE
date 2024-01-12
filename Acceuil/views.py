@@ -32,16 +32,26 @@ def connexionprocessus(request):
         
         try:
             user = authenticate(request,email=email, password=pwd)
-            if user:
-                print(f"User authenticated: {user}")
-            else:
-                print("Authentication failed: User is None")
         except Exception as e:
             print(f"Authentication error: {str(e)}")
             return JsonResponse({'success': False, 'message': "Compte inexistant"}, status=400)
         
         if user:
+            entreprise_id = user.entrepriseID.id_entreprise if user.entrepriseID else None
+            entreprise_nom = user.entrepriseID.nomEntreprise if user.entrepriseID else None
             login(request, user)
+            request.session['entreprise'] = entreprise_nom
+            request.session['nom'] = user.first_name
+            request.session['email'] = user.email
+            request.session['fonction'] = user.fonction
+            request.session['telephone'] = user.telephone
+            request.session['typeCompte'] = user.typeCompte
+            request.session['entrepriseID'] = entreprise_id
+            image_profile_url = f"/media/{user.imgProfil}" if user.imgProfil else None
+
+            # Enregistrez les informations dans la session
+            request.session['image_profile'] = image_profile_url
+
             redirection_url = '/Dashboard/'
             return JsonResponse({'success': True,'redirection_url': redirection_url})
         else:
@@ -136,7 +146,16 @@ def tableauAction(request):
 
 @login_required(login_url='connexion')
 def profile(request):
-    return render(request,'users-profile.html')
+    context = {
+        'entreprise_nom': request.session['entreprise'],
+        'nom': request.session['nom'],
+        'email': request.session['email'],
+        'fonction': request.session['fonction'],
+        'telephone': request.session['telephone'],
+        'type_compte': request.session['typeCompte'],
+        'profile_image_url': request.session['image_profile'],
+    }
+    return render(request,'users-profile.html',context)
 
 
 # fonction utilitaires
