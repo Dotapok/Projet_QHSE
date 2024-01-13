@@ -29,8 +29,8 @@ urlpatterns = [
     # incident
     path('Dashboard/AjouterIncident/AjouterIncidentProcessus',
          AjouterIncidentProcessus, name='AjouterIncidentProcessus'),
-    path('Dashboard/tableauIncident/liste',
-         tableauIncidentListe, name='tableauIncidentListe'),
+    path('Dashboard/tableauAction/liste',
+         tableauActionListe, name='tableauActionListe'),
 
     # profile
     path('Dashboard/profile/updateProfil', updateProfil, name='updateProfil'),

@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 import random as Generateur
 from django.contrib.auth.decorators import login_required
-from Acceuil.models import *
+from .models import *
 from django.contrib.auth import get_user_model
 
 # Create your views here.
@@ -22,7 +22,16 @@ def mdpoublie(request):
 
 @login_required(login_url='connexion')
 def Dashboard(request):
-    return render(request,'dashboard.html')
+    context = {
+        'entreprise_nom': request.session['entreprise'],
+        'nom': request.session['nom'],
+        'email': request.session['email'],
+        'fonction': request.session['fonction'],
+        'telephone': request.session['telephone'],
+        'type_compte': request.session['typeCompte'],
+        'profile_image_url': request.session['image_profile'],
+    }
+    return render(request,'dashboard.html',context)
 
 # fonctionalités
 def connexionprocessus(request):
@@ -240,12 +249,17 @@ def AjouterAccidentProcessus(request):
     return
 
 def tableauAccidentListe(request):
-    return
+    accidents = Accident.objects.all()
+    serialized_accidents = serialize('json', accidents)
+    return JsonResponse({'accidentData': serialized_accidents}, safe=False)
 
 # incident
 def AjouterIncidentProcessus(request):
     return
 
-def tableauIncidentListe(request):
-    return
+
+def tableauActionListe(request):
+    actionsAccident = PlanAction.objects.all()
+    serialized_actions = serialize('json', actions)
+    return JsonResponse({'actionsData': serialized_actions}, safe=False)
 
