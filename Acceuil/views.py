@@ -6,6 +6,7 @@ import random as Generateur
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth import get_user_model
+from datetime import date
 
 # Create your views here.
 def acceuil(request):
@@ -22,6 +23,26 @@ def mdpoublie(request):
 
 @login_required(login_url='connexion')
 def Dashboard(request):
+    date_actuelle = date.today()
+
+    nombreAccidentAvecArret = Accident.objects.filter(
+        decisionFinale='Avec arret de travail').count()
+    nombreAccidentSansArret = Accident.objects.filter(
+        decisionFinale='Sans arrêt de travail').count()
+    nombreAccidentIncident = Accident.objects.filter(
+        typeEvenement='Incidents').count()
+    nombreAccidentPresqueIncident = Accident.objects.filter(
+        typeEvenement="Presqu'incidents").count()
+
+    plan_actions_en_retard = PlanAction.objects.filter(
+        date_fin__lt=date_actuelle)
+
+    nombreActionEnCours = PlanAction.objects.filter(statut='En cours').count()
+    nombreActionOuvert = PlanAction.objects.filter(statut='Ouvert').count()
+    nombreActionTermine = PlanAction.objects.filter(statut='Terminé').count()
+    nombreActionsRetard = PlanAction.objects.filter(
+        date_fin__lt=date_actuelle).count()
+
     context = {
         'entreprise_nom': request.session['entreprise'],
         'nom': request.session['nom'],
@@ -30,6 +51,16 @@ def Dashboard(request):
         'telephone': request.session['telephone'],
         'type_compte': request.session['typeCompte'],
         'profile_image_url': request.session['image_profile'],
+        
+        'nombreAccidentAvecArret': nombreAccidentAvecArret,
+        'nombreAccidentSansArret': nombreAccidentSansArret,
+        'nombreAccidentIncident': nombreAccidentIncident,
+        'nombreAccidentPresqueIncident': nombreAccidentPresqueIncident,
+
+        'nombreActionEnCours': nombreActionEnCours,
+        'nombreActionOuvert': nombreActionOuvert,
+        'nombreActionTermine': nombreActionTermine,
+        'nombreActionsRetard': nombreActionsRetard,
     }
     return render(request,'dashboard.html',context)
 

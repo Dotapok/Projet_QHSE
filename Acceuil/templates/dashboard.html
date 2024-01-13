@@ -167,10 +167,6 @@
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <hr class="dropdown-divider" />
-              </li>
-
-              <li>
                 <a class="dropdown-item d-flex align-items-center" href="{% url 'deconnexionprocessus' %}">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Se deconnecter</span>
@@ -241,7 +237,7 @@
         <h1>Dashboard</h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item active">Dashboard</li>
           </ol>
         </nav>
@@ -268,7 +264,7 @@
                       <i class="bi bi-graph-up"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>0</h6>
+                        <h6>{{ nombreAccidentAvecArret }}</h6>
                         <span class="text-success small pt-1 fw-bold">0.0%</span>
                         <span class="text-muted small pt-2 ps-1">Total des événements</span>
                       </div>
@@ -294,7 +290,7 @@
                       <i class="bi bi-clock-history"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>0</h6>
+                        <h6>{{ nombreAccidentSansArret }}</h6>
                         <span class="text-success small pt-1 fw-bold">0.0%</span>
                         <span class="text-muted small pt-2 ps-1">Total des événements</span>
                       </div>
@@ -320,7 +316,7 @@
                       <i class="bi bi-exclamation-octagon"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>0</h6>
+                        <h6>{{ nombreAccidentIncident }}</h6>
                         <span class="text-danger small pt-1 fw-bold">0.0%</span>
                         <span class="text-muted small pt-2 ps-1">Total des événements</span>
                       </div>
@@ -346,7 +342,7 @@
                       <i class="bi bi-slash-circle"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>0</h6>
+                        <h6>{{ nombreAccidentPresqueIncident }}</h6>
                         <span class="text-danger small pt-1 fw-bold">0.0%</span>
                         <span class="text-muted small pt-2 ps-1">Total des événements</span>
                       </div>
@@ -661,7 +657,7 @@
                     </div>
                     <div class="card-body">
                       <i class="bi bi-hourglass-split" style="font-size: 2rem; color: #007bff;"></i>
-                      <span class="fw-bold" style="font-size: 2rem; color: #007bff">0</span>
+                      <span class="fw-bold" style="font-size: 2rem; color: #007bff">{{ nombreActionEnCours }}</span>
                       <p class="card-text"> actions en cours.</p>
                     </div>
                   </div>
@@ -673,7 +669,7 @@
                     </div>
                     <div class="card-body">
                       <i class="bi bi-exclamation-circle" style="font-size: 2rem; color: #ffc107;"></i>
-                      <span class="fw-bold" style="font-size: 2rem; color: #ffc107;">0</span>
+                      <span class="fw-bold" style="font-size: 2rem; color: #ffc107;">{{ nombreActionOuvert }}</span>
                       <p class="card-text"> actions ouvertes.</p>
                     </div>
                   </div>
@@ -685,7 +681,7 @@
                     </div>
                     <div class="card-body">
                       <i class="bi bi-check-circle" style="font-size: 2rem; color: #28a745;"></i>
-                      <span class="fw-bold" style="font-size: 2rem; color: #28a745;">0</span>
+                      <span class="fw-bold" style="font-size: 2rem; color: #28a745;">{{ nombreActionTermine }}</span>
                       <p class="card-text"> actions terminées.</p>
                     </div>
                   </div>
@@ -697,7 +693,7 @@
                     </div>
                     <div class="card-body">
                       <i class="bi bi-clock-history" style="font-size: 2rem; color: #dc3545;"></i>
-                      <span class="fw-bold" style="font-size: 2rem; color: #dc3545;">0</span>
+                      <span class="fw-bold" style="font-size: 2rem; color: #dc3545;">{{ nombreActionsRetard }}</span>
                       <p class="card-text"> actions en retard.</p>
                     </div>
                   </div>

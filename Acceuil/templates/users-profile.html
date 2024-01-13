@@ -563,9 +563,9 @@
                       >
                         <thead>
                           <tr>
-                            <th scope="col">Name</th>
+                            <th scope="col">Nom</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Phone</th>
+                            <th scope="col">Telephone</th>
                             <th scope="col">Fonction</th>
                             <th scope="col">Compte</th>
                             <th scope="col">Actions</th>
@@ -824,6 +824,17 @@
     <!-- Template Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      axios.get('/path-to-your-get-users-view/')
+        .then(response => {
+          const usersData = response.data.usersData;
+          initializeUserTable(usersData);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    });
+
       function displayImage(e) {
         if (e.files[0]) {
           var reader = new FileReader();
@@ -845,51 +856,14 @@
       //Fonction pour la gestion des utilisateurs
       let currentEditingUserId = null;
 
-      const users = [
-        {
-          id: 1,
-          name: "Ricky Antony",
-          email: "ricky@example.com",
-          phone: "(201) 200-1851",
-          image: "{% static 'assets/img/4.jpg' %}",
-          fonction: "Manager",
-          compte: "user",
-        },
-        {
-          id: 2,
-          name: "Emma Watson",
-          email: "emma@example.com",
-          phone: "(212) 228-8403",
-          image: "{% static 'assets/img/13.jpg' %}",
-          fonction: "Directrice",
-          compte: "manager",
-        },
-        {
-          id: 3,
-          name: "Antony Hopkins",
-          email: "antony@example.com",
-          phone: "(901) 324-3127",
-          image: "{% static 'assets/img/2.jpg' %}",
-          fonction: "Superviseur",
-          compte: "admin",
-        },
-        {
-          id: 4,
-          name: "Jennifer Schramm",
-          email: "jennifer@example.com",
-          phone: "(828) 382-9631",
-          image: "{% static 'assets/img/3.jpg' %}",
-          fonction: "Assistante",
-          compte: "user",
-        },
-      ];
 
       // Fonction pour initialiser le tableau avec les données des utilisateurs
-      function initializeUserTable() {
+      function initializeUserTable(usersData) {
         let tableBody = document.getElementById("userTableBody");
         tableBody.innerHTML = ""; // Videz le tableau avant de rajouter les lignes
 
-        users.forEach((user) => {
+        usersData.forEach((userData) => {
+          const user = JSON.parse(userData.fields);
           let compteBadgeClass;
           switch (user.compte) {
             case "admin":
@@ -906,23 +880,23 @@
           }
 
           let row = `
-      <tr class="align-middle" id="user-${user.id}">
-        <td>
-          <div class="d-flex align-items-center">
-            <img class="rounded-circle small-profile" src="${user.image}" alt="Profile Image" style="width: 50px; height: 50px;">
-            <div class="ms-2">${user.name}</div>
-          </div>
-        </td>
-        <td>${user.email}</td>
-        <td>${user.phone}</td>
-        <td>${user.fonction}</td>
-        <td><span class="badge ${compteBadgeClass}">${user.compte}</span></td>
-        <td>
-          <button class="btn btn-outline-primary btn-sm me-2" onclick="editUser(${user.id})"><i class="bi bi-pencil-square"></i></button>
-          <button class="btn btn-outline-danger btn-sm" onclick="confirmDeleteUser(${user.id})"><i class="bi bi-trash-fill"></i></button>
-        </td>
-      </tr>
-    `;
+            <tr class="align-middle" id="user-${user.id}">
+              <td>
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle small-profile" src="${user.image}" alt="Profile Image" style="width: 50px; height: 50px;">
+                  <div class="ms-2">${user.first_name}</div>
+                </div>
+              </td>
+              <td>${user.email}</td>
+              <td>${user.telephone}</td>
+              <td>${user.fonction}</td>
+              <td><span class="badge ${compteBadgeClass}">${user.typeCompte}</span></td>
+              <td>
+                <button class="btn btn-outline-primary btn-sm me-2" onclick="editUser(${user.id})"><i class="bi bi-pencil-square"></i></button>
+                <button class="btn btn-outline-danger btn-sm" onclick="confirmDeleteUser(${user.id})"><i class="bi bi-trash-fill"></i></button>
+              </td>
+            </tr>
+          `;
           tableBody.innerHTML += row; // Ajouter la ligne nouvellement créée à la table
         });
       }
@@ -935,9 +909,9 @@
         if (user) {
           // Mettre à jour les champs du formulaire avec les données de l'utilisateur
           currentEditingUserId = user.id;
-          document.getElementById("editName").value = user.name;
+          document.getElementById("editName").value = user.first_name;
           document.getElementById("editEmail").value = user.email;
-          document.getElementById("editPhone").value = user.phone;
+          document.getElementById("editPhone").value = user.telephone;
           document.getElementById("editFonction").value = user.fonction;
           document.getElementById("userImage").src = user.image;
 
