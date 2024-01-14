@@ -334,28 +334,29 @@
                           novalidate="novalidate"
                           data-wizard-form="1"
                         >
+                        {% csrf_token %}
                           <div class="row">
                             
                             
                                                         <!-- Type d'événement -->
-<div class="mb-3 col-12 col-md-6 mb-3">
-  <label for="event-type" class="form-label">Type d'événement</label>
-  <select class="form-control" id="event-type" name="eventType" required>
-    <option>Situation</option>
-    <option>Premier soin</option>
-    <option>Presqu'accident</option>
-  </select>
-  <div class="invalid-feedback">
-    Ce champ est requis.
-  </div>
-</div>
+                      <div class="mb-3 col-12 col-md-6 mb-3">
+                        <label for="event-type" class="form-label">Type d'événement</label>
+                        <select class="form-control" id="event-type" name="eventType" required>
+                          <option>Situation</option>
+                          <option>Premier soin</option>
+                          <option>Presqu'accident</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Ce champ est requis.
+                        </div>
+                      </div>
 
-                      
-                           <!-- Titre de l'événement -->
-<div class="mb-3 col-12 col-md-6 mb-3">
-  <label for="event-title" class="form-label">Titre de l'événement</label>
-  <input type="text" class="form-control" id="event-title" name="eventTitle" required >
-</div>
+                                            
+                                                <!-- Titre de l'événement -->
+                      <div class="mb-3 col-12 col-md-6 mb-3">
+                        <label for="event-title" class="form-label">Titre de l'événement</label>
+                        <input type="text" class="form-control" id="event-title" name="eventTitle" required >
+                      </div>
                             <!-- Date de l'accident -->
                             <div class="col-md-6 mb-3">
                               <label class="form-label" for="accident-date"
@@ -487,6 +488,7 @@
                         id="bootstrap-wizard-validation-tab4"
                       >
                         <form class="form-validation" data-wizard-form="4">
+                          {% csrf_token %}
                         <div class="row">
                           <div class="mb-3">
                             <button
@@ -570,7 +572,7 @@
                         <li class="next">
                           <button
                             class="btn btn-primary px-5 px-sm-6"
-                            type="submit"
+                            onclick="submitForm()"
                           >
                             Suivant<span
                               class="fas fa-chevron-right ms-2"
@@ -633,6 +635,7 @@
             <div class="modal-body">
               <!-- Formulaire dans le modal -->
               <form id="actionForm">
+                {% csrf_token %}
                 <div class="mb-3">
                   <label for="action-title" class="form-label">Titre de l'action</label>
                   <input type="text" class="form-control" id="action-title" name="actionTitle" required>
@@ -762,8 +765,6 @@ var table = document.getElementById('actionsTable');
 
   // Réinitialiser le formulaire
   document.getElementById('actionForm').reset();
-
-  
 }
 
 function deleteAction(icon) {
@@ -821,6 +822,65 @@ document.addEventListener('DOMContentLoaded', function () {
     }, false);
   });
 });
+
+function submitForm() {
+  // Récupérer les données du premier onglet du formulaire
+  var eventType = document.getElementById('event-type').value;
+  var eventTitle = document.getElementById('event-title').value;
+  var accidentDate = document.getElementById('accident-date').value;
+  var accidentTime = document.getElementById('accident-time').value;
+  var accidentLocation = document.getElementById('accident-location').value;
+  var nameOrCorporateName = document.getElementById('name-or-corporate-name').value;
+  var natureOfLesions = document.getElementById('nature-of-lesions').value;
+  var locationOfLesions = document.getElementById('location-of-lesions').value;
+  var detailedCircumstances = document.getElementById('detailed-circumstances').value;
+
+  // Récupérer les données du deuxième onglet du formulaire
+  var dropdownData = [];
+  var dropdownElements = document.querySelectorAll('#dropdown-container input');
+  dropdownElements.forEach(function (element) {
+    dropdownData.push(element.value);
+  });
+
+  // Récupérer les données du troisième onglet du formulaire
+  var actionsData = [];
+  var actionsTableRows = document.querySelectorAll('#actionsTable tbody tr');
+  actionsTableRows.forEach(function (row) {
+    var actionData = {
+      title: row.cells[0].innerText,
+      description: row.cells[1].innerText,
+      responsible: row.cells[2].innerText,
+      status: row.cells[3].innerText,
+      startDate: row.cells[4].innerText,
+      endDate: row.cells[5].innerText
+    };
+    actionsData.push(actionData);
+  });
+
+  // Organiser les données dans un objet
+  var formData = {
+    eventType: eventType,
+    eventTitle: eventTitle,
+    accidentDate: accidentDate,
+    accidentTime: accidentTime,
+    accidentLocation: accidentLocation,
+    nameOrCorporateName: nameOrCorporateName,
+    natureOfLesions: natureOfLesions,
+    locationOfLesions: locationOfLesions,
+    detailedCircumstances: detailedCircumstances,
+    dropdownData: dropdownData,
+    actionsData: actionsData
+  };
+
+  // Envoyer les données vers le backend à l'aide d'Axios
+  axios.post('{% url 'AjouterIncidentProcessus' %}', formData)
+    .then(function (response) {
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
     </script>
   </body>
 </html>

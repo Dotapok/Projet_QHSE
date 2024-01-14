@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.auth import get_user_model
 from datetime import date
+from django.core.serializers import serialize
 
 # Create your views here.
 def acceuil(request):
@@ -286,11 +287,72 @@ def tableauAccidentListe(request):
 
 # incident
 def AjouterIncidentProcessus(request):
-    return
+    if request.method == 'POST':
+        eventType = request.POST.get('eventType')
+        eventTitle = request.POST.get('eventTitle')
+        accidentDate = request.POST.get('accidentDate')
+        accidentTime = request.POST.get('accidentTime')
+        accidentLocation = request.POST.get('accidentLocation')
+        nameOrCorporateName = request.POST.get('nameOrCorporateName')
+        natureOfLesions = request.POST.get('natureOfLesions')
+        locationOfLesions = request.POST.get('locationOfLesions')
+        detailedCircumstances = request.POST.get('detailedCircumstances')
+        dropdownData = request.POST.getlist('dropdownData')
+        
+        print(eventType)
+
+        # # Récupérer les données du troisième onglet du formulaire
+        # # Vous devrez ajuster le code en fonction de la structure exacte de votre tableau
+        # actionsData = []
+        # for i in range(1, int(request.POST.get('totalActions', 0)) + 1):
+        #     actionData = {
+        #         'title': request.POST.get(f'actionTitle_{i}'),
+        #         'description': request.POST.get(f'actionDescription_{i}'),
+        #         'responsible': request.POST.get(f'actionResponsible_{i}'),
+        #         'status': request.POST.get(f'actionStatus_{i}'),
+        #         'startDate': request.POST.get(f'actionStartDate_{i}'),
+        #         'endDate': request.POST.get(f'actionEndDate_{i}'),
+        #     }
+        #     actionsData.append(actionData)
+
+        # # Enregistrez les données dans votre modèle
+        # try:
+        #     # Remplacez VotreModele par le nom de votre modèle
+        #     incident = VotreModele.objects.create(
+        #         eventType=eventType,
+        #         eventTitle=eventTitle,
+        #         accidentDate=accidentDate,
+        #         accidentTime=accidentTime,
+        #         accidentLocation=accidentLocation,
+        #         nameOrCorporateName=nameOrCorporateName,
+        #         natureOfLesions=natureOfLesions,
+        #         locationOfLesions=locationOfLesions,
+        #         detailedCircumstances=detailedCircumstances,
+        #     )
+
+        #     # Enregistrez les données associées dans votre modèle lié (si applicable)
+        #     # Par exemple, si vous avez une clé étrangère vers un autre modèle,
+        #     # vous pouvez l'ajuster en conséquence.
+
+        #     # Enregistrez les données du deuxième onglet (drop-down) dans votre modèle lié (si applicable)
+
+        #     # Enregistrez les données du troisième onglet (tableau d'actions) dans votre modèle lié (si applicable)
+        #     for actionData in actionsData:
+        #         incident.actions_set.create(**actionData)
+
+        #     messages.success(request, 'Incident ajouté avec succès!')
+        #     return redirect('votre_url_de_redirection')  # Remplacez par la route souhaitée
+        # except Exception as e:
+        #     messages.error(request, f'Erreur lors de l\'ajout de l\'incident: {e}')
+
+    # Gérer le cas où la méthode HTTP n'est pas POST
+    # ...
+
+    return render(request, 'votre_template.html')
 
 
 def tableauActionListe(request):
     actionsAccident = PlanAction.objects.all()
-    serialized_actions = serialize('json', actions)
-    return JsonResponse({'actionsData': serialized_actions}, safe=False)
+    serialized_actionsAccident = serialize('json', actionsAccident)
+    return JsonResponse({'actionsData': serialized_actionsAccident}, safe=False)
 
