@@ -9,6 +9,7 @@ urlpatterns = [
     path('restaurationMDP/', mdpoublie,name='mdpoublie'),
     path('contact/', contacter,name='contacter'),
     path('Dashboard/', Dashboard,name='Dashboard'),
+    path('Users/', Users,name='Users'),
     
     # actions backend
     path('connexion/processus', connexionprocessus,name='connexionprocessus'),
@@ -29,6 +30,8 @@ urlpatterns = [
     # incident
     path('Dashboard/AjouterIncident/AjouterIncidentProcessus',
          AjouterIncidentProcessus, name='AjouterIncidentProcessus'),
+    path('Dashboard/tableauAction/liste',
+         tableauActionListe, name='tableauActionListe'),
     path('Dashboard/tableauAction/liste',
          tableauActionListe, name='tableauActionListe'),
 

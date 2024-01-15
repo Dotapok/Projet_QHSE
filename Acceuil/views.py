@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login,logout
 from django.http import JsonResponse
@@ -34,9 +35,6 @@ def Dashboard(request):
         typeEvenement='Incidents').count()
     nombreAccidentPresqueIncident = Accident.objects.filter(
         typeEvenement="Presqu'incidents").count()
-
-    plan_actions_en_retard = PlanAction.objects.filter(
-        date_fin__lt=date_actuelle)
 
     nombreActionEnCours = PlanAction.objects.filter(statut='En cours').count()
     nombreActionOuvert = PlanAction.objects.filter(statut='Ouvert').count()
@@ -80,6 +78,8 @@ def connexionprocessus(request):
         if user:
             entreprise_id = user.entrepriseID.id_entreprise if user.entrepriseID else None
             entreprise_nom = user.entrepriseID.nomEntreprise if user.entrepriseID else None
+            entreprise_IDBD = user.entrepriseID.id if user.entrepriseID else None
+            
             login(request, user)
             request.session['entreprise'] = entreprise_nom
             request.session['nom'] = user.first_name
@@ -88,6 +88,7 @@ def connexionprocessus(request):
             request.session['telephone'] = user.telephone
             request.session['typeCompte'] = user.typeCompte
             request.session['entrepriseID'] = entreprise_id
+            request.session['entrepriseIDBD'] = entreprise_IDBD
             image_profile_url = f"/media/{user.imgProfil}" if user.imgProfil else None
 
             # Enregistrez les informations dans la session
@@ -274,7 +275,32 @@ def updatePass(request):
     return
 
 def addUser(request):
-    return
+    # Récupérer les données du formulaire depuis la requête POST
+    data = json.loads(request.body.decode('utf-8'))
+    print(data)
+
+    # Les données du formulaire peuvent maintenant être utilisées
+    # pour créer un nouvel utilisateur dans votre modèle d'utilisateur
+
+    # Exemple : Créer un nouvel utilisateur dans un modèle User
+    # new_user = User.objects.create(
+    #     name=data['name'],
+    #     email=data['email'],
+    #     phone=data['phone'],
+    #     fonction=data['fonction'],
+    #     compte=data['compte'],
+    #     password=data['password'],
+    #     image=data['image']
+    # )
+
+    # Vous pouvez également retourner une réponse JSON si nécessaire
+    response_data = {'message': 'Utilisateur ajouté avec succès!'}
+    return JsonResponse(response_data)
+
+def Users(request):
+    utilisateurs = CompteUtilisateur.objects.filter(entrepriseID=request.session['entrepriseIDBD'])
+    serialized_utilisateurs = serialize('json', utilisateurs)
+    return JsonResponse({'utilisateurs': serialized_utilisateurs}, safe=False)
 
 # accident
 def AjouterAccidentProcessus(request):
@@ -299,21 +325,21 @@ def AjouterIncidentProcessus(request):
         detailedCircumstances = request.POST.get('detailedCircumstances')
         dropdownData = request.POST.getlist('dropdownData')
         
-        print(eventType)
+        print(request.POST.get('actionsData'))
 
-        # # Récupérer les données du troisième onglet du formulaire
-        # # Vous devrez ajuster le code en fonction de la structure exacte de votre tableau
-        # actionsData = []
-        # for i in range(1, int(request.POST.get('totalActions', 0)) + 1):
-        #     actionData = {
-        #         'title': request.POST.get(f'actionTitle_{i}'),
-        #         'description': request.POST.get(f'actionDescription_{i}'),
-        #         'responsible': request.POST.get(f'actionResponsible_{i}'),
-        #         'status': request.POST.get(f'actionStatus_{i}'),
-        #         'startDate': request.POST.get(f'actionStartDate_{i}'),
-        #         'endDate': request.POST.get(f'actionEndDate_{i}'),
-        #     }
-        #     actionsData.append(actionData)
+        actionsData = []
+        for i in range(1, int(request.POST.get('actionsData', 0)) + 1):
+            actionData = {
+                'title': request.POST.get(f'actionTitle_{i}'),
+                'description': request.POST.get(f'actionDescription_{i}'),
+                'responsible': request.POST.get(f'actionResponsible_{i}'),
+                'status': request.POST.get(f'actionStatus_{i}'),
+                'startDate': request.POST.get(f'actionStartDate_{i}'),
+                'endDate': request.POST.get(f'actionEndDate_{i}'),
+            }
+            actionsData.append(actionData)
+            
+        print(actionsData)
 
         # # Enregistrez les données dans votre modèle
         # try:

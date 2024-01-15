@@ -19,6 +19,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Vendor CSS Files -->
     <link
@@ -494,7 +495,6 @@
                             <button
                               type="button"
                               class="btn btn-primary"
-                              onclick="addDropdown()"
                             >
                               AJOUTER UNE CAUSE
                             </button>
@@ -511,7 +511,7 @@
                     id="bootstrap-wizard-validation-tab5"
                   >
                     <form class="form-validation" data-wizard-form="5">
-                    <div class="row">
+                      <div class="row">
                       <div class="mb-3">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#actionModal">
                           Ajouter une actions
@@ -572,7 +572,7 @@
                         <li class="next">
                           <button
                             class="btn btn-primary px-5 px-sm-6"
-                            onclick="submitForm()"
+                            id="finBouton"
                           >
                             Suivant<span
                               class="fas fa-chevron-right ms-2"
@@ -692,10 +692,16 @@
     <!-- Template Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
+      // Récupérer la référence du bouton "Suivant"
+      const suivantButton = document.getElementById('finBouton');
+
+      // Attacher un gestionnaire d'événement au clic sur le bouton "Suivant"
+      suivantButton.addEventListener('click', submitForm);
+
       function addDropdown() {
           // Créer un div pour contenir le select et le bouton de suppression
-  var div = document.createElement("div");
-  div.className = "col-6 ml-3 mb-3 d-flex align-items-start";
+        var div = document.createElement("div");
+        div.className = "col-6 ml-3 mb-3 d-flex align-items-start";
 
         // Créer un nouveau select element
         var select = document.createElement("select");
@@ -872,8 +878,16 @@ function submitForm() {
     actionsData: actionsData
   };
 
+  var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+  var jetonCsrf = csrfTokenInput ? csrfTokenInput.value : null;
+
   // Envoyer les données vers le backend à l'aide d'Axios
-  axios.post('{% url 'AjouterIncidentProcessus' %}', formData)
+  axios.post('{% url 'AjouterIncidentProcessus' %}', formData, {
+    headers: {
+        'Content-Type': 'multipart/form-data',
+        'X-CSRFToken': jetonCsrf
+    }
+})
     .then(function (response) {
       console.log(response.data);
     })

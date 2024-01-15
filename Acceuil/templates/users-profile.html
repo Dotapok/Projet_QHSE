@@ -803,7 +803,7 @@
             >
               Fermer
             </button>
-            <button type="button" class="btn btn-primary" onclick="addUser()">
+            <button type="button" id="addBOUTON" class="btn btn-primary" onclick="addUser()">
               Ajouter
             </button>
           </div>
@@ -823,34 +823,42 @@
 
     <!-- Template Main JS File -->
     <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      axios.get('/path-to-your-get-users-view/')
-        .then(response => {
-          const usersData = response.data.usersData;
-          initializeUserTable(usersData);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-    });
+      let users = [];
+
+      document.addEventListener("DOMContentLoaded", () => {
+        axios.get('{% url 'Users' %}')
+          .then(response => {
+            const utilisateurs = JSON.parse(response.data.utilisateurs);
+            users = utilisateurs.map(userData => ({
+              id: userData.pk,  // Utiliser la clé primaire de l'objet
+              name: userData.fields.first_name,
+              email: userData.fields.email,
+              phone: userData.fields.telephone,
+              image: userData.fields.imgProfil,
+              fonction: userData.fields.fonction,
+              compte: userData.fields.typeCompte,
+            }));
+            initializeUserTable(users);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      });
 
       function displayImage(e) {
         if (e.files[0]) {
           var reader = new FileReader();
           reader.onload = function (e) {
-            document
-              .getElementById("profileDisplay")
-              .setAttribute("src", e.target.result);
+            document.getElementById("profileDisplay").setAttribute("src", e.target.result);
           };
           reader.readAsDataURL(e.files[0]);
         }
       }
 
       function removeImage() {
-        document
-          .getElementById("profileDisplay")
-          .setAttribute("src", "{% static 'assets/img/default-img.jpg' %}");
+        document.getElementById("profileDisplay").setAttribute("src", "{% static 'assets/img/default-img.jpg' %}");
       }
 
       //Fonction pour la gestion des utilisateurs
@@ -858,12 +866,11 @@
 
 
       // Fonction pour initialiser le tableau avec les données des utilisateurs
-      function initializeUserTable(usersData) {
+      function initializeUserTable(users) {
         let tableBody = document.getElementById("userTableBody");
         tableBody.innerHTML = ""; // Videz le tableau avant de rajouter les lignes
 
-        usersData.forEach((userData) => {
-          const user = JSON.parse(userData.fields);
+        users.forEach((user) => {
           let compteBadgeClass;
           switch (user.compte) {
             case "admin":
@@ -872,7 +879,7 @@
             case "manager":
               compteBadgeClass = "badge-warning";
               break;
-            case "user":
+            case "utilisateur":
               compteBadgeClass = "badge-primary";
               break;
             default:
@@ -880,26 +887,27 @@
           }
 
           let row = `
-            <tr class="align-middle" id="user-${user.id}">
-              <td>
-                <div class="d-flex align-items-center">
-                  <img class="rounded-circle small-profile" src="${user.image}" alt="Profile Image" style="width: 50px; height: 50px;">
-                  <div class="ms-2">${user.first_name}</div>
-                </div>
-              </td>
-              <td>${user.email}</td>
-              <td>${user.telephone}</td>
-              <td>${user.fonction}</td>
-              <td><span class="badge ${compteBadgeClass}">${user.typeCompte}</span></td>
-              <td>
-                <button class="btn btn-outline-primary btn-sm me-2" onclick="editUser(${user.id})"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn btn-outline-danger btn-sm" onclick="confirmDeleteUser(${user.id})"><i class="bi bi-trash-fill"></i></button>
-              </td>
-            </tr>
-          `;
+      <tr class="align-middle" id="user-${user.id}">
+        <td>
+          <div class="d-flex align-items-center">
+            <img class="rounded-circle small-profile" src="/media/${user.image}" alt="Profile Image" style="width: 50px; height: 50px;">
+            <div class="ms-2">${user.name}</div>
+          </div>
+        </td>
+        <td>${user.email}</td>
+        <td>${user.phone}</td>
+        <td>${user.fonction}</td>
+        <td><span class="badge ${compteBadgeClass}">${user.compte}</span></td>
+        <td>
+          <button class="btn btn-outline-primary btn-sm me-2" onclick="editUser(${user.id})"><i class="bi bi-pencil-square"></i></button>
+          <button class="btn btn-outline-danger btn-sm" onclick="confirmDeleteUser(${user.id})"><i class="bi bi-trash-fill"></i></button>
+        </td>
+      </tr>
+    `;
           tableBody.innerHTML += row; // Ajouter la ligne nouvellement créée à la table
         });
       }
+      
 
       // Fonction pour éditer un utilisateur
       function editUser(userId) {
@@ -909,9 +917,9 @@
         if (user) {
           // Mettre à jour les champs du formulaire avec les données de l'utilisateur
           currentEditingUserId = user.id;
-          document.getElementById("editName").value = user.first_name;
+          document.getElementById("editName").value = user.name;
           document.getElementById("editEmail").value = user.email;
-          document.getElementById("editPhone").value = user.telephone;
+          document.getElementById("editPhone").value = user.phone;
           document.getElementById("editFonction").value = user.fonction;
           document.getElementById("userImage").src = user.image;
 
@@ -967,12 +975,31 @@
         currentEditingUserId = null; // Réinitialiser l'ID d'édition pour la prochaine utilisation
       }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        initializeUserTable();
-      });
-
       //Script pour ajout des utilisateurs
       function addUser() {
+          // Référence au bouton
+          var inscriptionButton = document.getElementById("addBOUTON");
+        
+          // Sauvegardez le texte d'origine du bouton
+          var originalButtonText = inscriptionButton.innerText;
+        
+          // Changez le texte du bouton pendant l'inscription
+          inscriptionButton.innerText = "Inscription en cours...";
+        
+          // Désactiver le bouton pendant l'inscription
+          inscriptionButton.disabled = true;
+        
+          // Récupérer les valeurs depuis le formulaire
+          var name = document.getElementById("addUserName").value;
+          var email = document.getElementById("addUserEmail").value;
+          var phone = document.getElementById("addUserPhone").value;
+          var fonction = document.getElementById("addUserFunction").value;
+          var compte = document.getElementById("addUserAccountType").value;
+          var password = document.getElementById("addUserPassword").value;
+          var passwordConfirm = document.getElementById("addUserPasswordConfirm").value;
+        
+          var profilePictureFile = document.getElementById("addUserProfilePicture").files[0];
+        
         // Récupérer les valeurs depuis le formulaire
         var name = document.getElementById("addUserName").value;
         var email = document.getElementById("addUserEmail").value;
@@ -984,11 +1011,10 @@
           "addUserPasswordConfirm"
         ).value;
 
-        // Assurez-vous que le champ de l'image de profil est traité correctement
         var profilePictureFile = document.getElementById(
           "addUserProfilePicture"
         ).files[0];
-        var profilePicturePath = "assets/img/24.jpg"; // Chemin par défaut ou chemin après traitement de l'image
+        var profilePicturePath = "/media/profiles/" + name.toLowerCase().replace(/\s+/g, '-') + ".jpg";
 
         // Valider le mot de passe et confirmer le mot de passe
         var password = document.getElementById("addUserPassword").value;
@@ -1009,18 +1035,35 @@
           fonction: fonction,
           compte: compte,
           password: password, // Assurez-vous de traiter/hacher le mot de passe avant de l'enregistrer
-          image: "assets/img/24.jpg", // Vous devrez traiter le fichier image et définir le chemin d'accès
+          image: profilePicturePath
         };
         users.push(newUser);
 
-        // Recharger le tableau pour inclure le nouvel utilisateur
-        initializeUserTable();
+        axios.post('{% url 'addUser' %}', newUser)
+        .then(function (response) {
+          const utilisateurs = JSON.parse(response.data.utilisateurs);
+            const users = utilisateurs.map(userData => ({
+              id: userData.pk,  // Utiliser la clé primaire de l'objet
+              name: userData.fields.first_name,
+              email: userData.fields.email,
+              phone: userData.fields.telephone,
+              image: userData.fields.imgProfil,
+              fonction: userData.fields.fonction,
+              compte: userData.fields.typeCompte,
+            }));
+          initializeUserTable(users);
 
-        // Réinitialiser le formulaire pour la prochaine utilisation
-        document.getElementById("addUserForm").reset();
+          document.getElementById("addUserForm").reset();
 
-        // fermer le modal
-        closeAddUserModal();
+          closeAddUserModal();
+        })
+        .catch(function (error) {
+          console.error(error);
+        })
+        .finally(function () {
+          inscriptionButton.disabled = false;
+          inscriptionButton.innerHTML = originalButtonText;
+      });
       }
 
       function closeAddUserModal() {
@@ -1035,9 +1078,7 @@
       }
 
       // Attacher l'événement pour ouvrir la modale d'ajout
-      document
-        .getElementById("addUserButton")
-        .addEventListener("click", function () {
+      document.getElementById("addUserButton").addEventListener("click", function () {
           var addUserModal = new bootstrap.Modal(
             document.getElementById("addUserModal"),
             {}
