@@ -625,7 +625,7 @@
             <!-- Formulaires pour l'édition -->
             <form id="editUserForm">
               <div class="mb-3">
-                <label for="editName" class="form-label">Name</label>
+                <label for="editName" class="form-label">Nom(s) et prenomr(s)</label>
                 <input type="text" class="form-control" id="editName" />
               </div>
               <div class="mb-3">
@@ -707,7 +707,18 @@
           <br>
           <div class="modal-body">
             <!-- Formulaires pour l'ajout d'un utilisateur -->
-            <form id="addUserForm">
+            <form id="addUserForm" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label for="addUserName" class="form-label">Nom</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="addUserName"
+                  required
+                />
+              </div>
+
               <div class="mb-3">
                 <label for="addUserEmail" class="form-label">Email</label>
                 <input
@@ -879,7 +890,7 @@
             case "manager":
               compteBadgeClass = "badge-warning";
               break;
-            case "utilisateur":
+            case "user":
               compteBadgeClass = "badge-primary";
               break;
             default:
@@ -988,17 +999,9 @@
         
           // Désactiver le bouton pendant l'inscription
           inscriptionButton.disabled = true;
-        
-          // Récupérer les valeurs depuis le formulaire
-          var name = document.getElementById("addUserName").value;
-          var email = document.getElementById("addUserEmail").value;
-          var phone = document.getElementById("addUserPhone").value;
-          var fonction = document.getElementById("addUserFunction").value;
-          var compte = document.getElementById("addUserAccountType").value;
-          var password = document.getElementById("addUserPassword").value;
-          var passwordConfirm = document.getElementById("addUserPasswordConfirm").value;
-        
-          var profilePictureFile = document.getElementById("addUserProfilePicture").files[0];
+
+          var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+          var jetonCsrf = csrfTokenInput ? csrfTokenInput.value : null;
         
         // Récupérer les valeurs depuis le formulaire
         var name = document.getElementById("addUserName").value;
@@ -1014,7 +1017,7 @@
         var profilePictureFile = document.getElementById(
           "addUserProfilePicture"
         ).files[0];
-        var profilePicturePath = "/media/profiles/" + name.toLowerCase().replace(/\s+/g, '-') + ".jpg";
+        var profilePicturePath = "profiles/" + name.toLowerCase().replace(/\s+/g, '-') + ".jpg";
 
         // Valider le mot de passe et confirmer le mot de passe
         var password = document.getElementById("addUserPassword").value;
@@ -1035,15 +1038,22 @@
           fonction: fonction,
           compte: compte,
           password: password, // Assurez-vous de traiter/hacher le mot de passe avant de l'enregistrer
-          image: profilePicturePath
+          image: profilePictureFile
         };
         users.push(newUser);
 
-        axios.post('{% url 'addUser' %}', newUser)
+        axios.post('{% url 'addUser' %}', newUser, {
+          headers: {
+              'Content-Type': 'multipart/form-data',
+              'X-CSRFToken': jetonCsrf
+          }
+      })
         .then(function (response) {
+          console.log(response.data.utilisateurs)
+          alert(response.data.message)
           const utilisateurs = JSON.parse(response.data.utilisateurs);
             const users = utilisateurs.map(userData => ({
-              id: userData.pk,  // Utiliser la clé primaire de l'objet
+              id: userData.pk,
               name: userData.fields.first_name,
               email: userData.fields.email,
               phone: userData.fields.telephone,
@@ -1067,8 +1077,6 @@
       }
 
       function closeAddUserModal() {
-        // Créez une instance de la modale que vous voulez fermer
-        alert("close");
         var addUserModal = new bootstrap.Modal(
           document.getElementById("addUserModal")
         );

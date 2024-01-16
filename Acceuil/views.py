@@ -276,26 +276,41 @@ def updatePass(request):
 
 def addUser(request):
     # Récupérer les données du formulaire depuis la requête POST
-    data = json.loads(request.body.decode('utf-8'))
-    print(data)
+    nom_user = request.POST.get('name')
+    fonction_user = request.POST.get('fonction')
+    email_user = request.POST.get('email')
+    telephone_user = request.POST.get('phone')
+    mot_de_passe_user = request.POST.get('password')
+    img_profil_user = request.FILES.get('image')
+    typeCompte = request.POST.get('compte')
+    entreprise = CompteEntreprise.objects.get(id=request.session['entrepriseIDBD'])
 
-    # Les données du formulaire peuvent maintenant être utilisées
-    # pour créer un nouvel utilisateur dans votre modèle d'utilisateur
+    try:
+        compte_utilisateur = CompteUtilisateur.objects.create(
+            fonction=fonction_user,
+            telephone=telephone_user,
+            typeCompte=typeCompte,
+            entrepriseID=entreprise,
+            email=email_user,
+            first_name=nom_user,
+        )
+        compte_utilisateur.set_password(mot_de_passe_user)
 
-    # Exemple : Créer un nouvel utilisateur dans un modèle User
-    # new_user = User.objects.create(
-    #     name=data['name'],
-    #     email=data['email'],
-    #     phone=data['phone'],
-    #     fonction=data['fonction'],
-    #     compte=data['compte'],
-    #     password=data['password'],
-    #     image=data['image']
-    # )
-
-    # Vous pouvez également retourner une réponse JSON si nécessaire
-    response_data = {'message': 'Utilisateur ajouté avec succès!'}
-    return JsonResponse(response_data)
+        if img_profil_user:
+            compte_utilisateur.imgProfil = img_profil_user
+        compte_utilisateur.save()
+        
+        
+        
+        utilisateurs = CompteUtilisateur.objects.filter(entrepriseID=request.session['entrepriseIDBD'])
+        serialized_utilisateurs = serialize('json', utilisateurs)
+        response_data = {'message': 'Utilisateur enregistré avec succès!','utilisateurs':serialized_utilisateurs}
+        return JsonResponse(response_data, safe=False)
+    except:
+        utilisateurs = CompteUtilisateur.objects.filter(entrepriseID=request.session['entrepriseIDBD'])
+        serialized_utilisateurs = serialize('json', utilisateurs)
+        response_data = {'message': "Impossible d'enregistrer cet utilisateur.",'utilisateurs':serialized_utilisateurs}
+        return JsonResponse(response_data, safe=False)
 
 def Users(request):
     utilisateurs = CompteUtilisateur.objects.filter(entrepriseID=request.session['entrepriseIDBD'])
