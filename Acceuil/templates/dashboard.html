@@ -12,7 +12,7 @@
     <!-- Favicons -->
     <link href="{% static 'assets/img/favicon.ico' %}" rel="icon" />
     <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon" />
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect" />
     <link
@@ -717,19 +717,6 @@
       style="min-height: 400px"
       class="echart"
     ></div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        axios.get('{% url 'initialisation' %}')
-          .then(response => {
-            const accidentData = response.data.pageData;
-            initializeAccidentChart(accidentData);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-      });
-    </script>
   </div>
 </div>
 <!-- End Accident Report -->

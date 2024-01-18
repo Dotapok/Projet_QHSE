@@ -33,6 +33,7 @@ def Dashboard(request):
         decisionFinale='Sans arrêt de travail').count()
     nombreAccidentIncident = Accident.objects.filter(
         typeEvenement='Incidents').count()
+    nombreAccidentIncident = nombreAccidentIncident + Incident.objects.count()
     nombreAccidentPresqueIncident = Accident.objects.filter(
         typeEvenement="Presqu'incidents").count()
 
@@ -247,7 +248,49 @@ def generateurID_Entreprise():
         identifiant = 'DQ.E.' + ''.join(choix)
         if not existenceID(identifiant):
             return identifiant
+
+def generateurID_Incident():
+    while True:
+        choix = [str(Generateur.randint(0, 100000000)) for _ in range(2)]
+        identifiant = 'DQ.I.' + ''.join(choix)
+        if not existenceID(identifiant):
+            return identifiant
         
+def generateurID_ActionIncident():
+    while True:
+        choix = [str(Generateur.randint(0, 100000000)) for _ in range(2)]
+        identifiant = 'DQ.ACI.' + ''.join(choix)
+        if not existenceID(identifiant):
+            return identifiant
+
+def generateurID_Accident():
+    while True:
+        choix = [str(Generateur.randint(0, 100000000)) for _ in range(2)]
+        identifiant = 'DQ.AC.' + ''.join(choix)
+        if not existenceID(identifiant):
+            return identifiant
+        
+def generateurID_Victime():
+    while True:
+        choix = [str(Generateur.randint(0, 100000000)) for _ in range(2)]
+        identifiant = 'DQ.V.' + ''.join(choix)
+        if not existenceID(identifiant):
+            return identifiant
+        
+def generateurID_CauseAccident():
+    while True:
+        choix = [str(Generateur.randint(0, 100000000)) for _ in range(2)]
+        identifiant = 'DQ.CA.' + ''.join(choix)
+        if not existenceID(identifiant):
+            return identifiant
+        
+def generateurID_ActionAccident():
+    while True:
+        choix = [str(Generateur.randint(0, 100000000)) for _ in range(2)]
+        identifiant = 'DQ.AA.' + ''.join(choix)
+        if not existenceID(identifiant):
+            return identifiant
+
 def contacter(request):
     if request.method == 'POST':
         message = request.POST.get('message')
@@ -265,9 +308,6 @@ def initialisation(request):
     return 
 
 # profile
-def listeUsers(request):
-    return
-
 def updateProfil(request):
     return
 
@@ -319,7 +359,170 @@ def Users(request):
 
 # accident
 def AjouterAccidentProcessus(request):
-    return
+    if request.method == 'POST':
+        numberCotisant = request.POST.get('numberCotisant')
+        nameOrCorporateName = request.POST.get('nameOrCorporateName')
+        acronym = request.POST.get('acronym')
+        address = request.POST.get('address')
+        phoneNumber = request.POST.get('phoneNumber')
+        fax = request.POST.get('fax')
+        email = request.POST.get('email')
+        activitySector = request.POST.get('activitySector')
+        numberOfEmployees = request.POST.get('numberOfEmployees')
+        eventTitle = request.POST.get('eventTitle')
+        accidentDate = request.POST.get('accidentDate')
+        accidentTime = request.POST.get('accidentTime')
+        
+        eventType = request.POST.get('eventType')
+        accidentLocation = request.POST.get('accidentLocation')
+        workSchedule = request.POST.get('workSchedule')
+        natureOfLesions = request.POST.get('natureOfLesions')
+        locationOfLesions = request.POST.get('locationOfLesions')
+        firstAidProvider = request.POST.get('firstAidProvider')
+        detailedCircumstances = request.POST.get('detailedCircumstances')
+
+        #causeOfAccident = request.POST.get('causeOfAccident')
+        probableOutcome = request.POST.get('probableOutcome')
+        workStoppage = request.POST.get('workStoppage')
+        #stoppageDays = request.POST.get('stoppageDays')
+
+        socialSecurityNumber = request.POST.get('socialSecurityNumber')
+        fullNameV = request.POST.get('fullNameV')
+        genderV = request.POST.get('genderV')
+        addressV = request.POST.get('addressV')
+        phoneNumberV = request.POST.get('phoneNumberV')
+        faxV = request.POST.get('faxV')
+        emailV = request.POST.get('emailV')
+        hiringDate = request.POST.get('hiringDate')
+        nationality = request.POST.get('nationality')
+        profession = request.POST.get('profession')
+        jobPosition = request.POST.get('jobPosition')
+        seniority = request.POST.get('seniority')
+        spouseFullName = request.POST.get('spouseFullName')
+        spousePhoneNumber = request.POST.get('spousePhoneNumber')
+
+        witnessName = request.POST.get('witnessName')
+        witnessAddress = request.POST.get('witnessAddress')
+        policeReport = request.POST.get('policeReport')
+        reportAuthor = request.POST.get('reportAuthor')
+
+        riskName = request.POST.get('riskName')
+        riskAddress = request.POST.get('riskAddress')
+        insuranceCompany = request.POST.get('insuranceCompany')
+        thirdParty = request.POST.get('thirdParty')
+        policyNumber = request.POST.get('policyNumber')
+
+        try:
+            idAC = generateurID_Accident()
+            idVic = generateurID_Victime()
+            
+            accident_instance = Accident(
+                identifiant_uniqueAccident=idAC,
+                NumCotisant=numberCotisant,
+                raisonSociale=nameOrCorporateName,
+                sigle=acronym,
+                adresse=address,
+                numtel=phoneNumber,
+                fax=fax,
+                email=email,
+                secteurActivite=activitySector,
+                nombreSalarie=numberOfEmployees,
+                titreEvenement=eventTitle,
+                date_accident=accidentDate,
+                heure_accident=accidentTime,
+                typeEvenement=eventType,
+                lieu=accidentLocation,
+                circonstances=detailedCircumstances,
+                horaireTravail=workSchedule,
+                natureLesions=natureOfLesions,
+                siegeLesion=locationOfLesions,
+                NomMedecin=firstAidProvider,
+                suiteProbable=probableOutcome,
+                decisionFinale=workStoppage,
+                declarant=request.session['email'],
+            )
+            
+            victime_instance = Victime(
+                identifiant_uniqueVictime=idVic,
+                id_accident=accident_instance,  # Utilisez l'instance d'accident que vous avez créée
+                numeroAssurance=socialSecurityNumber,
+                nom_victime=fullNameV,
+                sexe=genderV,
+                adresse=addressV,
+                numeroTel=phoneNumberV,
+                fax=faxV,
+                email=emailV,
+                dateEmbauche=hiringDate,
+                nationalite=nationality,
+                profession=profession,
+                posteTravail=jobPosition,
+                ancienetePoste=seniority,
+                nomPrenomProche=spouseFullName,
+                numTelephone=spousePhoneNumber,
+            )
+            
+            temoin_instance = Temoin(
+                id_accident=accident_instance,
+                nomPrenom_temoin=witnessName,
+                adresseTemoin=witnessAddress,
+                rapportPolice=policeReport,
+                ParQui=reportAuthor,
+                nomTiers=riskName, 
+                adresseTiers=riskAddress, 
+                cleAssuranceTiers=insuranceCompany, 
+                duTiers=thirdParty, 
+                numPoliceTiersAssurance=policyNumber, 
+            )
+
+            selected_causes = request.POST.getlist('causes[]')
+
+            for cause_label in selected_causes:
+                idCause = generateurID_CauseAccident()
+                cause_instance = Cause.objects.create(
+                    identifiant_uniqueCause=idCause,
+                    id_accident=accident_instance,
+                    causeLibele=cause_label,
+                )
+                iduniCause = ID_unique.objects.create(identifiant=idCause, type='Cause Accident')
+
+            print('ici')
+
+            actions_data = json.loads(request.POST.get('actionsAccidents'))
+            print('ici')
+            for action_data in actions_data:
+                idACAcc = generateurID_ActionAccident()
+                action_instance = PlanAction.objects.create(
+                    id_accident=accident_instance, 
+                    titreAction=action_data['title'],
+                    description=action_data['description'],
+                    responsable=action_data['responsible'],
+                    date_debut=action_data['startDate'],
+                    date_fin=action_data['endDate'],
+                    statut=action_data['status'],
+                )
+                iduniActAccident=ID_unique.objects.create(identifiant=idACAcc,type='Action Accident')
+            print('ici')
+            accident_instance.save()
+            victime_instance.save()
+            temoin_instance.save()
+            PlanAction.objects.bulk_create(cause_instance)
+            ID_unique.objects.bulk_create(iduniCause)
+            PlanAction.objects.bulk_create(action_instance)
+            ID_unique.objects.bulk_create(iduniActAccident)
+            iduni=ID_unique.objects.create(identifiant=idAC,type='Accident')
+            iduni.save()
+            iduni=ID_unique.objects.create(identifiant=idVic,type='Victime')
+            iduni.save()
+            logger.info(f"Accident instance: {accident_instance}")
+            logger.info(f"Victime instance: {victime_instance}")
+            logger.info(f"Temoin instance: {temoin_instance}")
+            response_data = {'message': 'Accident enregistré avec succès.'}
+            return JsonResponse(response_data, status=200) 
+        except:
+            response_data = {'error': "Impossible d'enregistrer cet accident"}
+            return JsonResponse(response_data)
+    else:
+        return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
 
 def tableauAccidentListe(request):
     accidents = Accident.objects.all()
@@ -334,62 +537,51 @@ def AjouterIncidentProcessus(request):
         accidentDate = request.POST.get('accidentDate')
         accidentTime = request.POST.get('accidentTime')
         accidentLocation = request.POST.get('accidentLocation')
-        nameOrCorporateName = request.POST.get('nameOrCorporateName')
         natureOfLesions = request.POST.get('natureOfLesions')
         locationOfLesions = request.POST.get('locationOfLesions')
         detailedCircumstances = request.POST.get('detailedCircumstances')
-        dropdownData = request.POST.getlist('dropdownData')
+        informationActions = json.loads(request.POST.get('informationActions'))
         
-        print(request.POST.get('actionsData'))
+        try:
+            idInc = generateurID_Incident()
+            incident = Incident.objects.create(
+                identifiant_uniqueIncident=idInc,
+                typeEvenement=eventType,
+                titreEvenement=eventTitle,
+                date_Incident=accidentDate,
+                heure_Incident=accidentTime,
+                lieuIncident=accidentLocation,
+                natureLesion=natureOfLesions,
+                siegeLesion=locationOfLesions,
+                actionImediate=detailedCircumstances,
+                declarant=request.session['email'])
 
-        actionsData = []
-        for i in range(1, int(request.POST.get('actionsData', 0)) + 1):
-            actionData = {
-                'title': request.POST.get(f'actionTitle_{i}'),
-                'description': request.POST.get(f'actionDescription_{i}'),
-                'responsible': request.POST.get(f'actionResponsible_{i}'),
-                'status': request.POST.get(f'actionStatus_{i}'),
-                'startDate': request.POST.get(f'actionStartDate_{i}'),
-                'endDate': request.POST.get(f'actionEndDate_{i}'),
-            }
-            actionsData.append(actionData)
-            
-        print(actionsData)
-
-        # # Enregistrez les données dans votre modèle
-        # try:
-        #     # Remplacez VotreModele par le nom de votre modèle
-        #     incident = VotreModele.objects.create(
-        #         eventType=eventType,
-        #         eventTitle=eventTitle,
-        #         accidentDate=accidentDate,
-        #         accidentTime=accidentTime,
-        #         accidentLocation=accidentLocation,
-        #         nameOrCorporateName=nameOrCorporateName,
-        #         natureOfLesions=natureOfLesions,
-        #         locationOfLesions=locationOfLesions,
-        #         detailedCircumstances=detailedCircumstances,
-        #     )
-
-        #     # Enregistrez les données associées dans votre modèle lié (si applicable)
-        #     # Par exemple, si vous avez une clé étrangère vers un autre modèle,
-        #     # vous pouvez l'ajuster en conséquence.
-
-        #     # Enregistrez les données du deuxième onglet (drop-down) dans votre modèle lié (si applicable)
-
-        #     # Enregistrez les données du troisième onglet (tableau d'actions) dans votre modèle lié (si applicable)
-        #     for actionData in actionsData:
-        #         incident.actions_set.create(**actionData)
-
-        #     messages.success(request, 'Incident ajouté avec succès!')
-        #     return redirect('votre_url_de_redirection')  # Remplacez par la route souhaitée
-        # except Exception as e:
-        #     messages.error(request, f'Erreur lors de l\'ajout de l\'incident: {e}')
-
-    # Gérer le cas où la méthode HTTP n'est pas POST
-    # ...
-
-    return render(request, 'votre_template.html')
+            for action_data in informationActions:
+                idACInc = generateurID_ActionIncident()
+                actions = PlanActionIncident.objects.create(
+                    identifiant_uniqueAction=idACInc,
+                    id_incident=incident,
+                    titreAction=action_data.get('title'),
+                    description=action_data.get('description'),
+                    responsable=action_data.get('responsible'),
+                    date_debut=action_data.get('startDate'),
+                    date_fin=action_data.get('endDate'),
+                    statut=action_data.get('status'),
+                )
+                iduniAct=ID_unique.objects.create(identifiant=idACInc,type='Action Incident')
+                
+            incident.save()
+            PlanActionIncident.objects.bulk_create(actions)
+            ID_unique.objects.bulk_create(iduniAct)
+            iduni=ID_unique.objects.create(identifiant=idInc,type='Incident')
+            iduni.save()
+            response_data = {'message': 'Incident enregistré avec succès.'}
+            return JsonResponse(response_data, status=200) 
+        except:
+            response_data = {'error': "Impossible d'enregistrer cet incident"}
+            return JsonResponse(response_data)
+    else:
+        return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
 
 
 def tableauActionListe(request):

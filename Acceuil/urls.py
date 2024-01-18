@@ -18,8 +18,6 @@ urlpatterns = [
     path('restaurationMDP/processus', mdpoublieprocessus,name='mdpoublieprocessus'),
     
     # Asynchronisme
-    # Dashboard
-    path('Dashboard/initialisation',initialisation, name='initialisation'),
 
     # accident
     path('Dashboard/AjouterAccident/AjouterAccidentProcessus',
@@ -37,7 +35,6 @@ urlpatterns = [
 
     # profile
     path('Dashboard/profile/updateProfil', updateProfil, name='updateProfil'),
-    path('Dashboard/profile/listeUsers', listeUsers, name='listeUsers'),
     path('Dashboard/profile/updatePass', updatePass, name='updatePass'),
     path('Dashboard/profile/addUser', addUser, name='addUser'),
     

@@ -12,6 +12,7 @@
     <!-- Favicons -->
     <link href="{% static 'assets/img/favicon.png' %}" rel="icon" />
     <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect" />
@@ -418,231 +419,198 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-  // Initialisation du tableau avec des données fictives
-  initializeTable();
+        initializeTable();
 
-  // Fonctions pour le tri et la recherche
-  window.sortTable = sortTable;
-  window.filterTable = filterTable;
-});
+        window.sortTable = sortTable;
+        window.filterTable = filterTable;
+      });
 
-document.addEventListener("DOMContentLoaded", () => {
-  axios.get('{% url 'tableauActionListe' %}')
-    .then(response => {
-      const actionsData = response.data.actionsData;
-      initializeTable(actionsData);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-});
+      function initializeTable(actionsData) {
+        const actionsTable = document.getElementById("actionsTable");
 
-function initializeTable(actionsData) {
-  const actionsTable = document.getElementById("actionsTable");
+        // Supprimer les lignes existantes pour éviter les duplications lors des appels ultérieurs
+        actionsTable.innerHTML = '';
 
-  // Supprimer les lignes existantes pour éviter les duplications lors des appels ultérieurs
-  actionsTable.innerHTML = '';
+        // Itérer sur les données d'actions pour créer les lignes du tableau
+        actionsData.forEach((action, index) => {
+          let row = actionsTable.insertRow();
+          row.insertCell(0).textContent = action.titreAction;
+          row.insertCell(1).textContent = action.description;
+          row.insertCell(2).textContent = action.responsable;
+          row.insertCell(3).textContent = new Date(action.date_debut).toLocaleDateString();
+          row.insertCell(4).textContent = new Date(action.date_fin).toLocaleDateString();
+          
+          // Statut avec système de badges
+          let statusCell = row.insertCell(6);
+          statusCell.innerHTML = getBadgeForStatus(action.statut);
 
-  // Itérer sur les données d'actions pour créer les lignes du tableau
-  actionsData.forEach((action, index) => {
-    let row = actionsTable.insertRow();
-    row.insertCell(0).textContent = action.titreAction;
-    row.insertCell(1).textContent = action.description;
-    row.insertCell(2).textContent = action.responsable;
-    row.insertCell(3).textContent = new Date(action.date_debut).toLocaleDateString();
-    row.insertCell(4).textContent = new Date(action.date_fin).toLocaleDateString();
-    
-    // Statut avec système de badges
-    let statusCell = row.insertCell(6);
-    statusCell.innerHTML = getBadgeForStatus(action.statut);
-
-    // Actions avec icônes
-    let actionsCell = row.insertCell(7);
-    actionsCell.innerHTML = `
-      <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${index})"></i>
-      <i class="btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="deleteAction(this)"></i>
-    `;
-  });
-}
-
-function getBadgeForStatus(status) {
-  let badgeClass;
-  switch (status) {
-    case "Terminé":
-      badgeClass = "bg-success";
-      break;
-    case "En cours":
-      badgeClass = "bg-warning text-dark";
-      break;
-    case "Ouvert":
-      badgeClass = "bg-primary";
-      break;
-    default:
-      badgeClass = "bg-secondary";
-  }
-  return `<span class="badge ${badgeClass}">${status}</span>`;
-}
-
-
-
-let currentSortColumn = null;
-let sortAscending = true;
-
-
-function filterTable() {
-    const searchInput = document.getElementById("searchInput").value.toLowerCase();
-    const statusFilter = document.getElementById("statusFilter").value;
-    const startDateFilter = document.getElementById("startDateFilter").value;
-    const endDateFilter = document.getElementById("endDateFilter").value;
-    const tableRows = document.getElementById("actionTable").querySelectorAll("tbody tr");
-
-    for (let row of tableRows) {
-        // Text comparison in lower case for case-insensitivity
-        const titre = row.cells[1].textContent.toLowerCase();
-        const statut = row.cells[6].textContent.trim().toLowerCase(); // Trim and lower case for the status
-
-        // Ensure proper date comparison by parsing textContent into Date objects
-        const startDate = row.cells[4].textContent ? new Date(row.cells[4].textContent) : null;
-        const endDate = row.cells[5].textContent ? new Date(row.cells[5].textContent) : null;
-        const filterStart = startDateFilter ? new Date(startDateFilter) : null;
-        const filterEnd = endDateFilter ? new Date(endDateFilter) : null;
-
-        let textCondition = titre.includes(searchInput);
-        let statusCondition = !statusFilter || statut === statusFilter.toLowerCase();
-        let dateCondition = (!filterStart || (startDate && startDate >= filterStart)) &&
-                            (!filterEnd || (endDate && endDate <= filterEnd));
-
-        if (textCondition && statusCondition && dateCondition) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-    }
-}
-
-// Initialisation des données du tableau et configuration de la première filtration
-document.addEventListener("DOMContentLoaded", function() {
-    // initialiserTable(); // À remplacer par la fonction qui remplit le tableau
-    filterTable(); // Appliquer les filtres par défaut
-});
-
-
-  // Filtre supplémentaire pour le statut
-  let select, status;
-  select = document.getElementById("statusFilter");
-  status = select.value.toLowerCase();
-  for (i = 1; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[6]; // Index de la colonne Statut
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (status === "" || txtValue.toLowerCase() === status) {
-        if (tr[i].style.display !== "none") {
-          tr[i].style.display = "";
-        }
-      } else {
-        tr[i].style.display = "none";
+          // Actions avec icônes
+          let actionsCell = row.insertCell(7);
+          actionsCell.innerHTML = `
+            <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${index})"></i>
+            <i class="btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="deleteAction(this)"></i>
+          `;
+        });
       }
-    }
-  }
+
+      function getBadgeForStatus(status) {
+        let badgeClass;
+        switch (status) {
+          case "Terminé":
+            badgeClass = "bg-success";
+            break;
+          case "En cours":
+            badgeClass = "bg-warning text-dark";
+            break;
+          case "Ouvert":
+            badgeClass = "bg-primary";
+            break;
+          default:
+            badgeClass = "bg-secondary";
+        }
+        return `<span class="badge ${badgeClass}">${status}</span>`;
+      }
+
+      let currentSortColumn = null;
+      let sortAscending = true;
 
 
-  function editAction(index) {
-  currentEditIndex = index;
-  console.log(currentEditIndex);
-  // Récupérer les données de l'action à partir du tableau
-  const table = document.getElementById('actionTable');
-  const row = table.rows[index]; // Index est déjà ajusté pour les lignes du tableau
-  
-  // Extraire les données de la ligne
-  const origin = row.cells[0].textContent;
-  const title = row.cells[1].textContent;
-  const description = row.cells[2].textContent;
-  const responsible = row.cells[3].textContent;
-  const startDate = row.cells[4].textContent;
-  const endDate = row.cells[5].textContent;
-  const status = row.cells[6].textContent.trim();
+      function filterTable() {
+          const searchInput = document.getElementById("searchInput").value.toLowerCase();
+          const statusFilter = document.getElementById("statusFilter").value;
+          const startDateFilter = document.getElementById("startDateFilter").value;
+          const endDateFilter = document.getElementById("endDateFilter").value;
+          const tableRows = document.getElementById("actionTable").querySelectorAll("tbody tr");
 
-  // Mettre à jour les champs du formulaire dans le modal avec les données de l'action
-  document.getElementById('originInput').value = origin;
-  document.getElementById('titleInput').value = title;
-  document.getElementById('descriptionInput').value = description;
-  document.getElementById('responsibleInput').value = responsible;
-  document.getElementById('startDateInput').value = startDate;
-  document.getElementById('endDateInput').value = endDate;
-  document.getElementById('statusSelect').value = status;
+          for (let row of tableRows) {
+              // Text comparison in lower case for case-insensitivity
+              const titre = row.cells[1].textContent.toLowerCase();
+              const statut = row.cells[6].textContent.trim().toLowerCase(); // Trim and lower case for the status
 
-  // Afficher le modal d'édition
-  var editModal = new bootstrap.Modal(document.getElementById('editActionModal'));
-  editModal.show();
-}
+              // Ensure proper date comparison by parsing textContent into Date objects
+              const startDate = row.cells[4].textContent ? new Date(row.cells[4].textContent) : null;
+              const endDate = row.cells[5].textContent ? new Date(row.cells[5].textContent) : null;
+              const filterStart = startDateFilter ? new Date(startDateFilter) : null;
+              const filterEnd = endDateFilter ? new Date(endDateFilter) : null;
 
-function deleteAction(icon) {
-  // Confirmer avec l'utilisateur qu'il veut supprimer l'action
-  if (confirm('Êtes-vous sûr de vouloir supprimer cette action ?')) {
-    // Trouver la ligne du tableau à supprimer
-    const row = icon.closest('tr');
-    row.remove();
-    //ajouter une logique pour supprimer l'action du backend
-  }
-}
+              let textCondition = titre.includes(searchInput);
+              let statusCondition = !statusFilter || statut === statusFilter.toLowerCase();
+              let dateCondition = (!filterStart || (startDate && startDate >= filterStart)) &&
+                                  (!filterEnd || (endDate && endDate <= filterEnd));
 
-function saveEdits() {
-  // Récupérer les nouvelles valeurs du formulaire dans le modal
-  const origin = document.getElementById('originInput').value;
-  const title = document.getElementById('titleInput').value;
-  const description = document.getElementById('descriptionInput').value;
-  const responsible = document.getElementById('responsibleInput').value;
-  const startDate = document.getElementById('startDateInput').value;
-  const endDate = document.getElementById('endDateInput').value;
-  const status = document.getElementById('statusSelect').value;
-  
-  // Mettre à jour la ligne du tableau avec les nouvelles valeurs
-  const table = document.getElementById('actionTable');
-  const row = table.rows[currentEditIndex]; // Utilisez currentEditIndex pour trouver la bonne ligne
-  
-  row.cells[0].textContent = origin;
-  row.cells[1].textContent = title;
-  row.cells[2].textContent = description;
-  row.cells[3].textContent = responsible;
-  row.cells[4].textContent = startDate;
-  row.cells[5].textContent = endDate;
-  row.cells[6].innerHTML = getBadgeForStatus(status); // Utilisez la fonction pour obtenir le badge HTML
-  
-  // Fermer le modal après la sauvegarde
-  var editModal = bootstrap.Modal.getInstance(document.getElementById('editActionModal'));
-  editModal.hide();
-}
+              if (textCondition && statusCondition && dateCondition) {
+                  row.style.display = "";
+              } else {
+                  row.style.display = "none";
+              }
+          }
+      }
 
-// Fonction pour obtenir le badge HTML en fonction du statut
-function getBadgeForStatus(status) {
-  let badgeClass;
-  switch (status) {
-    case "Terminé":
-      badgeClass = "bg-success";
-      break;
-    case "En cours":
-      badgeClass = "bg-warning text-dark";
-      break;
-    case "Ouvert":
-      badgeClass = "bg-primary";
-      break;
-    default:
-      badgeClass = "bg-secondary";
-  }
-  return `<span class="badge ${badgeClass}">${status}</span>`;
-}
-
-// Ajouter ces fonctions à l'objet window pour les rendre accessibles globalement
-window.editAction = editAction;
-window.deleteAction = deleteAction;
-
-document.addEventListener('DOMContentLoaded', function() {
-  initializeTable();
-  filterTable(); // Appliquer les filtres par défaut
-});
+      let select, status;
+      select = document.getElementById("statusFilter");
+      status = select.value.toLowerCase();
+      for (i = 1; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[6]; // Index de la colonne Statut
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (status === "" || txtValue.toLowerCase() === status) {
+            if (tr[i].style.display !== "none") {
+              tr[i].style.display = "";
+            }
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
 
 
+      function editAction(index) {
+        currentEditIndex = index;
+        console.log(currentEditIndex);
+        // Récupérer les données de l'action à partir du tableau
+        const table = document.getElementById('actionTable');
+        const row = table.rows[index]; // Index est déjà ajusté pour les lignes du tableau
+        
+        // Extraire les données de la ligne
+        const origin = row.cells[0].textContent;
+        const title = row.cells[1].textContent;
+        const description = row.cells[2].textContent;
+        const responsible = row.cells[3].textContent;
+        const startDate = row.cells[4].textContent;
+        const endDate = row.cells[5].textContent;
+        const status = row.cells[6].textContent.trim();
 
+        // Mettre à jour les champs du formulaire dans le modal avec les données de l'action
+        document.getElementById('originInput').value = origin;
+        document.getElementById('titleInput').value = title;
+        document.getElementById('descriptionInput').value = description;
+        document.getElementById('responsibleInput').value = responsible;
+        document.getElementById('startDateInput').value = startDate;
+        document.getElementById('endDateInput').value = endDate;
+        document.getElementById('statusSelect').value = status;
+
+        // Afficher le modal d'édition
+        var editModal = new bootstrap.Modal(document.getElementById('editActionModal'));
+        editModal.show();
+      }
+
+      function deleteAction(icon) {
+        // Confirmer avec l'utilisateur qu'il veut supprimer l'action
+        if (confirm('Êtes-vous sûr de vouloir supprimer cette action ?')) {
+          // Trouver la ligne du tableau à supprimer
+          const row = icon.closest('tr');
+          row.remove();
+          //ajouter une logique pour supprimer l'action du backend
+        }
+      }
+
+      function saveEdits() {
+        // Récupérer les nouvelles valeurs du formulaire dans le modal
+        const origin = document.getElementById('originInput').value;
+        const title = document.getElementById('titleInput').value;
+        const description = document.getElementById('descriptionInput').value;
+        const responsible = document.getElementById('responsibleInput').value;
+        const startDate = document.getElementById('startDateInput').value;
+        const endDate = document.getElementById('endDateInput').value;
+        const status = document.getElementById('statusSelect').value;
+        
+        // Mettre à jour la ligne du tableau avec les nouvelles valeurs
+        const table = document.getElementById('actionTable');
+        const row = table.rows[currentEditIndex]; // Utilisez currentEditIndex pour trouver la bonne ligne
+        
+        row.cells[0].textContent = origin;
+        row.cells[1].textContent = title;
+        row.cells[2].textContent = description;
+        row.cells[3].textContent = responsible;
+        row.cells[4].textContent = startDate;
+        row.cells[5].textContent = endDate;
+        row.cells[6].innerHTML = getBadgeForStatus(status); // Utilisez la fonction pour obtenir le badge HTML
+        
+        // Fermer le modal après la sauvegarde
+        var editModal = bootstrap.Modal.getInstance(document.getElementById('editActionModal'));
+        editModal.hide();
+      }
+
+      function getBadgeForStatus(status) {
+        let badgeClass;
+        switch (status) {
+          case "Terminé":
+            badgeClass = "bg-success";
+            break;
+          case "En cours":
+            badgeClass = "bg-warning text-dark";
+            break;
+          case "Ouvert":
+            badgeClass = "bg-primary";
+            break;
+          default:
+            badgeClass = "bg-secondary";
+        }
+        return `<span class="badge ${badgeClass}">${status}</span>`;
+      }
+
+      window.editAction = editAction;
+      window.deleteAction = deleteAction;
 
     </script>
   </body>
