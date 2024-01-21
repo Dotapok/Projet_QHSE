@@ -290,6 +290,13 @@ def generateurID_ActionAccident():
         identifiant = 'DQ.AA.' + ''.join(choix)
         if not existenceID(identifiant):
             return identifiant
+        
+def generateurID_Temoin():
+    while True:
+        choix = [str(Generateur.randint(0, 100000000)) for _ in range(2)]
+        identifiant = 'DQ.T.' + ''.join(choix)
+        if not existenceID(identifiant):
+            return identifiant
 
 def contacter(request):
     if request.method == 'POST':
@@ -415,7 +422,8 @@ def AjouterAccidentProcessus(request):
         try:
             idAC = generateurID_Accident()
             idVic = generateurID_Victime()
-            
+            idTem = generateurID_Temoin()
+
             accident_instance = Accident(
                 identifiant_uniqueAccident=idAC,
                 NumCotisant=numberCotisant,
@@ -442,6 +450,10 @@ def AjouterAccidentProcessus(request):
                 declarant=request.session['email'],
             )
             
+            accident_instance.save()
+            iduni=ID_unique.objects.create(identifiant=idAC,type='Accident')
+            iduni.save()
+
             victime_instance = Victime(
                 identifiant_uniqueVictime=idVic,
                 id_accident=accident_instance,  # Utilisez l'instance d'accident que vous avez créée
@@ -461,38 +473,42 @@ def AjouterAccidentProcessus(request):
                 numTelephone=spousePhoneNumber,
             )
             
+            victime_instance.save()
+            iduni=ID_unique.objects.create(identifiant=idVic,type='Victime')
+            iduni.save()
+
             temoin_instance = Temoin(
+                identifiant_uniqueTemoin=idTem,
                 id_accident=accident_instance,
                 nomPrenom_temoin=witnessName,
                 adresseTemoin=witnessAddress,
                 rapportPolice=policeReport,
                 ParQui=reportAuthor,
-                nomTiers=riskName, 
+                nomTiers=riskName,
                 adresseTiers=riskAddress, 
                 cleAssuranceTiers=insuranceCompany, 
                 duTiers=thirdParty, 
-                numPoliceTiersAssurance=policyNumber, 
+                numPoliceTiersAssurance=policyNumber,
             )
-
+            
+            temoin_instance.save()
+            iduni=ID_unique.objects.create(identifiant=idTem,type='Temoin')
+            iduni.save()
+            
             selected_causes = request.POST.getlist('causes[]')
-
+            
             for cause_label in selected_causes:
                 idCause = generateurID_CauseAccident()
-                cause_instance = Cause.objects.create(
-                    identifiant_uniqueCause=idCause,
-                    id_accident=accident_instance,
-                    causeLibele=cause_label,
-                )
+                cause_instance = Cause.objects.create(identifiant_uniqueCause=idCause,id_accident=accident_instance,causeLibele=cause_label)
                 iduniCause = ID_unique.objects.create(identifiant=idCause, type='Cause Accident')
-
             print('ici')
 
-            actions_data = json.loads(request.POST.get('actionsAccidents'))
-            print('ici')
-            for action_data in actions_data:
+            actions_data = request.POST.get('actionsAccidents')
+            
+            for action_data in json.loads(actions_data):
                 idACAcc = generateurID_ActionAccident()
                 action_instance = PlanAction.objects.create(
-                    id_accident=accident_instance, 
+                    id_accident=accident_instance,
                     titreAction=action_data['title'],
                     description=action_data['description'],
                     responsable=action_data['responsible'],
@@ -500,22 +516,13 @@ def AjouterAccidentProcessus(request):
                     date_fin=action_data['endDate'],
                     statut=action_data['status'],
                 )
-                iduniActAccident=ID_unique.objects.create(identifiant=idACAcc,type='Action Accident')
+                iduniActAccident = ID_unique.objects.create(identifiant=idACAcc, type='Action Accident')
             print('ici')
-            accident_instance.save()
-            victime_instance.save()
-            temoin_instance.save()
             PlanAction.objects.bulk_create(cause_instance)
             ID_unique.objects.bulk_create(iduniCause)
             PlanAction.objects.bulk_create(action_instance)
             ID_unique.objects.bulk_create(iduniActAccident)
-            iduni=ID_unique.objects.create(identifiant=idAC,type='Accident')
-            iduni.save()
-            iduni=ID_unique.objects.create(identifiant=idVic,type='Victime')
-            iduni.save()
-            logger.info(f"Accident instance: {accident_instance}")
-            logger.info(f"Victime instance: {victime_instance}")
-            logger.info(f"Temoin instance: {temoin_instance}")
+
             response_data = {'message': 'Accident enregistré avec succès.'}
             return JsonResponse(response_data, status=200) 
         except:
@@ -525,9 +532,10 @@ def AjouterAccidentProcessus(request):
         return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
 
 def tableauAccidentListe(request):
-    accidents = Accident.objects.all()
-    serialized_accidents = serialize('json', accidents)
-    return JsonResponse({'accidentData': serialized_accidents}, safe=False)
+    accidents = Accident.objects.prefetch_related('accident_Victime').values(
+        'id', 'titreEvenement', 'date_accident', 'typeEvenement', 'lieu', 'accident_Victime__nom_victime'
+    )
+    return JsonResponse({'accidentData': list(accidents)}, safe=False)
 
 # incident
 def AjouterIncidentProcessus(request):

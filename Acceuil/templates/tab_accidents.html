@@ -12,6 +12,7 @@
     <!-- Favicons -->
     <link href="{% static 'assets/img/favicon.png' %}" rel="icon" />
     <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect" />
@@ -432,31 +433,24 @@
         axios.get('{% url 'tableauAccidentListe' %}')
         .then(response => {
           const accidentData = response.data.accidentData;
-          initializeTable(accidentData);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-
-        const tableBody = document.getElementById("accident_tab");
-        accidentData.forEach((accident, index) => {
-          // Note: Ajout de 'index' pour l'utiliser dans editAction et deleteAction
+          const tableBody = document.getElementById("accident_tab");
+          accidentData.forEach((accident, index) => {
           let row = tableBody.insertRow();
           row.innerHTML = `
         <td class="id">${accident.id}</td>
         <td class="titre">${accident.titreEvenement}</td>
         <td class="date">${accident.date_accident}</td>
-        <td class="victime">${accident.victime}</td>
-        <td class="type">${accident.type_accident}</td>
+        <td class="victime">${accident.accident_Victime__nom_victime}</td>
+        <td class="type">${accident.typeEvenement}</td>
         <td class="lieu">${accident.lieu}</td>
 `;
 
           // Ajouter ici les actions avec icônes à chaque ligne
           let actionsCell = row.insertCell(6);
           actionsCell.innerHTML = `
-          <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${accident.id})"></i>
-          <i class="btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="removeItem(${accident.id})"></i>
-          <i class="btn btn-outline-primary btn-sm me-2 bi bi-printer btn-edit-action" onclick="printPdf(${accident.id})"></i>
+          <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${accident.pk})"></i>
+          <i class="btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="removeItem(${accident.pk})"></i>
+          <i class="btn btn-outline-primary btn-sm me-2 bi bi-printer btn-edit-action" onclick="printPdf(${accident.pk})"></i>
 
         `;
         });
@@ -468,6 +462,10 @@
         };
 
         accidentList = new List("tableExample3", options);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
       });
 
       function removeItem(itemId) {

@@ -516,10 +516,10 @@
                               </div>
                             </div>
                             <!-- Titre de l'événement -->
-      <div class="mb-3 col-12 col-md-6 mb-3">
-        <label for="event-title" class="form-label">Titre de l'événement</label>
-        <input type="text" class="form-control" id="event-title" name="eventTitle" required >
-      </div>
+              <div class="mb-3 col-12 col-md-6 mb-3">
+                <label for="event-title" class="form-label">Titre de l'événement</label>
+                <input type="text" class="form-control" id="event-title" name="eventTitle" required >
+              </div>
                             <!-- Date de l'accident -->
                             <div class="col-md-6 mb-3">
                               <label class="form-label" for="accident-date"
@@ -797,14 +797,14 @@
                                   type="radio"
                                   id="male"
                                   name="gender"
-                                  value="male"
+                                  value="masculin"
                                 />
                                 <label for="male">Masculin</label>
                                 <input
                                   type="radio"
                                   id="female"
                                   name="gender"
-                                  value="female"
+                                  value="feminin"
                                 />
                                 <label for="female">Feminin</label>
                               </div>
@@ -854,8 +854,8 @@
                               <input
                                 type="email"
                                 class="form-control"
-                                id="email"
-                                name="email" required
+                                id="emailV"
+                                name="emailV" required
                               />
                               <div class="invalid-feedback">
                                 Ce champ est requis.
@@ -1363,7 +1363,7 @@
         var addressInput = document.getElementById('address');
         var phoneNumberInput = document.getElementById('phone-number');
         var faxInput = document.getElementById('fax');
-        var emailInput = document.getElementById('email');
+        var emailInput = document.getElementById('emailV');
         var hiringDateInput = document.getElementById('hiring-date');
         var nationalityInput = document.getElementById('nationality');
         var professionInput = document.getElementById('profession');
@@ -1473,8 +1473,6 @@
       formDataObject.actionsAccidents = actionsDataString;
       var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
       var jetonCsrf = csrfTokenInput ? csrfTokenInput.value : null;
-
-      console.log(formDataObject)
       
         axios.post('{% url 'AjouterAccidentProcessus' %}', formDataObject, {
           headers: {
@@ -1487,7 +1485,7 @@
           })
           .catch(function (error) {
             console.error('Erreur lors de l\'envoi des données:', error);
-          }); 
+          });
       }
 
       function changerAttributsBouton1() {

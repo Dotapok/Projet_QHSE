@@ -681,44 +681,6 @@
         bouton.onclick = submitForm;
       }
 
-      function addDropdown() {
-          // Créer un div pour contenir le select et le bouton de suppression
-        var div = document.createElement("div");
-        div.className = "col-6 ml-3 mb-3 d-flex align-items-start";
-
-        // Créer un nouveau select element
-        var select = document.createElement("select");
-        select.className = "form-control mb-3 ";
-        select.name = "causes[]"; // Utilisez un tableau pour les noms pour faciliter la récupération côté serveur
-
-        // Ajouter des options par défaut
-        var causes = ["manutention", "chute de plain-pied", "chute en hauteur", "utilisation d’outils ou de produits chimiques", "masses et objets en mouvement"];
-        causes.forEach(function(cause) {
-          var option = document.createElement("option");
-          option.value = cause;
-          option.text = cause;
-          select.appendChild(option);
-        });
-
- // Créer le bouton de suppression
-  var deleteButton = document.createElement("button");
-  deleteButton.type = "button";
-  deleteButton.className = "btn btn-danger ml-2";
-  deleteButton.innerHTML = "<i class='fa fa-trash'></i>"; // Assurez-vous que la classe fa-trash fait partie d'une librairie d'icônes comme FontAwesome
-  deleteButton.onclick = function() {
-    // Supprimer le div conteneur de la liste déroulante et du bouton
-    div.remove();
-  };
-
-  // Ajouter la liste déroulante et le bouton au div conteneur
-  div.appendChild(select);
-  div.appendChild(deleteButton);
-
-  // Ajouter le div conteneur au formulaire
-  var container = document.getElementById("dropdown-container");
-  container.appendChild(div);
-      }
-
   // Fonction pour ajouter une action au tableau
 function addAction() {
   // Récupérer les données du formulaire
@@ -871,7 +833,7 @@ function submitForm() {
     }
   })
     .then(function (response) {
-      alert(^"Incident enregistré avec succes.");
+      alert("Incident enregistré avec succes.");
     })
     .catch(function (error) {
       alert('Impossible de soumettre la requete,Verifier votre formulaire.');

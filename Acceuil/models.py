@@ -127,7 +127,7 @@ class Victime(models.Model):
     
 # Temoin et tiers
 class Temoin(models.Model):
-    identifiant_uniqueTemoignage = models.CharField(max_length=50, unique=True)
+    identifiant_uniqueTemoin = models.CharField(max_length=50, unique=True)
     id_accident = models.ForeignKey(Accident, on_delete=models.CASCADE, related_name='accident_Temoignage')
     nomPrenom_temoin = models.CharField(max_length=250)
     adresseTemoin = models.CharField(max_length=250)
@@ -142,7 +142,7 @@ class Temoin(models.Model):
     
 # Causes
 class Cause(models.Model):
-    identifiant_uniqueAnalyse = models.CharField(max_length=50, unique=True)
+    identifiant_uniqueCause = models.CharField(max_length=50, unique=True)
     id_accident = models.ForeignKey(Accident, on_delete=models.CASCADE, related_name='accident_Cause')
     causeLibele = models.CharField(max_length=100)
     

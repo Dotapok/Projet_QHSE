@@ -419,39 +419,40 @@
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        initializeTable();
-
+        axios.get('{% url 'tableauActionListe' %}')
+          .then(response => {
+            const actionsData = JSON.parse(response.data.actionsData);
+            const actionsTable = document.getElementById("actionsTable");
+      
+            // Supprimer les lignes existantes pour éviter les duplications lors des appels ultérieurs
+            actionsTable.innerHTML = '';
+      
+            // Itérer sur les données d'accidents pour créer les lignes du tableau
+            actionsData.forEach((action, index) => {
+              let row = actionsTable.insertRow();
+              row.insertCell(0).textContent = action.fields.titreAction;
+              row.insertCell(1).textContent = action.fields.description;
+              row.insertCell(2).textContent = action.fields.responsable
+              row.insertCell(3).textContent = action.fields.date_debut;
+              row.insertCell(4).textContent = action.fields.date_fin;
+              row.insertCell(5).textContent = action.fields.statut;
+      
+              // Actions avec icônes
+              let actionsCell = row.insertCell(6);
+              actionsCell.innerHTML = `
+                <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${index})"></i>
+                <i class="btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="deleteAction(this)"></i>
+              `;
+            });
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      
         window.sortTable = sortTable;
         window.filterTable = filterTable;
       });
-
-      function initializeTable(actionsData) {
-        const actionsTable = document.getElementById("actionsTable");
-
-        // Supprimer les lignes existantes pour éviter les duplications lors des appels ultérieurs
-        actionsTable.innerHTML = '';
-
-        // Itérer sur les données d'actions pour créer les lignes du tableau
-        actionsData.forEach((action, index) => {
-          let row = actionsTable.insertRow();
-          row.insertCell(0).textContent = action.titreAction;
-          row.insertCell(1).textContent = action.description;
-          row.insertCell(2).textContent = action.responsable;
-          row.insertCell(3).textContent = new Date(action.date_debut).toLocaleDateString();
-          row.insertCell(4).textContent = new Date(action.date_fin).toLocaleDateString();
-          
-          // Statut avec système de badges
-          let statusCell = row.insertCell(6);
-          statusCell.innerHTML = getBadgeForStatus(action.statut);
-
-          // Actions avec icônes
-          let actionsCell = row.insertCell(7);
-          actionsCell.innerHTML = `
-            <i class="btn btn-outline-primary btn-sm me-2 bi bi-pencil-square btn-edit-action" onclick="editAction(${index})"></i>
-            <i class="btn btn-outline-danger btn-sm bi bi-trash-fill btn-delete-action" onclick="deleteAction(this)"></i>
-          `;
-        });
-      }
+      
 
       function getBadgeForStatus(status) {
         let badgeClass;
@@ -526,7 +527,6 @@
 
       function editAction(index) {
         currentEditIndex = index;
-        console.log(currentEditIndex);
         // Récupérer les données de l'action à partir du tableau
         const table = document.getElementById('actionTable');
         const row = table.rows[index]; // Index est déjà ajusté pour les lignes du tableau
