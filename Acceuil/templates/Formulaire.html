@@ -620,12 +620,15 @@
                                 for="location-of-lesions"
                                 >Sièges des lésions</label
                               >
-                              <input
-                                class="form-control"
-                                type="text"
-                                name="locationOfLesions"
-                                id="location-of-lesions" required
-                              />
+                              <select class="form-control" id="location-of-lesions" name="location-of-lesions" required>
+                                <option value="Tete">Tête</option>
+                                <option value="Torse">Torse</option>
+                                <option value="Bras">Bras</option>
+                                <option value="Jambes">Jambes</option>
+                                <option value="Mains">Mains</option>
+                                <option value="Pieds">Pieds</option>
+                                <option value="Dos">Dos</option>
+                            </select>
                               <div class="invalid-feedback">
                                 Ce champ est requis.
                               </div>

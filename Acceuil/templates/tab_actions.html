@@ -430,12 +430,14 @@
             // Itérer sur les données d'accidents pour créer les lignes du tableau
             actionsData.forEach((action, index) => {
               let row = actionsTable.insertRow();
-              row.insertCell(0).textContent = action.fields.titreAction;
-              row.insertCell(1).textContent = action.fields.description;
-              row.insertCell(2).textContent = action.fields.responsable
-              row.insertCell(3).textContent = action.fields.date_debut;
-              row.insertCell(4).textContent = action.fields.date_fin;
-              row.insertCell(5).textContent = action.fields.statut;
+              let fields = action.fields;
+
+              row.insertCell(0).textContent = fields.description;
+              row.insertCell(1).textContent = fields.description;
+              row.insertCell(2).textContent = fields.responsable
+              row.insertCell(3).textContent = fields.date_debut;
+              row.insertCell(4).textContent = fields.date_fin;
+              row.insertCell(5).textContent = fields.statut;
       
               // Actions avec icônes
               let actionsCell = row.insertCell(6);

@@ -170,4 +170,4 @@ class PlanActionIncident(models.Model):
     date_debut = models.DateField()
     date_fin = models.DateField()
     statut = models.CharField(max_length=20, choices=[(
-        'ouvert', 'Ouvert'), ('encours', 'En cours'), ('termine', 'Terminé')], default='encours')
+        'ouvert', 'Ouvert'), ('en cours', 'En cours'), ('termine', 'Terminé')], default='en cours')

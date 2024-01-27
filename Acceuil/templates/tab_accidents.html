@@ -414,7 +414,7 @@
 
     <!-- ===============================================--><!--    JavaScripts--><!-- ===============================================-->
     <script src="{% static 'assets/vendor/popper/popper.min.js' %}"></script>
-    <script src="{% static 'assets/vendor/anchorjs/anchor.min.js' %}"></script>
+    <script src="assets/vendor/anchorjs/anchor.min.js"></script>
     <script src="{% static 'assets/vendor/is/is.min.js' %}"></script>
     <script src="{% static 'assets/vendor/prism/prism.js' %}"></script>
     <script src="{% static 'assets/vendor/fontawesome/all.min.js' %}"></script>
@@ -603,7 +603,7 @@
       // Note: Assurez-vous d'avoir cette fonction dans la portée globale si vous l'utilisez dans un attribut `onclick`
       window.printPdf = printPdf;
     </script>
-    <script src="assets/vendor/list.js/list.min.js"></script>
+    <script src="{% static 'assets/vendor/list.js/list.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/pdf-lib@^1.16.0/dist/pdf-lib.min.js"></script>
   </body>
 </html>

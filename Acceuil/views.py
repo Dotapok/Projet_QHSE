@@ -6,9 +6,10 @@ from django.core.mail import send_mail
 import random as Generateur
 from django.contrib.auth.decorators import login_required
 from .models import *
-from django.contrib.auth import get_user_model
-from datetime import date
+from datetime import date,datetime
 from django.core.serializers import serialize
+from django.db.models import Count
+from django.db.models.functions import ExtractMonth
 
 # Create your views here.
 def acceuil(request):
@@ -26,11 +27,64 @@ def mdpoublie(request):
 @login_required(login_url='connexion')
 def Dashboard(request):
     date_actuelle = date.today()
+    dateActuelle = datetime.now().year
+    
+    tous_les_mois = list(range(1, 13))
 
+    results = (
+        Accident.objects
+        .filter(typeEvenement='AAA', heure_enregistrement_et_jour__year=dateActuelle)
+        .annotate(month=ExtractMonth('heure_enregistrement_et_jour'))
+        .values('month')
+        .annotate(count=Count('month'))
+    )
+    occurrences_par_mois = {mois: 0 for mois in tous_les_mois}
+    for result in results:
+        occurrences_par_mois[result['month']] = result['count']
+    date_listAAA = [occurrences_par_mois[mois] for mois in tous_les_mois]
+   
+
+    results = (
+        Accident.objects
+        .filter(typeEvenement='ASA', heure_enregistrement_et_jour__year=dateActuelle)
+        .annotate(month=ExtractMonth('heure_enregistrement_et_jour'))
+        .values('month')
+        .annotate(count=Count('month'))
+    )
+    occurrences_par_mois = {mois: 0 for mois in tous_les_mois}
+    for result in results:
+        occurrences_par_mois[result['month']] = result['count']
+    date_listASA = [occurrences_par_mois[mois] for mois in tous_les_mois]
+
+    results = (
+        Accident.objects
+        .filter(typeEvenement='Incidents', heure_enregistrement_et_jour__year=dateActuelle)
+        .annotate(month=ExtractMonth('heure_enregistrement_et_jour'))
+        .values('month')
+        .annotate(count=Count('month'))
+    )
+    occurrences_par_mois = {mois: 0 for mois in tous_les_mois}
+    for result in results:
+        occurrences_par_mois[result['month']] = result['count']
+    date_listI = [occurrences_par_mois[mois] for mois in tous_les_mois]
+
+    results = (
+        Accident.objects
+        .filter(typeEvenement="Presqu'incidents", heure_enregistrement_et_jour__year=dateActuelle)
+        .annotate(month=ExtractMonth('heure_enregistrement_et_jour'))
+        .values('month')
+        .annotate(count=Count('month'))
+    )
+    occurrences_par_mois = {mois: 0 for mois in tous_les_mois}
+    for result in results:
+        occurrences_par_mois[result['month']] = result['count']
+    date_listP = [occurrences_par_mois[mois] for mois in tous_les_mois]
+    
+    
     nombreAccidentAvecArret = Accident.objects.filter(
-        decisionFinale='Avec arret de travail').count()
+        typeEvenement='AAA').count()
     nombreAccidentSansArret = Accident.objects.filter(
-        decisionFinale='Sans arrêt de travail').count()
+        typeEvenement='ASA').count()
     nombreAccidentIncident = Accident.objects.filter(
         typeEvenement='Incidents').count()
     nombreAccidentIncident = nombreAccidentIncident + Incident.objects.count()
@@ -42,7 +96,96 @@ def Dashboard(request):
     nombreActionTermine = PlanAction.objects.filter(statut='Terminé').count()
     nombreActionsRetard = PlanAction.objects.filter(
         date_fin__lt=date_actuelle).count()
+    
+    nombreActionEnCours = nombreActionEnCours+PlanActionIncident.objects.filter(statut='En cours').count()
+    nombreActionOuvert = nombreActionOuvert+PlanActionIncident.objects.filter(statut='Ouvert').count()
+    nombreActionTermine = nombreActionTermine+PlanActionIncident.objects.filter(statut='Terminé').count()
+    nombreActionsRetard = nombreActionsRetard+PlanActionIncident.objects.filter(
+        date_fin__lt=date_actuelle).count()
+    
+    
+    responsables_plan_action = PlanAction.objects.values('responsable').distinct()
+    responsables_plan_action_incident = PlanActionIncident.objects.values('responsable').distinct()
 
+    responsables = []
+    for responsable in responsables_plan_action:
+        nombre_ouvert_plan_action = PlanAction.objects.filter(responsable=responsable['responsable'], statut='Ouvert').count()
+        nombre_en_cours_plan_action = PlanAction.objects.filter(responsable=responsable['responsable'], statut='En cours').count()
+        nombre_depasse_plan_action = PlanAction.objects.filter(responsable=responsable['responsable'], statut='Terminé').count()
+        
+        nombre_ouvert_plan_action_incident = PlanActionIncident.objects.filter(responsable=responsable['responsable'], statut='Ouvert').count()
+        nombre_en_cours_plan_action_incident = PlanActionIncident.objects.filter(responsable=responsable['responsable'], statut='En cours').count()
+        nombre_depasse_plan_action_incident = PlanActionIncident.objects.filter(responsable=responsable['responsable'], statut='Terminé').count()
+
+        nombre_total_ouvert = nombre_ouvert_plan_action + nombre_ouvert_plan_action_incident
+        nombre_total_en_cours = nombre_en_cours_plan_action + nombre_en_cours_plan_action_incident
+        nombre_total_depasse = nombre_depasse_plan_action + nombre_depasse_plan_action_incident
+
+        responsables.append({
+            'responsable': responsable['responsable'],
+            'nombreOuvert': nombre_total_ouvert,
+            'nombreEnCours': nombre_total_en_cours,
+            'nombreDepasse': nombre_total_depasse,
+        })
+    
+    for responsable in responsables_plan_action_incident:
+        nombre_ouvert_plan_action = PlanAction.objects.filter(responsable=responsable['responsable'], statut='Ouvert').count()
+        nombre_en_cours_plan_action = PlanAction.objects.filter(responsable=responsable['responsable'], statut='En cours').count()
+        nombre_depasse_plan_action = PlanAction.objects.filter(responsable=responsable['responsable'], statut='Terminé').count()
+        
+        nombre_ouvert_plan_action_incident = PlanActionIncident.objects.filter(responsable=responsable['responsable'], statut='Ouvert').count()
+        nombre_en_cours_plan_action_incident = PlanActionIncident.objects.filter(responsable=responsable['responsable'], statut='En cours').count()
+        nombre_depasse_plan_action_incident = PlanActionIncident.objects.filter(responsable=responsable['responsable'], statut='Terminé').count()
+
+        nombre_total_ouvert = nombre_ouvert_plan_action + nombre_ouvert_plan_action_incident
+        nombre_total_en_cours = nombre_en_cours_plan_action + nombre_en_cours_plan_action_incident
+        nombre_total_depasse = nombre_depasse_plan_action + nombre_depasse_plan_action_incident
+        
+        responsable_existant = next((r for r in responsables if r['responsable'] == responsable['responsable']), None)
+
+        if responsable_existant:
+            pass
+        else:
+            # Ajouter un nouvel élément à la liste si le responsable n'est pas déjà présent
+            responsables.append({
+                'responsable': responsable['responsable'],
+                'nombreOuvert': nombre_total_ouvert,
+                'nombreEnCours': nombre_total_en_cours,
+                'nombreDepasse': nombre_total_depasse,
+            })
+            
+    plans_action_accidents = PlanAction.objects.all()
+    plans_action_accidents = [{'plan_action': plan_action, 'type_plan_action': 'accident'} for plan_action in plans_action_accidents]
+
+    plans_action_incidents = PlanActionIncident.objects.all()
+    plans_action_incidents = [{'plan_action': plan_action, 'type_plan_action': 'incident'} for plan_action in plans_action_incidents]
+
+    all_plans_action = plans_action_accidents + plans_action_incidents
+    
+    compteTete=Incident.objects.filter(siegeLesion='Tete').count() +Accident.objects.filter(siegeLesion='Tete').count()
+    compteTorse=Incident.objects.filter(siegeLesion='Torse').count() +Accident.objects.filter(siegeLesion='Torse').count()
+    compteBras=Incident.objects.filter(siegeLesion='Bras').count() +Accident.objects.filter(siegeLesion='Bras').count()
+    compteJambes=Incident.objects.filter(siegeLesion='Jambes').count() +Accident.objects.filter(siegeLesion='Jambes').count()
+    compteMains=Incident.objects.filter(siegeLesion='Mains').count() +Accident.objects.filter(siegeLesion='Mains').count()
+    comptePieds=Incident.objects.filter(siegeLesion='Pieds').count() +Accident.objects.filter(siegeLesion='Pieds').count()
+    compteDos=Incident.objects.filter(siegeLesion='Dos').count() +Accident.objects.filter(siegeLesion='Dos').count()
+    
+    total=Incident.objects.all().count()+Accident.objects.all().count()
+
+    PAAA=((Accident.objects.filter(
+        typeEvenement='AAA').count()+Incident.objects.filter(
+        typeEvenement='AAA').count())*100)/total
+    PASA=((Accident.objects.filter(
+        typeEvenement='ASA').count()+Incident.objects.filter(
+        typeEvenement='ASA').count())*100)/total
+    pI=((Accident.objects.filter(
+        typeEvenement='Incidents').count()+Incident.objects.all().count())*100)/total
+    pP=((Accident.objects.filter(
+        typeEvenement="Presqu'incidents").count()+Incident.objects.filter(
+        typeEvenement="Presqu'incidents").count())*100)/total
+    
+    siegesComptes = [compteTete,compteTorse,compteBras,compteJambes,compteMains,comptePieds,compteDos]
+    
     context = {
         'entreprise_nom': request.session['entreprise'],
         'nom': request.session['nom'],
@@ -61,6 +204,20 @@ def Dashboard(request):
         'nombreActionOuvert': nombreActionOuvert,
         'nombreActionTermine': nombreActionTermine,
         'nombreActionsRetard': nombreActionsRetard,
+        
+        'date_listAAA': date_listAAA,
+        'date_listASA': date_listASA,
+        'date_listI': date_listI,
+        'date_listP': date_listP,
+        
+        'responsables': responsables,
+        'actionsEnSYS':all_plans_action,
+        'siegesComptes':siegesComptes,
+        
+        'pourcentageAAA': PAAA,
+        'pourcentageASA':PASA,
+        'pourcentageI':pI,
+        'pourcentageP': pP,
     }
     return render(request,'dashboard.html',context)
 
@@ -73,7 +230,6 @@ def connexionprocessus(request):
         try:
             user = authenticate(request,email=email, password=pwd)
         except Exception as e:
-            print(f"Authentication error: {str(e)}")
             return JsonResponse({'success': False, 'message': "Compte inexistant"}, status=400)
         
         if user:
@@ -312,7 +468,26 @@ def contacter(request):
 # fonctions asynchrones
 # dashboard
 def initialisation(request):
-    return 
+    return
+
+def graphes(request):
+    cases_to_count = ["Incidents", "Presqu'incidents", "AAA", "ASA"]
+    data = (
+        Accident.objects
+        .values('typeEvenement', 'date_accident__month')
+        .filter(typeEvenement__in=cases_to_count)
+        .annotate(count=Count('id'))
+    )
+
+    counts_by_case_and_month = {case: {} for case in cases_to_count}
+    for entry in data:
+        case = entry['typeEvenement']
+        month = entry['date_accident__month']
+        count = entry['count']
+        
+        counts_by_case_and_month[case][month] = count
+
+    return JsonResponse(counts_by_case_and_month)
 
 # profile
 def updateProfil(request):
@@ -593,7 +768,12 @@ def AjouterIncidentProcessus(request):
 
 
 def tableauActionListe(request):
-    actionsAccident = PlanAction.objects.all()
+    actionsAccident = PlanActionIncident.objects.all()
     serialized_actionsAccident = serialize('json', actionsAccident)
+    # actions_incident = PlanActionIncident.objects.all()
+    # serialized_actions_incident = serialize('json', actions_incident)
+    
+    # serialized_actions = serialized_actionsAccident + serialized_actions_incident
+
     return JsonResponse({'actionsData': serialized_actionsAccident}, safe=False)
 
